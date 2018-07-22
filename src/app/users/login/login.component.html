@@ -6,7 +6,7 @@
     <mat-card-content>
       <form class="login-form">
         <mat-form-field class="login-full-width">
-          <input matInput placeholder="User Name" [formControl]="usernameFormControl" [errorStateMatcher]="matcher">
+          <input matInput placeholder="User Name" [formControl]="usernameFormControl" [errorStateMatcher]="matcher" [(ngModel)]="username">
           <mat-icon matPrefix color="primary">account_circle</mat-icon>
           <mat-error *ngIf="usernameFormControl.hasError('required')">
             User id is
@@ -14,7 +14,7 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field class="login-full-width">
-          <input matInput placeholder="Password" [formControl]="passwordFormControl" [errorStateMatcher]="matcher">
+          <input matInput placeholder="Password" [formControl]="passwordFormControl" [errorStateMatcher]="matcher" [(ngModel)]="password">
           <mat-icon matPrefix color="primary">visibility</mat-icon>
           <mat-error *ngIf="passwordFormControl.hasError('required')">
             Password is

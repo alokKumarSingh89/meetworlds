@@ -16,10 +16,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class LoginComponent implements OnInit {
 
   constructor() { }
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
   usernameFormControl = new FormControl('',[
     Validators.required
   ])
@@ -29,7 +25,9 @@ export class LoginComponent implements OnInit {
   ])
   matcher = new MyErrorStateMatcher();
   signIn(){
-    console.log('HH')
+    if(this.usernameFormControl.valid && this.passwordFormControl.valid){
+      
+    }
   }
   ngOnInit() {
   }
