@@ -1703,8 +1703,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    { path: '', component: _users_login_login_component__WEBPACK_IMPORTED_MODULE_0__["LoginComponent"] },
-    { path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_1__["DashboardComponent"],
+    { path: 'meetworlds', component: _users_login_login_component__WEBPACK_IMPORTED_MODULE_0__["LoginComponent"] },
+    { path: 'meetworlds/dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_1__["DashboardComponent"],
         children: [
             { path: '', redirectTo: 'store', pathMatch: 'full' },
             { path: 'store', component: _dashboard_store_store_component__WEBPACK_IMPORTED_MODULE_2__["StoreComponent"] },
