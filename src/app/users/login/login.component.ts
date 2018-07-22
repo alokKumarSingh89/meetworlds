@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-
+import {Router} from '@angular/router'
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -15,7 +15,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
   usernameFormControl = new FormControl('',[
     Validators.required
   ])
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   signIn(){
     if(this.usernameFormControl.valid && this.passwordFormControl.valid){
-      
+      this.router.navigate(['dashboard'])
     }
   }
   ngOnInit() {
