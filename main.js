@@ -576,7 +576,7 @@ var AppModule = /** @class */ (function () {
                 _contact_us_help_help_component__WEBPACK_IMPORTED_MODULE_36__["HelpComponent"]
             ],
             imports: [
-                _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(_routers_routers__WEBPACK_IMPORTED_MODULE_8__["routes"]),
+                _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(_routers_routers__WEBPACK_IMPORTED_MODULE_8__["routes"], { useHash: true }),
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -1703,8 +1703,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    { path: 'meetworlds', component: _users_login_login_component__WEBPACK_IMPORTED_MODULE_0__["LoginComponent"] },
-    { path: 'meetworlds/dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_1__["DashboardComponent"],
+    { path: '', component: _users_login_login_component__WEBPACK_IMPORTED_MODULE_0__["LoginComponent"] },
+    { path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_1__["DashboardComponent"],
         children: [
             { path: '', redirectTo: 'store', pathMatch: 'full' },
             { path: 'store', component: _dashboard_store_store_component__WEBPACK_IMPORTED_MODULE_2__["StoreComponent"] },
