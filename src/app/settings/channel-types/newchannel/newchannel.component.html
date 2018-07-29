@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-title>
+    <h3>New Channel</h3>
+    <mat-divider></mat-divider>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="row">
+      <div class="col-sm-8 col-offset">
+        <div class="example-container">
+          <mat-form-field>
+            <input matInput placeholder="Channel ID"  [formControl]="channelId" type="number" required>
+            <mat-error *ngIf="channelId.invalid">{{getErrorMessage('channelId')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput placeholder="Channel Name" [formControl]="channelName" required>
+              <mat-error *ngIf="channelName.invalid">{{getErrorMessage('channelName')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Status" [formControl]="status" required>
+              <mat-option value="option">Active</mat-option>
+              <mat-option value="option">Inactive</mat-option>
+            </mat-select>
+            <mat-error *ngIf="status.invalid">{{getErrorMessage('status')}}</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+      <div class="row">
+          <div class="col-sm-4 offset-sm-6">
+              <button mat-raised-button color="primary">Save</button>
+              <button mat-raised-button>Clear</button>
+          </div>
+      </div>
+    </mat-card-actions>
+</mat-card>

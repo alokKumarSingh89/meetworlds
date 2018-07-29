@@ -1,0 +1,15 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #ccc;
+  padding: 2em 4em;
+  margin-top: 2em;
+  box-shadow: 1px 1px 12px 0px #858585;
+}
+
+.example-container > * {
+  width: 100%;
+}
+.mat-form-field-label{
+  font-size: 18px !important;
+}

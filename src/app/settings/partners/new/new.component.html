@@ -1,0 +1,38 @@
+<mat-card>
+  <mat-card-content>
+    <form class="form">
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3 form-group">
+          <div>
+            <h3>New Partner</h3>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="example-container">
+
+            <mat-form-field>
+              <input matInput placeholder="Partner ID" [formControl]="partnerId" type="number" required>
+              <mat-error *ngIf="partnerId.invalid">{{getErrorMessage('partnerId')}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Partner Name" [formControl]="partnerName" required>
+              <mat-error *ngIf="partnerName.invalid">{{getErrorMessage('partnerName')}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Status" [formControl]="status" required>
+                <mat-option value="option">Active</mat-option>
+                <mat-option value="option">Inactive</mat-option>
+              </mat-select>
+              <mat-error *ngIf="status.invalid">{{getErrorMessage('status')}}</mat-error>
+            </mat-form-field>
+            <div class="row">
+              <div class="col-sm-8 offset-sm-7">
+                <button mat-raised-button color="primary">Save</button>
+                <button mat-raised-button>Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

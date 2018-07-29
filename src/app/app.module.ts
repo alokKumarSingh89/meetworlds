@@ -36,6 +36,18 @@ import { ChannelTypesComponent } from './settings/channel-types/channel-types.co
 import { PartenersComponent } from './settings/parteners/parteners.component';
 import { BranchesComponent } from './settings/branches/branches.component';
 import { HelpComponent } from './contact-us/help/help.component';
+import { NewchannelComponent } from './settings/channel-types/newchannel/newchannel.component';
+import { EditchannelComponent } from './settings/channel-types/editchannel/editchannel.component';
+import { NewPartnerComponent } from './settings/partners/new/new.component';
+import { EditPartnerComponent } from './settings/partners/edit/edit.component';
+import { NewBranchComponent } from './settings/branchs/new/new.component';
+import { EditBranchComponent } from './settings/branchs/edit/edit.component';
+import { NewCustomerComponent } from './people/customers/new/new.component';
+import { EditCustomerComponent } from './people/customers/edit/edit.component';
+import { NewUserComponent } from './people/users/new/new.component';
+import { EditUserComponent } from './people/users/edit/edit.component';
+import { NewVendorComponent } from './people/vendor/new/new.component';
+import { EditVendorComponent } from './people/vendor/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -69,10 +81,22 @@ import { HelpComponent } from './contact-us/help/help.component';
     ChannelTypesComponent,
     PartenersComponent,
     BranchesComponent,
-    HelpComponent
+    HelpComponent,
+    NewchannelComponent,
+    EditchannelComponent,
+    NewPartnerComponent,
+    EditPartnerComponent,
+    NewBranchComponent,
+    EditBranchComponent,
+    NewCustomerComponent,
+    EditCustomerComponent,
+    NewUserComponent,
+    EditUserComponent,
+    NewVendorComponent,
+    EditVendorComponent
   ],
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes,{ useHash: true }),
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
