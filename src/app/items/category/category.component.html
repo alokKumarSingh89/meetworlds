@@ -1,3 +1,78 @@
-<p>
-  category works!
-</p>
+<div class="container-fluid font-family">
+  <div class="row justify-content-between">
+    <div class="col-sm-4 s-align">
+      <span class="heading">PRODUCT CATEGORIES</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="h-divider"></div>
+  </div>
+  <div class="row justify-content-between">
+    <div class="col-sm-12 s-align">
+      <nb-card class="category">
+        <nb-card-header>Add Categories</nb-card-header>
+        <nb-card-body>
+          <div class="row justify-content-between">
+            <div class="col-sm-2">
+              <span class="seconday">enter name</span>
+            </div>
+            <div class="col-sm-10 s-align">
+              <mat-form-field *ngIf="selectedCatogry != 2">
+                <input matInput placeholder="Categories">
+              </mat-form-field>
+              <mat-form-field *ngIf="selectedCatogry == 2">
+                <input matInput placeholder="Sub Categories">
+              </mat-form-field>
+            </div>
+            <div class="h-divider col-sm-12"></div>
+            <div class="col-sm-12 s-align">
+              <mat-radio-group [(ngModel)]="selectedCatogry">
+                <mat-radio-button value="1" style="margin-right: 5rem;">Category</mat-radio-button>
+                <mat-radio-button value="2">SubCategory</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="h-divider col-sm-12"></div>
+            <div class="col-sm-2" *ngIf="selectedCatogry == 2">
+              <span class="seconday">Select Category</span>
+            </div>
+            <div class="col-sm-10 s-align" *ngIf="selectedCatogry == 2">
+              <mat-form-field>
+                <mat-select [(value)]="selected" placeholder="Select Category">
+                  <mat-option value="option1">Walking</mat-option>
+                  <mat-option value="option2">Bigbasket</mat-option>
+                  <mat-option value="option3">MeatMart Online</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2">
+                <button mat-raised-button color="primary">Add</button>
+            </div>
+            <div class="col-sm-2 e-align">
+                <button mat-raised-button>Reset</button>
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+              <button mat-icon-button disabled></button>
+              {{node.filename}} : {{node.type}}
+            </mat-tree-node>
+          
+            <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+              <button mat-icon-button matTreeNodeToggle
+                      [attr.aria-label]="'toggle ' + node.filename">
+                <mat-icon class="mat-icon-rtl-mirror">
+                  {{treeControl.isExpanded(node) ? 'remove' : 'add'}}
+                </mat-icon>
+              </button>
+              {{node.filename}} : {{node.type}}
+            </mat-tree-node>
+          </mat-tree>          
+    </div>
+  </div>
+</div>

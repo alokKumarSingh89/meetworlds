@@ -4,7 +4,7 @@ import {FormControl, Validators, FormGroup} from '@angular/forms';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  styleUrls: ['./edit.component.scss']
 })
 export class EditBranchComponent implements OnInit {
   private sub:any;
@@ -21,7 +21,7 @@ export class EditBranchComponent implements OnInit {
     }
   }
   constructor(private route: ActivatedRoute) { }
-
+  lists = [{name:"Numbers",value:"080 6535 9769"},{name:"email",value:'test@fff'}]
   ngOnInit() {
     this.sub = this.route.params.subscribe(params=>{
       this.branchId.setValue(params['id']);

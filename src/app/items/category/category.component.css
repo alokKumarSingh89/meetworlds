@@ -1,0 +1,10 @@
+.category nb-card-header{
+    font-size: 1em;
+    padding: 0.6rem;
+    color: #4b4b4b;
+    border-bottom-width: 1px;
+}
+.category mat-form-field{
+    margin-top: -1em;
+    width: 30%;
+}

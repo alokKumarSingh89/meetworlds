@@ -1,3 +1,57 @@
-<p>
-  sales-report works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <nb-card>
+        <nb-card-body>
+          <nb-tabset>
+            <nb-tab tabTitle="REVENUE/PROFIT">
+              <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-3 e-align">
+                  <mat-form-field>
+                    <mat-select placeholder="Favorite food">
+                      <mat-option *ngFor="let food of foods" [value]="food.value">
+                        {{food.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-5">
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="dp1" placeholder="From Date" disabled>
+                    <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+                    <mat-datepicker #dp1 disabled="false"></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="dp2" placeholder="To Date" disabled>
+                    <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+                    <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div>Total Sales</div>
+                  <div>415091.34%</div>
+                </div>
+                <div class="col-sm-4">
+                    <div>Total Invoices</div>
+                    <div>675%</div>
+                </div>
+                <div class="col-sm-4">
+                    <div>Average Sale</div>
+                    <div>614.95%</div>
+                </div>
+              </div>
+              <div>Table content</div>
+            </nb-tab>
+            <nb-tab tabTitle="BREAKDOWN">
+              Tab content 2
+            </nb-tab>
+          </nb-tabset>
+        </nb-card-body>
+      </nb-card>
+
+    </div>
+  </div>
+</div>

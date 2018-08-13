@@ -8,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class SalesReportComponent implements OnInit {
 
   constructor() { }
-
+  displayMonths = 3;
+  navigation = 'select';
+  showWeekNumbers = false;
+  outsideDays = 'visible';
   ngOnInit() {
   }
 

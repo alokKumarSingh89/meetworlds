@@ -1,0 +1,43 @@
+<div class="container-fluid login-container">
+  <div class="row">
+    <div class="col-10 offset-1">
+      <mat-card style="padding:0">
+        <mat-card-content>
+          <div class="row">
+            <div class="col-6">
+              <div class="bg-style">
+                <span>Complet Solution for Manager</span>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="login-form">
+                <h2 style="margin: auto;" class="primary">Login</h2>
+                <form class="login-form">
+                  <mat-form-field class="login-full-width">
+                    <input matInput placeholder="User Name" [formControl]="usernameFormControl" [errorStateMatcher]="matcher" [(ngModel)]="username">
+                    <mat-icon matPrefix color="primary">account_circle</mat-icon>
+                    <mat-error *ngIf="usernameFormControl.hasError('required')">
+                      User id is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="login-full-width">
+                    <input matInput placeholder="Password" [formControl]="passwordFormControl" [errorStateMatcher]="matcher" [(ngModel)]="password">
+                    <mat-icon matPrefix color="primary">visibility</mat-icon>
+                    <mat-error *ngIf="passwordFormControl.hasError('required')">
+                      Password is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="passwordFormControl.hasError('minlength')">
+                      Password is minimum of length 6
+                    </mat-error>
+                  </mat-form-field>
+                  <button color="primary" mat-raised-button (click)="signIn()" >Login to system</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  
+</div>

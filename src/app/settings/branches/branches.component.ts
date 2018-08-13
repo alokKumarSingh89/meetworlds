@@ -5,7 +5,7 @@ import {Branch,createNewUser,displayHeader} from '../../interface/branch';
 @Component({
   selector: 'app-branches',
   templateUrl: './branches.component.html',
-  styleUrls: ['./branches.component.css']
+  styleUrls: ['./branches.component.scss']
 })
 export class BranchesComponent implements OnInit {
   displayedColumns: string[] = displayHeader;

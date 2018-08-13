@@ -1,0 +1,119 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+@import './app/themes/theme.scss';
+@import '~@nebular/theme/styles/globals';
+@include nb-install() {
+  @include nb-theme-global();
+}
+
+;
+body {
+  margin: 0;
+  font-family: Exo;
+  .e-align {
+    text-align: end;
+  }
+  .text-color {
+    font-size: 1.1rem;
+    color: #58595a;
+    font-weight: 300;
+  }
+  .font-family{
+      font-family: Exo
+  
+  }
+  .heading {
+    text-transform: uppercase;
+    line-height: 1em;
+    color: #4b4b4b;
+    font-weight: 600;
+  }
+  
+  .mat-button-toggle {
+    color: #4b4b4b;
+  }
+  
+  .record-lable {
+    text-transform: uppercase;
+    color: #268bf3;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+  
+  .seconday {
+    text-transform: uppercase;
+    color: #7a7c7dc9;
+    font-size: 13px;
+  }
+  
+  nb-card-footer {
+    padding: 0.4rem 1.25rem;
+  }
+  
+  .h-divider {
+    margin: 1em 0;
+  }
+  
+  .s-align {
+    text-align: start;
+  }
+  
+  
+  .c-align {
+    text-align: center;
+  }
+  .min-height{
+      min-height: 16em;
+  }
+  .mat-button-toggle-checked {
+    background-color: #268bf3;
+    color: #fff !important;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  .mat-cell {
+    color: rgb(107, 110, 113);
+  }
+  
+  .mat-header-cell {
+    color: rgb(164, 171, 179);
+  }
+}
+.breadcram{
+  list-style: none;
+  margin: 0;
+  padding: 0 !important;
+  display: inline-flex;
+  a{
+    color: #268bf3;
+  }
+  a:after{
+    content: '>';
+    margin: 0 4px;
+  }
+}
+.custom-ul {
+  padding: 0 !important;
+  ul {
+    margin: 0 !important;
+    padding: 0 !important;
+    li {
+        padding: 0.5rem 2rem;
+        border-bottom: 1px solid #cccccca6;
+        font-weight: 400;
+        font-size: 13px;
+        color: #585959;
+
+        .liheading{
+            font-weight: 600;
+            font-size: 14px;
+        }
+    }
+  }
+}

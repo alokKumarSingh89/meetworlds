@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import {LoginComponent} from '../users/login/login.component';
+import {LoginComponent} from '../auth/login/login.component';
 import {DashboardComponent} from '../dashboard/dashboard.component'
 import { StoreComponent } from '../dashboard/store/store.component';
 import { SaleStoreComponent } from '../sales/store/store.component';
@@ -26,18 +26,21 @@ import { ProductReportsComponent } from '../reports/product-reports/product-repo
 import { CustomerReportsComponent } from '../reports/customer-reports/customer-reports.component';
 import { InventoryReportsComponent } from '../reports/inventory-reports/inventory-reports.component';
 import { ChannelTypesComponent } from '../settings/channel-types/channel-types.component';
-import { PartenersComponent } from '../settings/parteners/parteners.component';
-import { BranchesComponent } from '../settings/branches/branches.component';
 import { HelpComponent } from '../contact-us/help/help.component';
 import { NewchannelComponent } from '../settings/channel-types/newchannel/newchannel.component';
 import { EditchannelComponent } from '../settings/channel-types/editchannel/editchannel.component';
-import { EditBranchComponent } from '../settings/branchs/edit/edit.component';
-import { NewBranchComponent } from '../settings/branchs/new/new.component';
-import { NewPartnerComponent } from '../settings/partners/new/new.component';
-import { EditPartnerComponent } from '../settings/partners/edit/edit.component';
+
 import { NewCustomerComponent } from '../people/customers/new/new.component';
 import { EditCustomerComponent } from '../people/customers/edit/edit.component';
+import { NewUserComponent } from '../people/users/new/new.component';
+import { EditUserComponent } from '../people/users/edit/edit.component';
+import { NewVendorComponent } from '../people/vendor/new/new.component';
+import { EditVendorComponent } from '../people/vendor/edit/edit.component';
 
+import {EditBranchComponent,NewBranchComponent,BranchesComponent,BranchComponent,PartenersComponent
+,EditPartnerComponent,NewPartnerComponent
+} from '../settings'
+import { PartnerComponent } from '../settings/partner/partner.component';
 export const routes: Routes = [
     { path: '', component: LoginComponent },
     { path: 'dashboard', component:DashboardComponent,
@@ -63,8 +66,12 @@ export const routes: Routes = [
             {path:'people/customers',component:CustomersComponent},
             {path:'people/customers/new',component:NewCustomerComponent},
             {path:'people/customers/:id/edit',component:EditCustomerComponent},
+            {path:'people/users/new',component:NewUserComponent},
+            {path:'people/users/:id/edit',component:EditUserComponent},
             {path:'people/users',component:UsersComponent},
             {path:'people/vendors',component:VendorComponent},
+            {path:'people/vendors/new',component:NewVendorComponent},
+            {path:'people/vendors/:id/edit',component:EditVendorComponent},
             {path:'reports/sales-report',component:SalesReportComponent},
             {path:'reports/product-reports',component:ProductReportsComponent},
             {path:'reports/customer-reports',component:CustomerReportsComponent},
@@ -72,12 +79,17 @@ export const routes: Routes = [
             {path:'settings/channel-types',component:ChannelTypesComponent},
             {path:'settings/new-channel',component:NewchannelComponent},
             {path:'settings/:id/edit',component:EditchannelComponent},
-            {path:'settings/partners/new',component:NewPartnerComponent},
-            {path:'settings/partners/:id/edit',component:EditPartnerComponent},
+
+            {path:'settings/partner/new',component:NewPartnerComponent},
+            {path:'settings/partner/:id',component:PartnerComponent},
+            {path:'settings/partner/:id/edit',component:EditPartnerComponent},
             {path:'settings/partners',component:PartenersComponent},
+
             {path:'settings/branchs',component:BranchesComponent},
-            {path:'settings/branchs/new',component:NewBranchComponent},
-            {path:'settings/branchs/:id/edit',component:EditBranchComponent},
+            {path:'settings/branch/new',component:NewBranchComponent},
+            {path:'settings/branch/:id',component:BranchComponent},            
+            {path:'settings/branch/:id/edit',component:EditBranchComponent},
+
             {path:'contact-us/help',component:HelpComponent},
             
         ]

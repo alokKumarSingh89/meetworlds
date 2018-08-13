@@ -1,0 +1,18 @@
+@import '../themes/theme';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/bootstrap/breakpoints';
+
+@include nb-install-component() {
+  nb-layout-column.small {
+    flex: 0.15 !important;
+  }
+  nb-layout-header{
+    color:#ccc
+  }
+  nb-sidebar.menu-sidebar {
+    margin-top: nb-theme(sidebar-header-gap);
+    @include nb-for-theme(corporate) {
+      margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.login-container {
+    background: #d7e3f170;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  .bg-style {
+    background-image: url(/assets/login.jpg);
+    background-size: cover;
+    height: 100%;
+    color: #e3e3e4;
+    position: relative;
+    margin: 0;
+    font-family: inherit;
+    font-size: 1.6em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .login-form{
+    width: 100%;
+    margin: 1.5em 0;
+    padding: 1.5em 0;
+    text-align: center;
+  }
+  .login-full-width{
+    width: 80%;
+  }
+}
+
+.primary {
+  color: #3f51b5;
+  font-size: 28px;
+}

@@ -1,0 +1,113 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="breadcram">
+        <li>
+          <a [routerLink]="['/dashboard']">Dashboard</a>
+        </li>
+        <li>
+          <span class="heading">Branch</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="h-divider"></div>
+  </div>
+  <div class="row justify-content-between">
+    <div class="col-sm-4">
+      <span class="heading"> BELLANDUR TEST MARCH
+      </span>
+    </div>
+    <div class="col-sm-8 e-align">
+      <span class="heading">
+        <button mat-raised-button color="primary" [routerLink]="['/dashboard/settings/branch/edit']" style="margin-right:1rem">
+          <mat-icon matTooltip="Edit the Branch">create</mat-icon>
+          Edit
+        </button>
+        <button mat-raised-button [routerLink]="['/dashboard/settings/branchs']">
+          <mat-icon>undo</mat-icon>
+          Back
+        </button>
+      </span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <nb-card>
+        <nb-card-body class="custom-ul">
+          <ul>
+            <li>
+                <div class="row">
+                  <div class="col-sm-12">
+                      <span class="liheading">Basic</span>
+
+                      </div>
+                </div>
+            </li>
+            <li class="" *ngFor="let list of lists">
+              <div class="row">
+                <div class="col-sm-3">
+                  <span class="liheading">{{ list.name }}:</span>
+                </div>
+                <div class="col-sm-9">{{ list.value }}</div>
+              </div>  
+            </li>
+          </ul>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-sm-8">
+        <nb-card>
+          <nb-card-body class="custom-ul">
+            <ul>
+              <li>
+                  <div class="row">
+                    <div class="col-sm-12">
+                        <span class="liheading">Address</span>
+  
+                        </div>
+                  </div>
+              </li>
+              <li class="" *ngFor="let list of lists">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <span class="liheading">{{ list.name }}:</span>
+                  </div>
+                  <div class="col-sm-9">{{ list.value }}</div>
+                </div>  
+              </li>
+            </ul>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+          <nb-card>
+            <nb-card-body class="custom-ul">
+              <ul>
+                <li>
+                    <div class="row">
+                      <div class="col-sm-12">
+                          <span class="liheading">Basic</span>
+    
+                          </div>
+                    </div>
+                </li>
+                <li class="" *ngFor="let list of lists">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <span class="liheading">{{ list.name }}:</span>
+                    </div>
+                    <div class="col-sm-9">{{ list.value }}</div>
+                  </div>  
+                </li>
+              </ul>
+            </nb-card-body>
+          </nb-card>
+        </div>
+      </div>
+</div>
