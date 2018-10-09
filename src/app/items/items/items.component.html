@@ -4,8 +4,9 @@
       <span class="heading"> Items</span>
     </div>
     <div class="col-sm-3 e-align">
-        <button mat-fab color="primary" [routerLink] = "['/dashboard/items/new']">
+        <button mat-raised-button color="primary" [routerLink] = "['/dashboard/item/new']">
             <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            New Item
           </button>        
     </div>
   </div>
@@ -16,13 +17,13 @@
     <mat-card>
       <mat-card-content>
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <mat-form-field class="example-full-width">
               <mat-icon matPrefix>search</mat-icon>
               <input matInput placeholder="Search" type="search" (keyup)="applyFilter($event.target.value)">
             </mat-form-field>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <mat-form-field>
               <mat-select [(value)]="selected" placeholder="Filters">
                 <mat-option value="option1">Option 1</mat-option>
@@ -31,11 +32,13 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <mat-form-field>
-              <input matInput [matDatepicker]="picker" placeholder="Choose a date" readonly>
-              <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+              <mat-select [(value)]="selected" placeholder="Filters">
+                <mat-option value="option1">Option 1</mat-option>
+                <mat-option value="option2">Option 2</mat-option>
+                <mat-option value="option3">Option 3</mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
           <div class="col-sm-2 e-align">
@@ -61,7 +64,9 @@
             <!-- Position Column -->
             <ng-container matColumnDef="position">
               <th mat-header-cell *matHeaderCellDef> No. </th>
-              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+              <td mat-cell *matCellDef="let element"> 
+                  <a routerLink="/dashboard/item/{{element.position}}">{{element.position}}</a> 
+              </td>
             </ng-container>
 
             <!-- Name Column -->
@@ -96,13 +101,13 @@
     <mat-card>
       <mat-card-content>
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <mat-form-field class="example-full-width">
               <mat-icon matPrefix>search</mat-icon>
               <input matInput placeholder="Search" type="search" (keyup)="applyFilter($event.target.value)">
             </mat-form-field>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <mat-form-field>
               <mat-select [(value)]="selected" placeholder="Filters">
                 <mat-option value="option1">Option 1</mat-option>
@@ -111,11 +116,13 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <mat-form-field>
-              <input matInput [matDatepicker]="picker1" placeholder="Choose a date" readonly>
-              <mat-datepicker-toggle matPrefix [for]="picker1"></mat-datepicker-toggle>
-              <mat-datepicker #picker1></mat-datepicker>
+              <mat-select [(value)]="selected" placeholder="Filters">
+                <mat-option value="option1">Option 1</mat-option>
+                <mat-option value="option2">Option 2</mat-option>
+                <mat-option value="option3">Option 3</mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
           <div class="col-sm-2 e-align">

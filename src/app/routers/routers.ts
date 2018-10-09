@@ -41,6 +41,8 @@ import {EditBranchComponent,NewBranchComponent,BranchesComponent,BranchComponent
 ,EditPartnerComponent,NewPartnerComponent
 } from '../settings'
 import { PartnerComponent } from '../settings/partner/partner.component';
+import { NewItemComponent } from '../items/new-item/new-item.component';
+import { DetailItemComponent } from '../items/detail-item/detail-item.component';
 export const routes: Routes = [
     { path: '', component: LoginComponent },
     { path: 'dashboard', component:DashboardComponent,
@@ -49,7 +51,11 @@ export const routes: Routes = [
             {path:'store',component:StoreComponent},
             {path:'sales/store',component:SaleStoreComponent},
             {path:'sales/sample-formate',component:SampleFormateComponent},
+
             {path:'items',component:ItemsComponent},
+            {path:'item/new',component:NewItemComponent},
+            {path:'item/:id',component:DetailItemComponent},
+
             {path:'items/category',component:CategoryComponent},
             {path:'inventory/stock',component:StockComponent},
             {path:'inventory/purchases',component:PurchagesComponent},
