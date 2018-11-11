@@ -3,7 +3,8 @@
   <nb-layout-header fixed>
     <app-header></app-header>
   </nb-layout-header>
-  <nb-sidebar class="menu-sidebar start" tag="menu-sidebar" responsive *ngIf="branchSelect">
+  <nb-sidebar class="menu-sidebar start" tag="menu-sidebar" responsive *ngIf="stores.currentBranch">
+      
       <ng-content select="nb-menu"></ng-content>
       <nb-menu [items]="menu"></nb-menu>
     </nb-sidebar>

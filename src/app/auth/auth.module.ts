@@ -1,17 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {LoginComponent} from './login/login.component'
-import {AppMatModule} from '../app-mat/app-mat.module'
-import { FormsModule,ReactiveFormsModule }   from '@angular/forms'
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+
+
+import { HttpClientModule } from "@angular/common/http";
 @NgModule({
-  imports: [
-    CommonModule,
-    AppMatModule,
-    FormsModule,
-    NgbModule,
-    ReactiveFormsModule
-  ],
-  declarations: [LoginComponent]
+  imports: [CommonModule, HttpClientModule],
+  declarations: []
 })
-export class AuthModule { }
+export class AuthModule {}

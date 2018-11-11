@@ -4,10 +4,10 @@
       <span class="heading"> Items</span>
     </div>
     <div class="col-sm-3 e-align">
-        <button mat-raised-button color="primary" [routerLink] = "['/dashboard/item/new']">
-            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
-            New Item
-          </button>        
+      <button mat-raised-button color="primary" [routerLink]="['/dashboard/items/new']">
+        <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+        New Item
+      </button>
     </div>
   </div>
 </div>
@@ -43,56 +43,52 @@
           </div>
           <div class="col-sm-2 e-align">
             <button mat-raised-button color="primary">
-              <mat-icon class="example-tab-icon">arrow_downward</mat-icon>DOWNLOAD</button>
+              <mat-icon class="example-tab-icon">arrow_downward</mat-icon>DOWNLOAD
+            </button>
           </div>
         </div>
         <div>
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-            <!-- Checkbox Column -->
             <ng-container matColumnDef="select">
               <th mat-header-cell *matHeaderCellDef>
-                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()">
                 </mat-checkbox>
               </th>
               <td mat-cell *matCellDef="let row">
-                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                  [checked]="selection.isSelected(row)">
                 </mat-checkbox>
               </td>
             </ng-container>
-
-            <!-- Position Column -->
-            <ng-container matColumnDef="position">
-              <th mat-header-cell *matHeaderCellDef> No. </th>
-              <td mat-cell *matCellDef="let element"> 
-                  <a routerLink="/dashboard/item/{{element.position}}">{{element.position}}</a> 
+            <ng-container matColumnDef="NAME">
+              <th mat-header-cell *matHeaderCellDef> Item Name </th>
+              <td mat-cell *matCellDef="let element">
+                <a routerLink="/dashboard/item/{{element.NAME}}">{{element.NAME}}</a>
               </td>
             </ng-container>
 
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            <ng-container matColumnDef="PRICE">
+              <th mat-header-cell *matHeaderCellDef> Price </th>
+              <td mat-cell *matCellDef="let element"> {{element.PRICE}} </td>
             </ng-container>
-
-            <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-              <th mat-header-cell *matHeaderCellDef> Weight </th>
-              <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            <ng-container matColumnDef="UNIT">
+              <th mat-header-cell *matHeaderCellDef> UNIT </th>
+              <td mat-cell *matCellDef="let element"> {{element.UNIT}} </td>
             </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-              <th mat-header-cell *matHeaderCellDef> Symbol </th>
-              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            <ng-container matColumnDef="QUANTITY">
+              <th mat-header-cell *matHeaderCellDef> QUANTITY </th>
+              <td mat-cell *matCellDef="let element"> {{element.QUANTITY}} </td>
+            </ng-container>
+            <ng-container matColumnDef="AVALIBLEQ_P">
+              <th mat-header-cell *matHeaderCellDef> AVALIBLEQ_P </th>
+              <td mat-cell *matCellDef="let element"> {{element.AVALIBLEQ_P}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
             </tr>
           </table>
-
-
         </div>
       </mat-card-content>
     </mat-card>
@@ -127,54 +123,51 @@
           </div>
           <div class="col-sm-2 e-align">
             <button mat-raised-button color="primary">
-              <mat-icon class="example-tab-icon">arrow_downward</mat-icon>DOWNLOAD</button>
+              <mat-icon class="example-tab-icon">arrow_downward</mat-icon>DOWNLOAD
+            </button>
           </div>
         </div>
         <div>
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-            <!-- Checkbox Column -->
             <ng-container matColumnDef="select">
               <th mat-header-cell *matHeaderCellDef>
-                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+                <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()">
                 </mat-checkbox>
               </th>
               <td mat-cell *matCellDef="let row">
-                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                  [checked]="selection.isSelected(row)">
                 </mat-checkbox>
               </td>
             </ng-container>
-
-            <!-- Position Column -->
-            <ng-container matColumnDef="position">
-              <th mat-header-cell *matHeaderCellDef> No. </th>
-              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            <ng-container matColumnDef="NAME">
+              <th mat-header-cell *matHeaderCellDef> Item Name </th>
+              <td mat-cell *matCellDef="let element">
+                <a routerLink="/dashboard/item/{{element.NAME}}">{{element.NAME}}</a>
+              </td>
             </ng-container>
-
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            <ng-container matColumnDef="PRICE">
+              <th mat-header-cell *matHeaderCellDef> Price </th>
+              <td mat-cell *matCellDef="let element"> {{element.PRICE}} </td>
             </ng-container>
-
-            <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-              <th mat-header-cell *matHeaderCellDef> Weight </th>
-              <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            <ng-container matColumnDef="UNIT">
+              <th mat-header-cell *matHeaderCellDef> UNIT </th>
+              <td mat-cell *matCellDef="let element"> {{element.UNIT}} </td>
             </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-              <th mat-header-cell *matHeaderCellDef> Symbol </th>
-              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            <ng-container matColumnDef="QUANTITY">
+              <th mat-header-cell *matHeaderCellDef> QUANTITY </th>
+              <td mat-cell *matCellDef="let element"> {{element.QUANTITY}} </td>
+            </ng-container>
+            <ng-container matColumnDef="AVALIBLEQ_P">
+              <th mat-header-cell *matHeaderCellDef> AVALIBLEQ_P </th>
+              <td mat-cell *matCellDef="let element"> {{element.AVALIBLEQ_P}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
             </tr>
           </table>
-
-
         </div>
       </mat-card-content>
     </mat-card>

@@ -1,35 +1,59 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-import {Router} from '@angular/router'
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, Validators, FormBuilder } from "@angular/forms";
+import { Store } from "@ngrx/store";
+import { AppState } from "@app/store/app-store.module";
+import { validateWhiteSpace } from "@app/util/validators";
+import { error_message } from "./error-message";
+import { LoginUser } from "@app/store/actions/auth.action";
+import { Route, ActivatedRoute, Router } from "@angular/router";
+import { AuthService } from "../auth.service";
+
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
+  constructor(
+    private fb: FormBuilder,
+    private _store: Store<AppState>,
+    private route: ActivatedRoute,
+    private router:Router,
+    private _auth:AuthService
+  ) {}
 
-  constructor(private router:Router) { }
-  usernameFormControl = new FormControl('',[
-    Validators.required
-  ])
-  passwordFormControl = new FormControl('',[
-    Validators.required,
-    Validators.minLength(6)
-  ])
-  matcher = new MyErrorStateMatcher();
-  signIn(){
-    if(this.usernameFormControl.valid && this.passwordFormControl.valid){
-      this.router.navigate(['dashboard'])
-    }
+  loginForm: FormGroup;
+  returnUrl: string = "";
+  error: any;
+
+  login() {
+    let val = this.loginForm.getRawValue();
+    this._store.dispatch(new LoginUser(val));
+    
   }
   ngOnInit() {
+    this.route.queryParams.subscribe(
+      params => (this.returnUrl = params["returnUrl"] || "/dashboard")
+    );
+    this.error = error_message;
+    this.loginForm = this.fb.group({
+      email: this.fb.control("", [
+        Validators.required,
+        Validators.email,
+        validateWhiteSpace,
+        Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
+      ]),
+      PASSWORD: this.fb.control("", [
+        Validators.required,
+        Validators.minLength(5),
+        validateWhiteSpace
+      ])
+    });
+    this._store.select('auth').subscribe((auth:any)=>{
+      this._auth.token = auth.user?auth.user.token:null;
+      if(this._auth.token){
+        this.router.navigate([this.returnUrl]);
+      }
+    })
   }
-
 }

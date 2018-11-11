@@ -5,17 +5,17 @@
         <nb-card-body>
           <mat-form-field style="margin-right: 26px;width: 27%;">
             <div class="text-color">Store</div>
-            <mat-select [(value)]="selectedStore">
-              <mat-option *ngFor="let store of stores" [value]="store.value">
-                {{store.viewValue}}
+            <mat-select [(value)]="stores.currentStore && stores.currentStore.value">
+              <mat-option *ngFor="let store of stores.store" [value]="store.value">
+                {{store.value}}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field style="margin-right: 26px;width: 27%;">
             <div class="text-color">Branch</div>
-            <mat-select [(value)]="selectedBranch" (selectionChange)="branchChange(selectedBranch)">
-              <mat-option *ngFor="let branch of branches" [value]="branch.value">
-                {{branch.viewValue}}
+            <mat-select [(value)]="stores.currentBranch" (selectionChange)="branchChange(stores.currentBranch)">
+              <mat-option *ngFor="let branch of stores.branchs" [value]="branch.ADDRESS">
+                {{branch.ADDRESS}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -168,22 +168,19 @@
                 <nb-tab tabTitle="PRODUCT - SALES">
                     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-                        <!--- Note that these columns can be defined in any order.
-                              The actual rendered columns are set as a property on the row definition" -->
-                      
-                        <!-- Position Column -->
+                        
                         <ng-container matColumnDef="position">
                           <th mat-header-cell *matHeaderCellDef> ITEM NAME </th>
                           <td mat-cell *matCellDef="let element"> {{element.position}} </td>
                         </ng-container>
                       
-                        <!-- Name Column -->
+                        
                         <ng-container matColumnDef="name">
                           <th mat-header-cell *matHeaderCellDef> PRODUCT CODE </th>
                           <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                         </ng-container>
                       
-                        <!-- Weight Column -->
+                        
                         <ng-container matColumnDef="weight">
                           <th mat-header-cell *matHeaderCellDef> AVAILABLE QUANTITY </th>
                           <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
@@ -195,22 +192,17 @@
                 <nb-tab tabTitle="PRODUCT - DEPLETING STOCK">
                     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-                        <!--- Note that these columns can be defined in any order.
-                              The actual rendered columns are set as a property on the row definition" -->
-                      
-                        <!-- Position Column -->
+                        
                         <ng-container matColumnDef="position">
                           <th mat-header-cell *matHeaderCellDef> ITEM NAME </th>
                           <td mat-cell *matCellDef="let element"> {{element.position}} </td>
                         </ng-container>
                       
-                        <!-- Name Column -->
                         <ng-container matColumnDef="name">
                           <th mat-header-cell *matHeaderCellDef> PRODUCT CODE </th>
                           <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                         </ng-container>
                       
-                        <!-- Weight Column -->
                         <ng-container matColumnDef="weight">
                           <th mat-header-cell *matHeaderCellDef> AVAILABLE QUANTITY </th>
                           <td mat-cell *matCellDef="let element"> {{element.weight}} </td>

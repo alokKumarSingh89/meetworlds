@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NbSidebarService, NbMenuItem } from '@nebular/theme';
 import {MENU_ITEMS} from '../layout/menu'
-import {Location} from '@angular/common'
-import {ActivatedRoute,Router, Params,ChildActivationEnd} from '@angular/router'
-import { filter } from 'rxjs/operators';
+import { StoreModel } from '../models/store.model';
+import { Store } from '@ngrx/store';
+import { AppState } from '@app/store/app-store.module';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,31 +12,18 @@ import { filter } from 'rxjs/operators';
 export class DashboardComponent implements OnInit {
   
   menu = MENU_ITEMS;
-  constructor(private location: Location,private sidebarService: NbSidebarService,private route:Router,private activatedRoute:ActivatedRoute) {}
+  stores: StoreModel = {};
+  constructor(private _store: Store<AppState>) {}
   branchSelect = false;
   activeEvent = null;
   currentBranch = null;
   ngOnInit() {
-
-    this.route.events.pipe(
-      filter(event => event instanceof ChildActivationEnd)
-    )
-    .subscribe((event) => {
-          if(!event['snapshot']['queryParams']['branch'] && this.currentBranch){
-          let url = this.location.path().split('?')[0];
-          console.log(url)
-          this.route.navigate([url], { queryParams: { branch: this.currentBranch } });
-        }
+    this._store.select("branch").subscribe(branch => {
+      if (branch.branchs)
+        this.stores = {
+          currentBranch: branch.branchs.currentBranch as any
+        };
     });
-    this.activeEvent = this.activatedRoute.queryParams.subscribe((params:Params) =>{
-      if(params['branch']){
-        this.branchSelect = true;
-        this.currentBranch = params['branch'] || ''
-      }
-    })
-    
   }
-  ngOnDestroy(): void {
-    this.activeEvent.unsubscribe();
-  }
+  
 }

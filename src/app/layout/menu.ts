@@ -13,7 +13,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       children: [{ title: "Store", link: "sales/store" },{ title: "Sample Formate", link: "sales/sample-formate" }],
     },
     {
-      title: 'Items',
+      title: 'CATALOGUE',
       icon: 'nb-compose',
       children: [{ title: "Items", link: "items" }, { title: "Categories", link: "items/category" }],
     },

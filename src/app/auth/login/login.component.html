@@ -12,25 +12,24 @@
             <div class="col-6">
               <div class="login-form">
                 <h2 style="margin: auto;" class="primary">Login</h2>
-                <form class="login-form">
+                <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
                   <mat-form-field class="login-full-width">
-                    <input matInput placeholder="User Name" [formControl]="usernameFormControl" [errorStateMatcher]="matcher" [(ngModel)]="username">
+                    <input matInput placeholder="Email Id" formControlName="email">
                     <mat-icon matPrefix color="primary">account_circle</mat-icon>
-                    <mat-error *ngIf="usernameFormControl.hasError('required')">
-                      User id is <strong>required</strong>
+                    <mat-error *ngFor="let validation of error.email">
+                      <mat-error class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">{{validation.message}}
+                      </mat-error>
                     </mat-error>
                   </mat-form-field>
                   <mat-form-field class="login-full-width">
-                    <input matInput placeholder="Password" [formControl]="passwordFormControl" [errorStateMatcher]="matcher" [(ngModel)]="password">
+                    <input matInput placeholder="Password" formControlName="PASSWORD" type="password">
                     <mat-icon matPrefix color="primary">visibility</mat-icon>
-                    <mat-error *ngIf="passwordFormControl.hasError('required')">
-                      Password is <strong>required</strong>
-                    </mat-error>
-                    <mat-error *ngIf="passwordFormControl.hasError('minlength')">
-                      Password is minimum of length 6
+                    <mat-error *ngFor="let validation of error.PASSWORD">
+                      <mat-error class="error-message" *ngIf="loginForm.get('PASSWORD').hasError(validation.type) && (loginForm.get('PASSWORD').dirty || loginForm.get('PASSWORD').touched)">{{validation.message}}
+                      </mat-error>
                     </mat-error>
                   </mat-form-field>
-                  <button color="primary" mat-raised-button (click)="signIn()" >Login to system</button>
+                  <button color="primary" mat-raised-button class="button" type="submit" [disabled]="loginForm.invalid">Login to system</button>
                 </form>
               </div>
             </div>

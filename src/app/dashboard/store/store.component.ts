@@ -1,45 +1,43 @@
-import { Component, OnInit} from '@angular/core';
-import {Router,ActivatedRoute} from '@angular/router'
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+import { Observable } from "rxjs";
+import { Store } from "@ngrx/store";
+import { StoreModel } from "../../models/store.model";
+import { AppState } from "@app/store/app-store.module";
+import { BranchRequest, UpdateBranch } from "@app/store/actions/branch.action";
 export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
 }
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079},
-  {position: 2, name: 'Helium', weight: 4.0026},
-  {position: 3, name: 'Lithium', weight: 6.941},
-  {position: 4, name: 'Beryllium', weight: 9.0122},
-  {position: 5, name: 'Boron', weight: 10.811}
+  { position: 1, name: "Hydrogen", weight: 1.0079 },
+  { position: 2, name: "Helium", weight: 4.0026 },
+  { position: 3, name: "Lithium", weight: 6.941 },
+  { position: 4, name: "Beryllium", weight: 9.0122 },
+  { position: 5, name: "Boron", weight: 10.811 }
 ];
+
 @Component({
-  selector: 'app-store',
-  templateUrl: './store.component.html',
-  styleUrls: ['./store.component.css']
+  selector: "app-store",
+  templateUrl: "./store.component.html",
+  styleUrls: ["./store.component.css"]
 })
 export class StoreComponent implements OnInit {
+  stores: StoreModel = {};
+  constructor(private _store: Store<AppState>) {}
 
-  constructor(private router:Router,private activatedRoute:ActivatedRoute) { }
-  selectedStore = 'meat-mert';
-  selectedBranch = ''
-  displayedColumns: string[] = ['position', 'name', 'weight'];
+  displayedColumns: string[] = ["position", "name", "weight"];
   dataSource = ELEMENT_DATA;
-  stores: any[] = [
-    {value: 'meat-mert', viewValue: 'Meat Mert'}
-  ];
-  branches: any[] = [
-    {value: 'marathali-meat-mart', viewValue: 'Marathali Meat Mart'},
-    {value: 'bellendur-meat-mart', viewValue: 'Bellendur Meat Mart'}
-  ];
-  branchChange(value){
-    this.router.navigate(['/dashboard'], { queryParams: { branch: value } });
+  branchChange(value) {
+    this._store.dispatch(new UpdateBranch(value));
   }
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(params=>{
-      if(params['branch']){
-        this.selectedBranch = params['branch'];
-      }
-    })
+    this._store.dispatch(new BranchRequest());
+    this._store.select("branch").subscribe(branch => {
+      if (branch.branchs)
+        this.stores = branch.branchs as any;
+      console.log(this.stores)
+    });
   }
-
 }
