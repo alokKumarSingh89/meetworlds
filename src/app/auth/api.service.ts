@@ -24,15 +24,15 @@ export class ApiService {
   getUser(email:string):Observable<User>{
     return this.request('GET',`users/${email}`);
   }
-  create(data):Observable<any>{
+  create(url,data):Observable<any>{
     let form = new FormData();
     for(let item in data){
       if(data[item]){
         form.append(item,data[item])
       }
     }
-    return this.request('POST',`organisation/create`,form);
-    // return this._http.post(`${this.api}/organisation/create`,{body:data});
+    return this.request('POST',url,form);
+    //return this._http.post(`${this.api}/organisation/create`,{body:data});
   }
   index(url):Observable<any>{
     return this.request("GET",url);

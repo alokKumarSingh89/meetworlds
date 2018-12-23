@@ -48,7 +48,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       children: [
         { title: "Channels Types", link: "settings/channel-types" }, 
         { title: "Partners", link: "settings/partners" }, 
-        { title: "Branches", link: "settings/branchs" },
+        { title: "Branch", link: "settings/branch" },
         { title: "Organisation", link: "settings/organisation" }
       ],
     },

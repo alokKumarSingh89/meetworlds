@@ -7,76 +7,163 @@
             <div class="col-12">
               <div class="organisation">
                 <h2 style="margin: auto;" class="primary">Edit Organization</h2>
-                <form class="login-form row" [formGroup]="formData" (ngSubmit)="update()">
+                <form
+                  class="login-form row"
+                  [formGroup]="formData"
+                  (ngSubmit)="update()"
+                >
                   <div class="col-5">
-                    <app-file-upload *ngIf="formData && formData.get('org_id').value" name="logo_path" (fileUpload)="setFile($event)"
-                      path="assets/organisation/" [id]="formData.get('org_id').value" [extention]="formData.get('logo_path').value"></app-file-upload>
+                    <app-file-upload
+                      *ngIf="formData && formData.get('org_id').value"
+                      name="logo_path"
+                      (fileUpload)="setFile($event)"
+                      path="assets/organisation/"
+                      [id]="formData.get('org_id').value"
+                      [extention]="formData.get('logo_path').value"
+                    ></app-file-upload>
                   </div>
                   <div class="col-7">
                     <mat-form-field class="login-full-width">
-                      <input matInput placeholder="Name" formControlName="name">
+                      <input
+                        matInput
+                        placeholder="Name"
+                        formControlName="name"
+                      />
                       <mat-error *ngFor="let validation of error.name">
-                        <mat-error class="error-message" *ngIf="formData.get('name').hasError(validation.type) && (formData.get('name').dirty || formData.get('name').touched)">{{validation.message}}
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData.get('name').hasError(validation.type) &&
+                            (formData.get('name').dirty ||
+                              formData.get('name').touched)
+                          "
+                          >{{ validation.message }}
                         </mat-error>
                       </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="login-full-width">
-                      <input matInput placeholder="Address 1" formControlName="add1">
+                      <input
+                        matInput
+                        placeholder="Address 1"
+                        formControlName="add1"
+                      />
                     </mat-form-field>
 
                     <mat-form-field class="login-full-width">
-                      <input matInput placeholder="Address 2" formControlName="add2">
+                      <input
+                        matInput
+                        placeholder="Address 2"
+                        formControlName="add2"
+                      />
                     </mat-form-field>
 
                     <mat-form-field class="login-full-width">
-                      <input matInput placeholder="Address 3" formControlName="add3">
+                      <input
+                        matInput
+                        placeholder="Address 3"
+                        formControlName="add3"
+                      />
                     </mat-form-field>
 
                     <mat-form-field class="login-full-width">
-                        <input matInput placeholder="Pincode" formControlName="pincode">
-                        <mat-error *ngFor="let validation of error.pincode">
-                          <mat-error class="error-message" *ngIf="formData.get('pincode').hasError(validation.type) && (formData.get('pincode').dirty || formData.get('pincode').touched)">{{validation.message}}
-                          </mat-error>
+                      <input
+                        matInput
+                        placeholder="Pincode"
+                        formControlName="pincode"
+                      />
+                      <mat-error *ngFor="let validation of error.pincode">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData.get('pincode').hasError(validation.type) &&
+                            (formData.get('pincode').dirty ||
+                              formData.get('pincode').touched)
+                          "
+                          >{{ validation.message }}
                         </mat-error>
-                      </mat-form-field>
-  
+                      </mat-error>
+                    </mat-form-field>
                   </div>
                   <div class="col-6">
-                    
                     <mat-form-field class="login-full-width">
-                      <input matInput placeholder="Mobile" formControlName="mobile">
+                      <input
+                        matInput
+                        placeholder="Mobile"
+                        formControlName="mobile"
+                      />
                       <mat-error *ngFor="let validation of error.mobile">
-                        <mat-error class="error-message" *ngIf="formData.get('mobile').hasError(validation.type) && (formData.get('mobile').dirty || formData.get('mobile').touched)">{{validation.message}}
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData.get('mobile').hasError(validation.type) &&
+                            (formData.get('mobile').dirty ||
+                              formData.get('mobile').touched)
+                          "
+                          >{{ validation.message }}
                         </mat-error>
                       </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="login-full-width">
-                      <input matInput placeholder="Phone" formControlName="phone">
+                      <input
+                        matInput
+                        placeholder="Phone"
+                        formControlName="phone"
+                      />
                       <mat-error *ngFor="let validation of error.phone">
-                        <mat-error class="error-message" *ngIf="formData.get('phone').hasError(validation.type) && (formData.get('phone').dirty || formData.get('phone').touched)">{{validation.message}}
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData.get('phone').hasError(validation.type) &&
+                            (formData.get('phone').dirty ||
+                              formData.get('phone').touched)
+                          "
+                          >{{ validation.message }}
                         </mat-error>
                       </mat-error>
                     </mat-form-field>
-                    
                   </div>
                   <div class="col-6">
-                      <mat-form-field class="login-full-width">
-                          <input matInput placeholder="GST Tin" formControlName="gst_number">
-                        </mat-form-field>
-    
-                        <mat-form-field class="login-full-width">
-                          <input matInput placeholder="Timing" formControlName="timing">
-                        </mat-form-field>
-                        
+                    <mat-form-field class="login-full-width">
+                      <input
+                        matInput
+                        placeholder="GST Tin"
+                        formControlName="gst_number"
+                      />
+                    </mat-form-field>
+
+                    <mat-form-field class="login-full-width">
+                      <input
+                        matInput
+                        placeholder="Timing"
+                        formControlName="timing"
+                      />
+                    </mat-form-field>
                   </div>
-                  <div class="col-12" style="display: flex;justify-content: space-around;">
-                      <button mat-raised-button class="button" type="button" (click)="goToOrganisation()">Cancle</button>
-                      <button color="primary" mat-raised-button class="button" type="submit" [disabled]="formData.invalid">Update
-                        Organization</button>
+                  <div
+                    class="col-12"
+                    style="display: flex;justify-content: space-around;"
+                  >
+                    <button
+                      mat-raised-button
+                      class="button"
+                      type="button"
+                      (click)="goToOrganisation()"
+                    >
+                      Cancle
+                    </button>
+                    <button
+                      color="primary"
+                      mat-raised-button
+                      class="button"
+                      type="submit"
+                      [disabled]="formData.invalid"
+                    >
+                      Update Organization
+                    </button>
                   </div>
-                  </form>
+                </form>
               </div>
             </div>
           </div>
@@ -84,5 +171,4 @@
       </mat-card>
     </div>
   </div>
-
 </div>

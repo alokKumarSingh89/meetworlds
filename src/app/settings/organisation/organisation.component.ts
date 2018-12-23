@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '@app/auth/api.service';
 import {SelectionModel} from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material';
+
 @Component({
   selector: 'app-organisation',
   templateUrl: './organisation.component.html',
@@ -18,7 +19,7 @@ export class OrganisationComponent implements OnInit {
   }
   selection = new SelectionModel<any>(true, []);
   removeOrganisation(id:string,name:string){
-    let isConfirm = window.confirm(`Are you sure, you want to delete '${name}'`);
+    let isConfirm = window.confirm(`Are you sure, you want to delete '${name} organisation'`);
     if(isConfirm){
       this._api.delete('organisation/'+id).subscribe(respose=>{
         this.fetchOrganisation()
