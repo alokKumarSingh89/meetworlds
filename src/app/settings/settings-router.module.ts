@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { Routes, RouterModule } from "@angular/router";
 import { AppMatModule } from '@app/app-mat/app-mat.module';
 import { NbCardModule } from '@nebular/theme';
@@ -9,6 +9,7 @@ import { FileUploadComponent } from '@app/util/file-upload/file-upload.component
 import { EditOrganisationComponent } from './edit-organisation/edit-organisation.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { NewCategoryComponent } from './new-category/new-category.component';
+import { BranchComponent } from "./branch/branch.component";
 
 const routes: Routes = [
   {
@@ -30,15 +31,22 @@ const routes: Routes = [
   {
     path: "categories/new",
     component: NewCategoryComponent
+  },
+  {
+    path: "branch",
+    component: BranchComponent
   }
-  
 ];
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes), AppMatModule,NbCardModule
+    RouterModule.forChild(routes),
+    AppMatModule,
+    NbCardModule
   ],
   exports: [RouterModule],
-  declarations: [NewCategoryComponent,OrganisationComponent,NewOrganisationComponent,FileUploadComponent, EditOrganisationComponent,CategoriesComponent]
+  declarations: [NewCategoryComponent,BranchComponent,
+    OrganisationComponent,NewOrganisationComponent,FileUploadComponent, 
+    EditOrganisationComponent,CategoriesComponent]
 })
-export class SettingsRouterModule { }
+export class SettingsRouterModule {}
