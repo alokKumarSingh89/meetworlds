@@ -1,0 +1,5 @@
+<div class="file-upload">
+  <img [src]="img" />
+  <button color="primary" mat-fab class="button" type="button" (click)="onPickFile(fileInput)">Upload</button>
+  <input type="file" style="display:none" #fileInput accept="image/*" [name]="name" (change)="onFilePicked($event)" />
+</div>

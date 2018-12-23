@@ -1,0 +1,21 @@
+.file-upload img{
+    height: 28vh;
+    width: 100%;
+    opacity: 1;
+    transition: .5s ease;
+}
+.file-upload button{
+    position: absolute;
+    left: 40%;
+    top: 30%;
+    display: none;
+    transition: .5s ease;
+    
+}
+.file-upload:hover button{
+    display: block;
+}
+.file-upload:hover img{
+    opacity: 0.6;
+    transform: scale(1.1)
+}

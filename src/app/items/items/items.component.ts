@@ -45,7 +45,7 @@ export class ItemsComponent implements OnInit {
         })
       }
       this.dataSource = new MatTableDataSource<ItemDTO>(data);
-      console.log(this.dataSource)
+     
     })
   }
 }

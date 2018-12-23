@@ -45,7 +45,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     {
       title: 'Settings',
       icon: 'fa fa-cog',
-      children: [{ title: "Channels Types", link: "settings/channel-types" }, { title: "Partners", link: "settings/partners" }, { title: "Branches", link: "settings/branchs" }],
+      children: [
+        { title: "Channels Types", link: "settings/channel-types" }, 
+        { title: "Partners", link: "settings/partners" }, 
+        { title: "Branches", link: "settings/branchs" },
+        { title: "Organisation", link: "settings/organisation" }
+      ],
     },
     {
       title: 'Contact US',

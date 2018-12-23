@@ -9,6 +9,7 @@ export const routes: Routes = [
         path: '', 
         loadChildren: '@app/auth/login/login.module#LoginModule' 
     },
+    
     { path: 'dashboard', canActivate:[AuthenticationGuard],component:DashboardComponent,
         children:[
             {path:'',redirectTo:'store',pathMatch:'full'},
@@ -20,7 +21,10 @@ export const routes: Routes = [
                 path:'items',
                 loadChildren:'@app/items/items.module#ItemsModule'
             },
-            
+            {
+                path: 'settings', 
+                loadChildren: '@app/settings/settings.module#SettingsModule'
+            }
             // {path:'inventory/stock',component:StockComponent},
             // {path:'inventory/purchases',component:PurchagesComponent},
             // {path:'inventory/transfers',component:TransfersComponent},
