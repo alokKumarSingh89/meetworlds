@@ -7,6 +7,8 @@ import { OrganisationComponent } from './organisation/organisation.component';
 import { NewOrganisationComponent } from './new-organisation/new-organisation.component';
 import { FileUploadComponent } from '@app/util/file-upload/file-upload.component';
 import { EditOrganisationComponent } from './edit-organisation/edit-organisation.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { NewCategoryComponent } from './new-category/new-category.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,14 @@ const routes: Routes = [
   {
     path: "organisation",
     component: OrganisationComponent
+  },
+  {
+    path: "categories",
+    component: CategoriesComponent
+  },
+  {
+    path: "categories/new",
+    component: NewCategoryComponent
   }
   
 ];
@@ -29,6 +39,6 @@ const routes: Routes = [
     RouterModule.forChild(routes), AppMatModule,NbCardModule
   ],
   exports: [RouterModule],
-  declarations: [OrganisationComponent,NewOrganisationComponent,FileUploadComponent, EditOrganisationComponent]
+  declarations: [NewCategoryComponent,OrganisationComponent,NewOrganisationComponent,FileUploadComponent, EditOrganisationComponent,CategoriesComponent]
 })
 export class SettingsRouterModule { }
