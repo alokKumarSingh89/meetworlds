@@ -6,6 +6,9 @@
   text-align: center;
   padding: 2em;
 }
-.organisation h2{
-    color: #1888f6
+.organisation h2 {
+  color: #1888f6;
+}
+.login-form {
+  padding-top: 1em;
 }
