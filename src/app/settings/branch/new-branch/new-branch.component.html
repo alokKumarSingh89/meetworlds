@@ -5,24 +5,14 @@
         <mat-card-content>
           <div class="row">
             <div class="col-12">
-              <div class="organisation">
-                <h2 style="margin: auto;" class="primary">Edit Organization</h2>
+              <div class="branch">
+                <h2 style="margin: auto;" class="primary">New branch</h2>
                 <form
                   class="login-form row"
                   [formGroup]="formData"
-                  (ngSubmit)="update()"
+                  (ngSubmit)="submit()"
                 >
-                  <div class="col-5">
-                    <app-file-upload
-                      *ngIf="formData && formData.get('org_id').value"
-                      name="logo_path"
-                      (fileUpload)="setFile($event)"
-                      path="assets/organisation/"
-                      [id]="formData.get('org_id').value"
-                      [extention]="formData.get('logo_path').value"
-                    ></app-file-upload>
-                  </div>
-                  <div class="col-7">
+                  <div class="col-6">
                     <mat-form-field class="login-full-width">
                       <input
                         matInput
@@ -45,28 +35,13 @@
                     <mat-form-field class="login-full-width">
                       <input
                         matInput
-                        placeholder="Address 1"
-                        formControlName="add1"
+                        placeholder="Address"
+                        formControlName="address"
                       />
                     </mat-form-field>
-
-                    <mat-form-field class="login-full-width">
-                      <input
-                        matInput
-                        placeholder="Address 2"
-                        formControlName="add2"
-                      />
-                    </mat-form-field>
-
-                    <mat-form-field class="login-full-width">
-                      <input
-                        matInput
-                        placeholder="Address 3"
-                        formControlName="add3"
-                      />
-                    </mat-form-field>
-
-                    <mat-form-field class="login-full-width">
+                  </div>
+                  <div class="col-6 row">
+                    <mat-form-field class="col-6">
                       <input
                         matInput
                         placeholder="Pincode"
@@ -84,9 +59,7 @@
                         </mat-error>
                       </mat-error>
                     </mat-form-field>
-                  </div>
-                  <div class="col-6">
-                    <mat-form-field class="login-full-width">
+                    <mat-form-field class="col-6">
                       <input
                         matInput
                         placeholder="Mobile"
@@ -104,42 +77,6 @@
                         </mat-error>
                       </mat-error>
                     </mat-form-field>
-
-                    <mat-form-field class="login-full-width">
-                      <input
-                        matInput
-                        placeholder="Phone"
-                        formControlName="phone"
-                      />
-                      <mat-error *ngFor="let validation of error.phone">
-                        <mat-error
-                          class="error-message"
-                          *ngIf="
-                            formData.get('phone').hasError(validation.type) &&
-                            (formData.get('phone').dirty ||
-                              formData.get('phone').touched)
-                          "
-                          >{{ validation.message }}
-                        </mat-error>
-                      </mat-error>
-                    </mat-form-field>
-                  </div>
-                  <div class="col-6">
-                    <mat-form-field class="login-full-width">
-                      <input
-                        matInput
-                        placeholder="GST Tin"
-                        formControlName="gst_number"
-                      />
-                    </mat-form-field>
-
-                    <mat-form-field class="login-full-width">
-                      <input
-                        matInput
-                        placeholder="Timing"
-                        formControlName="timing"
-                      />
-                    </mat-form-field>
                   </div>
                   <div
                     class="col-12"
@@ -149,10 +86,11 @@
                       mat-raised-button
                       class="button"
                       type="button"
-                      (click)="goToOrganisation()"
+                      (click)="goTobranch()"
                     >
                       Cancle
                     </button>
+
                     <button
                       color="primary"
                       mat-raised-button
@@ -160,7 +98,7 @@
                       type="submit"
                       [disabled]="formData.invalid"
                     >
-                      Update Organization
+                      Add Branch
                     </button>
                   </div>
                 </form>
