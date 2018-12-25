@@ -21,10 +21,6 @@ export class NewOrganisationComponent implements OnInit {
     private router: Router
   ) {}
   submit() {
-    let isConfirm = window.confirm(
-      `Are you sure, you want to delete ' organisation'`
-    );
-    console.log("amit ", ...this.formData.value);
     this._servie
       .create("organisation/create", {
         ...this.formData.value,

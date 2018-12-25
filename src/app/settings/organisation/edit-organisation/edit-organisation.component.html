@@ -6,7 +6,7 @@
           <div class="row">
             <div class="col-12">
               <div class="organisation">
-                <h2 style="margin: auto;" class="primary">Edit Organization</h2>
+                <h2 style="margin: auto;" class="primary">Edit Organisation</h2>
                 <form
                   class="login-form row"
                   [formGroup]="formData"
@@ -18,8 +18,7 @@
                       name="logo_path"
                       (fileUpload)="setFile($event)"
                       path="assets/organisation/"
-                      [id]="formData.get('id').value"
-                      [extention]="formData.get('logo_path').value"
+                      [filename]="formData.get('logo_path').value"
                     ></app-file-upload>
                   </div>
                   <div class="col-7">
@@ -48,6 +47,19 @@
                         placeholder="Address 1"
                         formControlName="address1"
                       />
+                      <mat-error *ngFor="let validation of error.address1">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData
+                              .get('address1')
+                              .hasError(validation.type) &&
+                            (formData.get('address1').dirty ||
+                              formData.get('address1').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="login-full-width">
@@ -57,7 +69,6 @@
                         formControlName="address2"
                       />
                     </mat-form-field>
-
                     <mat-form-field class="login-full-width">
                       <input
                         matInput
@@ -65,8 +76,9 @@
                         formControlName="address3"
                       />
                     </mat-form-field>
-
-                    <mat-form-field class="login-full-width">
+                  </div>
+                  <div class="col-12 row">
+                    <mat-form-field class="col-6">
                       <input
                         matInput
                         placeholder="Pincode"
@@ -84,9 +96,7 @@
                         </mat-error>
                       </mat-error>
                     </mat-form-field>
-                  </div>
-                  <div class="col-6">
-                    <mat-form-field class="login-full-width">
+                    <mat-form-field class="col-6">
                       <input
                         matInput
                         placeholder="Mobile"
@@ -105,7 +115,7 @@
                       </mat-error>
                     </mat-form-field>
 
-                    <mat-form-field class="login-full-width">
+                    <mat-form-field class="col-6">
                       <input
                         matInput
                         placeholder="Phone"
@@ -123,9 +133,29 @@
                         </mat-error>
                       </mat-error>
                     </mat-form-field>
-                  </div>
-                  <div class="col-6">
-                    <mat-form-field class="login-full-width">
+
+                    <mat-form-field class="col-6">
+                      <input
+                        matInput
+                        placeholder="Email"
+                        formControlName="email_id"
+                      />
+                      <mat-error *ngFor="let validation of error.email_id">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData
+                              .get('email_id')
+                              .hasError(validation.type) &&
+                            (formData.get('email_id').dirty ||
+                              formData.get('email_id').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-6">
                       <input
                         matInput
                         placeholder="GST Tin"
@@ -143,6 +173,14 @@
                         </mat-error>
                       </mat-error>
                     </mat-form-field>
+
+                    <mat-form-field class="col-6">
+                      <input
+                        matInput
+                        placeholder="Timing"
+                        formControlName="timing"
+                      />
+                    </mat-form-field>
                   </div>
                   <div
                     class="col-12"
@@ -156,6 +194,7 @@
                     >
                       Cancle
                     </button>
+
                     <button
                       color="primary"
                       mat-raised-button

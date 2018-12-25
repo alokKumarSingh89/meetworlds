@@ -45,12 +45,17 @@ export class EditOrganisationComponent implements OnInit {
       id: this.fb.control(""),
       address2: this.fb.control(""),
       address3: this.fb.control(""),
-      email_id: this.fb.control(""),
       pincode: this.fb.control("", [Validators.pattern("^[1-9][0-9]{5}$")]),
       phone: this.fb.control("", [Validators.pattern("^[1-9][0-9]{9}$")]),
       mobile: this.fb.control("", [
         Validators.required,
         Validators.pattern("^[1-9][0-9]{9}$")
+      ]),
+      email_id: this.fb.control("", [
+        Validators.required,
+        Validators.email,
+        validateWhiteSpace,
+        Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
       ]),
       gstin: this.fb.control("", [
         validateWhiteSpace,
@@ -58,7 +63,7 @@ export class EditOrganisationComponent implements OnInit {
           "^([0]{1}[1-9]{1}|[1-2]{1}[0-9]{1}|[3]{1}[0-7]{1})([a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}[1-9a-zA-Z]{1}[zZ]{1}[0-9a-zA-Z]{1})+$"
         )
       ]),
-      //timing: this.fb.control(""),
+      timing: this.fb.control(""),
       logo_path: this.fb.control("")
     });
     this._servie.index("organisation/" + id).subscribe(data => {
