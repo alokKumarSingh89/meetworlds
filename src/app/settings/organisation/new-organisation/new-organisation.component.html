@@ -42,22 +42,35 @@
                       <input
                         matInput
                         placeholder="Address 1"
-                        formControlName="add1"
+                        formControlName="address1"
                       />
+                      <mat-error *ngFor="let validation of error.address1">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData
+                              .get('address1')
+                              .hasError(validation.type) &&
+                            (formData.get('address1').dirty ||
+                              formData.get('address1').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="login-full-width">
                       <input
                         matInput
                         placeholder="Address 2"
-                        formControlName="add2"
+                        formControlName="address2"
                       />
                     </mat-form-field>
                     <mat-form-field class="login-full-width">
                       <input
                         matInput
                         placeholder="Address 3"
-                        formControlName="add3"
+                        formControlName="address3"
                       />
                     </mat-form-field>
                   </div>
@@ -143,8 +156,19 @@
                       <input
                         matInput
                         placeholder="GST Tin"
-                        formControlName="gst_number"
+                        formControlName="gstin"
                       />
+                      <mat-error *ngFor="let validation of error.gstin">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData.get('gstin').hasError(validation.type) &&
+                            (formData.get('gstin').dirty ||
+                              formData.get('gstin').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="col-6">
@@ -159,7 +183,7 @@
                     class="col-12"
                     style="display: flex;justify-content: space-around;"
                   >
-                  <button
+                    <button
                       mat-raised-button
                       class="button"
                       type="button"
@@ -167,7 +191,7 @@
                     >
                       Cancle
                     </button>
-                    
+
                     <button
                       color="primary"
                       mat-raised-button

@@ -22,7 +22,14 @@ export class NewOrganisationComponent implements OnInit {
   ) {}
   submit() {
     this._servie
-      .create("organisation/create",{ ...this.formData.value, file: this.file })
+      .create(
+        "organisation/create",
+        {
+          ...this.formData.value,
+          file: this.file
+        },
+        true
+      )
       .subscribe(response => {
         window.history.back();
       });
@@ -38,20 +45,31 @@ export class NewOrganisationComponent implements OnInit {
     this.error = error_message;
     this.formData = this.fb.group({
       name: this.fb.control("", [Validators.required, validateWhiteSpace]),
-      add1: this.fb.control(""),
-      add2: this.fb.control(""),
-      add3: this.fb.control(""),
-      pincode: this.fb.control("", [Validators.pattern("^[1-9][0-9]{5}$")]),
+      address1: this.fb.control("", [Validators.required, validateWhiteSpace]),
+      address2: this.fb.control(""),
+      address3: this.fb.control(""),
+      pincode: this.fb.control("", [
+        Validators.required,
+        Validators.pattern("^[1-9][0-9]{5}$")
+      ]),
       phone: this.fb.control("", [Validators.pattern("^[1-9][0-9]{9}$")]),
-      mobile: this.fb.control("", [Validators.pattern("^[1-9][0-9]{9}$")]),
+      mobile: this.fb.control("", [
+        Validators.required,
+        Validators.pattern("^[1-9][0-9]{9}$")
+      ]),
       email_id: this.fb.control("", [
         Validators.required,
         Validators.email,
         validateWhiteSpace,
         Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
       ]),
-      gst_number: this.fb.control("", [validateWhiteSpace]),
-      timing: this.fb.control("", [validateWhiteSpace]),
+      gstin: this.fb.control("", [
+        validateWhiteSpace,
+        Validators.pattern(
+          "^([0]{1}[1-9]{1}|[1-2]{1}[0-9]{1}|[3]{1}[0-7]{1})([a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}[1-9a-zA-Z]{1}[zZ]{1}[0-9a-zA-Z]{1})+$"
+        )
+      ]),
+      timing: this.fb.control(""),
       logo_path: this.fb.control("")
     });
   }

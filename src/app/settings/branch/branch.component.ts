@@ -13,10 +13,10 @@ export class BranchComponent implements OnInit {
   branch: any;
   displayedColumns: string[] = [
     "NAME",
-    "ORGANISATION",
     "PINCODE",
     "MOBILE",
     "DELIVERY CHARGE",
+    "Min. Order Amount",
     "ACTION"
   ];
   dataSource: any;
@@ -37,9 +37,6 @@ export class BranchComponent implements OnInit {
   fetchBranch() {
     this._api.index("branches").subscribe(data => {
       this.branch = data;
-      this._api.index(`organisation/${data.org_id}`).subscribe(data => {
-        data.organisation = data.name;
-      });
       this.dataSource = new MatTableDataSource<any>(data);
     });
   }

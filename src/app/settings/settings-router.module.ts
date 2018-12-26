@@ -1,15 +1,17 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Routes, RouterModule } from "@angular/router";
-import { AppMatModule } from '@app/app-mat/app-mat.module';
-import { NbCardModule } from '@nebular/theme';
-import { OrganisationComponent } from './organisation/organisation.component';
-import { NewOrganisationComponent } from './new-organisation/new-organisation.component';
-import { FileUploadComponent } from '@app/util/file-upload/file-upload.component';
-import { EditOrganisationComponent } from './edit-organisation/edit-organisation.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { NewCategoryComponent } from './new-category/new-category.component';
+import { AppMatModule } from "@app/app-mat/app-mat.module";
+import { NbCardModule } from "@nebular/theme";
+import { OrganisationComponent } from "./organisation/organisation.component";
+import { NewOrganisationComponent } from "./organisation/new-organisation/new-organisation.component";
+import { FileUploadComponent } from "@app/util/file-upload/file-upload.component";
+import { EditOrganisationComponent } from "./organisation/edit-organisation/edit-organisation.component";
+import { CategoriesComponent } from "./categories/categories.component";
+import { NewCategoryComponent } from "./categories/new-category/new-category.component";
 import { BranchComponent } from "./branch/branch.component";
+import { NewBranchComponent } from "./branch/new-branch/new-branch.component";
+import { EditBranchComponent } from "./branch/edit-branch/edit-branch.component";
 
 const routes: Routes = [
   {
@@ -33,6 +35,14 @@ const routes: Routes = [
     component: NewCategoryComponent
   },
   {
+    path: "branch/new",
+    component: NewBranchComponent
+  },
+  {
+    path: "branch/:id/edit",
+    component: EditBranchComponent
+  },
+  {
     path: "branch",
     component: BranchComponent
   }
@@ -45,8 +55,16 @@ const routes: Routes = [
     NbCardModule
   ],
   exports: [RouterModule],
-  declarations: [NewCategoryComponent,BranchComponent,
-    OrganisationComponent,NewOrganisationComponent,FileUploadComponent, 
-    EditOrganisationComponent,CategoriesComponent]
+  declarations: [
+    NewCategoryComponent,
+    OrganisationComponent,
+    NewOrganisationComponent,
+    FileUploadComponent,
+    EditOrganisationComponent,
+    CategoriesComponent,
+    BranchComponent,
+    NewBranchComponent,
+    EditBranchComponent
+  ]
 })
 export class SettingsRouterModule {}

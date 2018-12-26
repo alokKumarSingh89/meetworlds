@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { NewBranchComponent } from './new.component';
+import { NewBranchComponent } from "./new-branch.component";
 
-describe('NewBranchComponent', () => {
+describe("NewBranchComponent", () => {
   let component: NewBranchComponent;
   let fixture: ComponentFixture<NewBranchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewBranchComponent ]
-    })
-    .compileComponents();
+      declarations: [NewBranchComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('NewBranchComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

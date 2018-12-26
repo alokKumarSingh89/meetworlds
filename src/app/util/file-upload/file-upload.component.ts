@@ -9,9 +9,8 @@ export class FileUploadComponent implements OnInit {
   img:any="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image";
   constructor() { }
   @Input() name:any;
-  @Input() id:string;
   @Input() path:string;
-  @Input() extention:string;
+  @Input() filename:string;
 
   @Output() fileUpload: EventEmitter<any> = new EventEmitter<any>();
 
@@ -28,8 +27,8 @@ export class FileUploadComponent implements OnInit {
     reader.readAsDataURL(files);
   }
   ngOnInit() {
-    console.log(this.id,this.path,this.extention)
-    this.img = this.extention?`http://localhost:4000/api/${this.path}${this.id}${this.extention}?time=${(new Date()).getTime()}`:this.img;
+    console.log(this.path,this.filename)
+    this.img = this.filename ? `http://localhost:4000/api/${this.path}${this.filename}?time=${(new Date()).getTime()}`:this.img;
   }
 
 }

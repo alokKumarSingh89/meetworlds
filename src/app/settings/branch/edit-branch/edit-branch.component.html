@@ -1,0 +1,172 @@
+<div class="container-fluid login-container">
+  <div class="row">
+    <div class="col-10 offset-1">
+      <mat-card style="padding:0">
+        <mat-card-content>
+          <div class="row">
+            <div class="col-12">
+              <div class="branch">
+                <h2 style="margin: auto;" class="primary">Edit Branch</h2>
+                <form
+                  class="login-form row"
+                  [formGroup]="formData"
+                  (ngSubmit)="update()"
+                >
+                  <div class="col-12">
+                    <mat-form-field class="login-full-width">
+                      <input
+                        matInput
+                        placeholder="Name"
+                        formControlName="name"
+                      />
+                      <mat-error *ngFor="let validation of error.name">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData.get('name').hasError(validation.type) &&
+                            (formData.get('name').dirty ||
+                              formData.get('name').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="login-full-width">
+                      <input
+                        matInput
+                        placeholder="Address"
+                        formControlName="address"
+                      />
+                      <mat-error *ngFor="let validation of error.address">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData.get('address').hasError(validation.type) &&
+                            (formData.get('address').dirty ||
+                              formData.get('address').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="login-full-width">
+                      <input
+                        matInput
+                        placeholder="Pincode"
+                        formControlName="pincode"
+                      />
+                      <mat-error *ngFor="let validation of error.pincode">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData.get('pincode').hasError(validation.type) &&
+                            (formData.get('pincode').dirty ||
+                              formData.get('pincode').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="login-full-width">
+                      <input
+                        matInput
+                        placeholder="Mobile"
+                        formControlName="mobile"
+                      />
+                      <mat-error *ngFor="let validation of error.mobile">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData.get('mobile').hasError(validation.type) &&
+                            (formData.get('mobile').dirty ||
+                              formData.get('mobile').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="login-full-width">
+                      <input
+                        matInput
+                        placeholder="Delivery Charge"
+                        formControlName="delivery_charge"
+                      />
+                      <mat-error
+                        *ngFor="let validation of error.delivery_charge"
+                      >
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData
+                              .get('delivery_charge')
+                              .hasError(validation.type) &&
+                            (formData.get('delivery_charge').dirty ||
+                              formData.get('delivery_charge').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="login-full-width">
+                      <input
+                        matInput
+                        placeholder="Minimum Order Amount"
+                        formControlName="min_order_amount"
+                      />
+                      <mat-error
+                        *ngFor="let validation of error.min_order_amount"
+                      >
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData
+                              .get('min_order_amount')
+                              .hasError(validation.type) &&
+                            (formData.get('min_order_amount').dirty ||
+                              formData.get('min_order_amount').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="login-full-width">
+                      <input
+                        matInput
+                        placeholder="Message"
+                        formControlName="message"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div
+                    class="col-12"
+                    style="display: flex;justify-content: space-around;"
+                  >
+                    <button
+                      mat-raised-button
+                      class="button"
+                      type="button"
+                      (click)="goTobranch()"
+                    >
+                      Cancle
+                    </button>
+
+                    <button
+                      color="primary"
+                      mat-raised-button
+                      class="button"
+                      type="submit"
+                      [disabled]="formData.invalid"
+                    >
+                      Update Branch
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
