@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '@app/auth/api.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-categories',
@@ -11,17 +12,17 @@ import { MatTableDataSource } from '@angular/material';
 export class CategoriesComponent implements OnInit {
 
   constructor(private _api:ApiService) { }
-  organization:any;
   displayedColumns: string[] = ['NAME','IMAGE_PATH','ACTION']
   dataSource:any;
+  path:string = environment.api_server;
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   selection = new SelectionModel<any>(true, []);
-  removeOrganisation(id:string,name:string){
+  removeCategory(id:string,name:string){
     let isConfirm = window.confirm(`Are you sure, you want to delete '${name}'`);
     if(isConfirm){
-      this._api.delete('organisation/'+id).subscribe(respose=>{
+      this._api.delete('category/'+id).subscribe(respose=>{
         this.fetchOrganisation()
       })
       
@@ -29,11 +30,11 @@ export class CategoriesComponent implements OnInit {
   }
   fetchOrganisation(){
     this._api.index("categories").subscribe(data=>{
-      this.organization = data;
       this.dataSource = new MatTableDataSource<any>(data);
     })
   }
   ngOnInit() {
+    
     this.fetchOrganisation();
   }
 

@@ -33,13 +33,13 @@
         <ng-container matColumnDef="IMAGE_PATH">
           <th mat-header-cell *matHeaderCellDef> IMAGE</th>
           <td mat-cell *matCellDef="let element">
-            <img src="path+'/api/'+element.image_path"/>
+            <img style="width: 34px;height: 34px;" *ngIf="path" [src]="(path+'/api/assets/category/'+element.category_id+element.image_path)"/>
           </td>
         </ng-container>
         <ng-container matColumnDef="ACTION">
             <th mat-header-cell *matHeaderCellDef> ACTION </th>
             <td mat-cell *matCellDef="let element"> 
-                <mat-icon matPrefix color="warn" (click)="removeOrganisation(element.org_id,element.name)" class="action">delete</mat-icon>
+                <mat-icon matPrefix color="warn" (click)="removeCategory(element.category_id,element.name)" class="action">delete</mat-icon>
             </td>
           </ng-container>
 
