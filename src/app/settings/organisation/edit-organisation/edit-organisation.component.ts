@@ -25,7 +25,7 @@ export class EditOrganisationComponent implements OnInit {
       .update("organisation/" + this._route.snapshot.paramMap.get("id"), {
         ...this.formData.value,
         file: this.file
-      })
+      },true)
       .subscribe(response => {
         window.history.back();
       });
@@ -67,7 +67,6 @@ export class EditOrganisationComponent implements OnInit {
       logo_path: this.fb.control("")
     });
     this._servie.index("organisation/" + id).subscribe(data => {
-      //console.log(data);
       this.formData.setValue(data);
     });
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ApiService } from "@app/auth/api.service";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatTableDataSource } from "@angular/material";
+import API_URL from "@app/models/UrlConstant";
 
 @Component({
   selector: "app-organisation",
@@ -35,7 +36,7 @@ export class OrganisationComponent implements OnInit {
     }
   }
   fetchOrganisation() {
-    this._api.index("organisations").subscribe(data => {
+    this._api.index(API_URL.ORGANISATION.INDEX).subscribe(data => {
       this.organization = data;
       this.dataSource = new MatTableDataSource<any>(data);
     });

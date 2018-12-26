@@ -10,6 +10,8 @@ import { EditOrganisationComponent } from "./organisation/edit-organisation/edit
 import { CategoriesComponent } from "./categories/categories.component";
 import { NewCategoryComponent } from "./categories/new-category/new-category.component";
 import { BranchComponent } from "./branch/branch.component";
+import { NewBranchComponent } from "./branch/new-branch/new-branch.component";
+import { EditBranchComponent } from "./branch/edit-branch/edit-branch.component";
 
 const routes: Routes = [
   {
@@ -33,6 +35,14 @@ const routes: Routes = [
     component: NewCategoryComponent
   },
   {
+    path: "branch/new",
+    component: NewBranchComponent
+  },
+  {
+    path: "branch/:id/edit",
+    component: EditBranchComponent
+  },
+  {
     path: "branch",
     component: BranchComponent
   }
@@ -47,12 +57,14 @@ const routes: Routes = [
   exports: [RouterModule],
   declarations: [
     NewCategoryComponent,
-    BranchComponent,
     OrganisationComponent,
     NewOrganisationComponent,
     FileUploadComponent,
     EditOrganisationComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    BranchComponent,
+    NewBranchComponent,
+    EditBranchComponent
   ]
 })
 export class SettingsRouterModule {}
