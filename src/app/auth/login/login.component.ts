@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     let val = this.loginForm.getRawValue();
-    this._store.dispatch(new LoginUser(val));
+    this._store.dispatch(new LoginUser({...val,user_role:0,activated:1}));
     
   }
   ngOnInit() {

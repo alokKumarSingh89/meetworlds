@@ -4,6 +4,7 @@ import { StoreComponent } from '../dashboard/store/store.component';
 import { SaleStoreComponent } from '../sales/store/store.component';
 import { SampleFormateComponent } from '../sales/sample-formate/sample-formate.component';
 import { AuthenticationGuard } from '@app/auth.guard';
+import { ROUTE_URL } from '@app/constants/client.url';
 export const routes: Routes = [
     { 
         path: '', 
@@ -24,6 +25,10 @@ export const routes: Routes = [
             {
                 path: 'settings', 
                 loadChildren: '@app/settings/settings.module#SettingsModule'
+            },
+            {
+                path: ROUTE_URL.PEOPLE.INDEX, 
+                loadChildren: '@app/people/people-routing.module#PeopleRoutingModule'
             }
             // {path:'inventory/stock',component:StockComponent},
             // {path:'inventory/purchases',component:PurchagesComponent},

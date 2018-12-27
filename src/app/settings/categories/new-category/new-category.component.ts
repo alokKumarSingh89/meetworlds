@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '@app/auth/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { error_message } from '../new-organisation/error-message';
+import { error_message } from '@app/constants/category.error';
 import { validateWhiteSpace } from '@app/util/validators';
 @Component({
   selector: 'app-new-category',

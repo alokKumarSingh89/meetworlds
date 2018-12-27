@@ -10,6 +10,7 @@ export class EditUserComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

@@ -11,13 +11,16 @@ import { BranchEffect } from "./effects/branch.effect";
 import { ItemStore, itemReducer } from "./reducers/items.reducer";
 import { ItemEffect } from "./effects/items.effect";
 import { organisationReducer, OrganisationStore } from "./reducers/organisation.reducer";
+import { RoleState, roleReducer } from "./reducers/user.reducer";
+import { RoleEffect } from "./effects/role.effect";
 
 export interface AppState {
   error: ErrorState;
   auth: AuthState;
   branch: BranchState;
   items: ItemStore;
-  organisation:OrganisationStore
+  organisation:OrganisationStore,
+  roles:RoleState
 
 }
 export const reducers: ActionReducerMap<AppState> = {
@@ -25,10 +28,11 @@ export const reducers: ActionReducerMap<AppState> = {
   auth: authReducer,
   branch: branchReducer,
   items: itemReducer,
-  organisation:organisationReducer
+  organisation:organisationReducer,
+  roles:roleReducer
 };
 
-export const effects = [AuthEffects, BranchEffect, ItemEffect];
+export const effects = [AuthEffects, BranchEffect, ItemEffect,RoleEffect];
 @NgModule({
   imports: [
     CommonModule,
