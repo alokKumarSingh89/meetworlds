@@ -33,6 +33,9 @@ const API_URL = {
     POST: "item_unit/create",
     PUT: "item_unit/",
     DELETE: "item_unit/"
+  },
+  USER: {
+    ROLE: "roles"
   }
 };
 export default API_URL;

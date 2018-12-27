@@ -19,7 +19,30 @@
                     ></app-file-upload>
                   </div>
                   <div class="col-8">
-                    <app-select-tag> </app-select-tag>
+                    <mat-form-field>
+                      <mat-select placeholder="Category">
+                        <mat-option
+                          *ngFor="let item of categories"
+                          [value]="item.id"
+                          formControlName="category_id"
+                        >
+                          {{ item.name }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                      <mat-select placeholder="Unit">
+                        <mat-option
+                          *ngFor="let item of item_units"
+                          [value]="item.id"
+                          formControlName="unit_id"
+                        >
+                          {{ item.name }}</mat-option
+                        >
+                      </mat-select>
+                    </mat-form-field>
+
                     <mat-form-field class="input-full-width">
                       <input
                         matInput

@@ -20,7 +20,7 @@ export class ApiService {
     const url = `${this.api}/${endpoint}`;
     return this._http.request(method, url, {
       body,
-      headers: { authorization: `Bearer ${this._auth.token}` }
+      // headers: { authorization: `Bearer ${this._auth.token}` }
     });
   }
 

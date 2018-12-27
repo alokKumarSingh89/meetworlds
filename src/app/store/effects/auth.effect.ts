@@ -8,7 +8,8 @@ import {
   AuthActionType,
   SetCurrentUser,
   LoginUser,
-  RegisterUser
+  RegisterUser,
+  GetWhoIm
 } from "../actions/auth.action";
 import { User } from "@app/models/user.model";
 import { AuthService } from "@app/auth/auth.service";
@@ -52,6 +53,17 @@ export class AuthEffects {
     tap(() => this._store.dispatch(new RemoveError())),
     mergeMap((action: RegisterUser) =>
       this._authService.registration(action.payload).pipe(
+        map((user: User) => new SetCurrentUser(user)),
+        catchError(err => of(new AddError(err)))
+      )
+    )
+  );
+  @Effect()
+  whoIam$: Observable<Action> = this.action$.pipe(
+    ofType<GetWhoIm>(AuthActionType.GET_WHO_IM),
+    tap(() => this._store.dispatch(new RemoveError())),
+    mergeMap((action: GetWhoIm) =>
+      this._authService.whoami().pipe(
         map((user: User) => new SetCurrentUser(user)),
         catchError(err => of(new AddError(err)))
       )

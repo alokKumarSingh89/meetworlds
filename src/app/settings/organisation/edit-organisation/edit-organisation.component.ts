@@ -4,7 +4,7 @@ import { ApiService } from "@app/auth/api.service";
 import { validateWhiteSpace } from "@app/util/validators";
 import { error_message } from "../new-organisation/error-message";
 import { ActivatedRoute, Router } from "@angular/router";
-import API_URL from "@app/models/UrlConstant";
+import API_URL from "@app/constants/UrlConstant";
 
 @Component({
   selector: "app-edit-organisation",

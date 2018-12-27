@@ -1,5 +1,11 @@
 export interface User{
-    id:string;
     email:string;
+    PASSWORD:string;
+    login?:string;
+    created_by?:string;
+    activated?:number;
+    first_name?:string;
+    last_name?:string;
+    user_role:string;
     token?:string;
 }

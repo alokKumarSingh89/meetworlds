@@ -4,7 +4,7 @@ import { ApiService } from "@app/auth/api.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { error_message } from "./error-message";
 import { validateWhiteSpace } from "@app/util/validators";
-import API_URL from "@app/models/UrlConstant";
+import API_URL from "@app/constants/UrlConstant";
 
 @Component({
   selector: "app-new-item",
@@ -24,6 +24,9 @@ export class NewItemComponent implements OnInit {
     private router: Router
   ) {}
   submit() {
+    console.log("Form data:::::::");
+    console.log(this.formData);
+    return;
     this._servie
       .create(
         API_URL.Item.POST,
@@ -49,7 +52,9 @@ export class NewItemComponent implements OnInit {
     this.formData = this.fb.group({
       name: this.fb.control("", [Validators.required, validateWhiteSpace]),
       description: this.fb.control(""),
-      image_path: this.fb.control("")
+      image_path: this.fb.control(""),
+      category_id: this.fb.control(""),
+      unit_id: this.fb.control("")
     });
     this._servie.index(API_URL.ItemUnit.GETALL).subscribe(data => {
       this.item_units = data;

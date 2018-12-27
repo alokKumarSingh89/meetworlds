@@ -6,7 +6,7 @@ import { ApiService } from "@app/auth/api.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AppState } from "@app/store/app-store.module";
 import { Store } from "@ngrx/store";
-import API_URL from "@app/models/UrlConstant";
+import API_URL from "@app/constants/UrlConstant";
 
 @Component({
   selector: "app-new-branch",

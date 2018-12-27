@@ -14,7 +14,7 @@ export class AuthenticationGuard implements CanActivate {
     if(this._auth.token){
       return true;
     }
-    //this._router.navigate(['/'],{ queryParams: { returnUrl: state.url }});
-    return true;
+    this._router.navigate(['/'],{ queryParams: { returnUrl: state.url }});
+    // return true;
   }
 }

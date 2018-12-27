@@ -4,5 +4,8 @@ export interface UserDTO{
     PASSWORD:string;
     login?:string;
     created_by?:string;
-	activated?:number;
+    activated?:number;
+    first_name?:string;
+    last_name?:string;
+    user_role:string;
 }

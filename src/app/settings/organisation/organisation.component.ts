@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ApiService } from "@app/auth/api.service";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatTableDataSource } from "@angular/material";
-import API_URL from "@app/models/UrlConstant";
+import API_URL from "@app/constants/UrlConstant";
 
 @Component({
   selector: "app-organisation",

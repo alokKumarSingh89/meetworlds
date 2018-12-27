@@ -16,7 +16,6 @@ import { EditBranchComponent } from "./branch/edit-branch/edit-branch.component"
 import { ItemComponent } from "./item/item.component";
 import { NewItemComponent } from "./item/new-item/new-item.component";
 import { EditItemComponent } from "./item/edit-item/edit-item.component";
-import { SelectTagComponent } from "@app/util/select-tag/select-tag.component";
 
 const routes: Routes = [
   {
@@ -82,7 +81,6 @@ const routes: Routes = [
     OrganisationComponent,
     NewOrganisationComponent,
     FileUploadComponent,
-    SelectTagComponent,
     EditOrganisationComponent,
     CategoriesComponent,
     BranchComponent,
