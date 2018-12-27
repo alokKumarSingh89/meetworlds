@@ -9,9 +9,13 @@ import { FileUploadComponent } from "@app/util/file-upload/file-upload.component
 import { EditOrganisationComponent } from "./organisation/edit-organisation/edit-organisation.component";
 import { CategoriesComponent } from "./categories/categories.component";
 import { NewCategoryComponent } from "./categories/new-category/new-category.component";
+import { EditCategoryComponent } from "./categories/edit-category/edit-category.component";
 import { BranchComponent } from "./branch/branch.component";
 import { NewBranchComponent } from "./branch/new-branch/new-branch.component";
 import { EditBranchComponent } from "./branch/edit-branch/edit-branch.component";
+import { ItemComponent } from "./item/item.component";
+import { NewItemComponent } from "./item/new-item/new-item.component";
+import { EditItemComponent } from "./item/edit-item/edit-item.component";
 
 const routes: Routes = [
   {
@@ -35,6 +39,10 @@ const routes: Routes = [
     component: NewCategoryComponent
   },
   {
+    path: "categories/:id/edit",
+    component: EditCategoryComponent
+  },
+  {
     path: "branch/new",
     component: NewBranchComponent
   },
@@ -45,6 +53,18 @@ const routes: Routes = [
   {
     path: "branch",
     component: BranchComponent
+  },
+  {
+    path: "item",
+    component: ItemComponent
+  },
+  {
+    path: "item/new",
+    component: NewItemComponent
+  },
+  {
+    path: "item/:id/edit",
+    component: EditItemComponent
   }
 ];
 @NgModule({
@@ -57,6 +77,7 @@ const routes: Routes = [
   exports: [RouterModule],
   declarations: [
     NewCategoryComponent,
+    EditCategoryComponent,
     OrganisationComponent,
     NewOrganisationComponent,
     FileUploadComponent,
@@ -64,7 +85,10 @@ const routes: Routes = [
     CategoriesComponent,
     BranchComponent,
     NewBranchComponent,
-    EditBranchComponent
+    EditBranchComponent,
+    ItemComponent,
+    NewItemComponent,
+    EditItemComponent
   ]
 })
 export class SettingsRouterModule {}

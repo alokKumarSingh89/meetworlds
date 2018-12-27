@@ -1,7 +1,7 @@
 <div class="container-fluid font-family">
   <div class="row justify-content-between">
     <div class="col-sm-4"><span class="heading"> Branch</span></div>
-    <div class="col-sm-3 e-align">
+    <div *ngIf="isAddBranch" class="col-sm-3 e-align">
       <button mat-raised-button color="primary" [routerLink]="['new']">
         <mat-icon aria-label="Example icon-button with a heart icon"
           >add</mat-icon

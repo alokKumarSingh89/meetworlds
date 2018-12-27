@@ -6,16 +6,19 @@
           <div class="row">
             <div class="col-12">
               <div class="centerAlign">
-                <h2 style="margin: auto;" class="primary">New Category</h2>
+                <h2 style="margin: auto;" class="primary">Edit Category</h2>
                 <form
                   class="input-form row"
                   [formGroup]="formData"
-                  (ngSubmit)="submit()"
+                  (ngSubmit)="update()"
                 >
                   <div class="col-4">
                     <app-file-upload
+                      *ngIf="formData && formData.get('id').value"
                       name="image_path"
                       (fileUpload)="setFile($event)"
+                      path="assets/category/"
+                      [filename]="formData.get('image_path').value"
                     ></app-file-upload>
                   </div>
                   <div class="col-8">
@@ -52,7 +55,7 @@
                         mat-raised-button
                         class="button"
                         type="button"
-                        (click)="goToOrganisation()"
+                        (click)="goToCategories()"
                       >
                         Cancel
                       </button>
@@ -63,7 +66,7 @@
                         type="submit"
                         [disabled]="formData.invalid"
                       >
-                        Add Category
+                        Update Category
                       </button>
                     </div>
                   </div>

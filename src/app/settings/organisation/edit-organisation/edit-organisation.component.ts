@@ -4,6 +4,7 @@ import { ApiService } from "@app/auth/api.service";
 import { validateWhiteSpace } from "@app/util/validators";
 import { error_message } from "../new-organisation/error-message";
 import { ActivatedRoute, Router } from "@angular/router";
+import API_URL from "@app/constants/UrlConstant";
 
 @Component({
   selector: "app-edit-organisation",
@@ -22,10 +23,14 @@ export class EditOrganisationComponent implements OnInit {
   ) {}
   update() {
     this._servie
-      .update("organisation/" + this._route.snapshot.paramMap.get("id"), {
-        ...this.formData.value,
-        file: this.file
-      },true)
+      .update(
+        API_URL.ORGANISATION.PUT + this._route.snapshot.paramMap.get("id"),
+        {
+          ...this.formData.value,
+          file: this.file
+        },
+        true
+      )
       .subscribe(response => {
         window.history.back();
       });
@@ -66,7 +71,7 @@ export class EditOrganisationComponent implements OnInit {
       timing: this.fb.control(""),
       logo_path: this.fb.control("")
     });
-    this._servie.index("organisation/" + id).subscribe(data => {
+    this._servie.index(API_URL.ORGANISATION.GETONE + id).subscribe(data => {
       this.formData.setValue(data);
     });
   }

@@ -7,14 +7,16 @@ import { validateWhiteSpace } from "@app/util/validators";
 import API_URL from "@app/constants/UrlConstant";
 
 @Component({
-  selector: "app-new-category",
-  templateUrl: "./new-category.component.html",
-  styleUrls: ["./new-category.component.css"]
+  selector: "app-new-item",
+  templateUrl: "./new-item.component.html",
+  styleUrls: ["./new-item.component.css"]
 })
-export class NewCategoryComponent implements OnInit {
+export class NewItemComponent implements OnInit {
   formData: FormGroup;
   error: any;
   file: any;
+  item_units: any;
+  categories: any;
   constructor(
     private fb: FormBuilder,
     private _servie: ApiService,
@@ -22,9 +24,12 @@ export class NewCategoryComponent implements OnInit {
     private router: Router
   ) {}
   submit() {
+    console.log("Form data:::::::");
+    console.log(this.formData);
+    return;
     this._servie
       .create(
-        API_URL.CATEGORY.POST,
+        API_URL.Item.POST,
         {
           ...this.formData.value,
           file: this.file
@@ -35,8 +40,8 @@ export class NewCategoryComponent implements OnInit {
         window.history.back();
       });
   }
-  goToOrganisation() {
-    this.router.navigate(["/dashboard/settings/categories"]);
+  goToItems() {
+    this.router.navigate(["/dashboard/settings/item"]);
   }
 
   setFile(event) {
@@ -47,7 +52,17 @@ export class NewCategoryComponent implements OnInit {
     this.formData = this.fb.group({
       name: this.fb.control("", [Validators.required, validateWhiteSpace]),
       description: this.fb.control(""),
-      image_path: this.fb.control("")
+      image_path: this.fb.control(""),
+      category_id: this.fb.control(""),
+      unit_id: this.fb.control("")
+    });
+    this._servie.index(API_URL.ItemUnit.GETALL).subscribe(data => {
+      this.item_units = data;
+      console.log("units::::", this.item_units);
+    });
+    this._servie.index(API_URL.CATEGORY.GETALL).subscribe(data => {
+      this.categories = data;
+      console.log("Categories::::::", this.categories);
     });
   }
 }

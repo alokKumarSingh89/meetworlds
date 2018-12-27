@@ -6,25 +6,24 @@ export interface OrganisationStore {
 }
 const initialState: OrganisationStore = {
   organisation: {
-    id: 11,
+    id: 14,
     name: "Meatmart",
-    address1: "Bangalore",
-    address2: null,
-    address3: null,
-    pincode: "560022",
+    address1: "Building No-18",
+    address2: "Bangalore",
+    address3: "Karnataka",
+    pincode: "560026",
     phone: null,
-    mobile: "9898777744",
+    mobile: "9999000015",
     email_id: "meatmart@gmail.com",
-    gstin: "22AAAAA0000A1Z6",
+    gstin: "22AAAAA0000A1Z5",
     timing: "9am to 9pm",
-    logo_path: "11.jpeg"
+    logo_path: "14.jpeg"
   }
 };
-
-export const organisationReducer: (state: OrganisationStore, action: Action) => OrganisationStore = (
-  state = initialState,
+export const organisationReducer: (
+  state: OrganisationStore,
   action: Action
-) => {
+) => OrganisationStore = (state = initialState, action: Action) => {
   switch (action.type) {
     default:
       return state;

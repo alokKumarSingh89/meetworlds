@@ -11,33 +11,20 @@ import API_URL from "@app/constants/UrlConstant";
 })
 export class OrganisationComponent implements OnInit {
   constructor(private _api: ApiService) {}
-  organization: any;
-  displayedColumns: string[] = [
-    "NAME",
-    "EMAIL",
-    "MOBILE",
-    "GSTIN",
-    "PINCODE",
-    "ACTION"
-  ];
+  organisation: any;
+  isAddOrganisation: boolean = true;
+  displayedColumns: string[] = ["NAME", "EMAIL", "MOBILE", "GSTIN", "PINCODE"];
   dataSource: any;
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   selection = new SelectionModel<any>(true, []);
-  removeOrganisation(id: string, name: string) {
-    let isConfirm = window.confirm(
-      `Are you sure, you want to delete '${name}'`
-    );
-    if (isConfirm) {
-      this._api.delete("organisation/" + id).subscribe(respose => {
-        this.fetchOrganisation();
-      });
-    }
-  }
   fetchOrganisation() {
-    this._api.index(API_URL.ORGANISATION.INDEX).subscribe(data => {
-      this.organization = data;
+    this._api.index(API_URL.ORGANISATION.GETALL).subscribe(data => {
+      this.organisation = data;
+      if (this.organisation.length > 0) {
+        this.isAddOrganisation = false;
+      }
       this.dataSource = new MatTableDataSource<any>(data);
     });
   }

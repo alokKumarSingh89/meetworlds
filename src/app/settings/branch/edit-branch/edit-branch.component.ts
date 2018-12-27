@@ -4,6 +4,7 @@ import { validateWhiteSpace } from "@app/util/validators";
 import { error_message } from "./error-message";
 import { ApiService } from "@app/auth/api.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import API_URL from "@app/constants/UrlConstant";
 
 @Component({
   selector: "app-edit-branch",
@@ -21,7 +22,7 @@ export class EditBranchComponent implements OnInit {
   ) {}
   update() {
     this._servie
-      .update("branch/" + this._route.snapshot.paramMap.get("id"), {
+      .update(API_URL.BRANCH.PUT + this._route.snapshot.paramMap.get("id"), {
         ...this.formData.value
       })
       .subscribe(response => {
@@ -61,7 +62,7 @@ export class EditBranchComponent implements OnInit {
       ]),
       message: this.fb.control("")
     });
-    this._servie.index("branch/" + id).subscribe(data => {
+    this._servie.index(API_URL.BRANCH.GETONE + id).subscribe(data => {
       this.formData.setValue(data);
     });
   }
