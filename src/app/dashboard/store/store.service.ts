@@ -22,7 +22,7 @@ export class StoreService {
     });
   }
   getBranchs(page?: string): Observable<StoreModel> {
-    const endpoint = page ? `branchs/page=${page}` : "branchs";
+    const endpoint = page ? `branches/page=${page}` : "branches";
     return this.request("GET", endpoint);
   }
 }

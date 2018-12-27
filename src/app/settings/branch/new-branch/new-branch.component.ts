@@ -6,7 +6,8 @@ import { ApiService } from "@app/auth/api.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AppState } from "@app/store/app-store.module";
 import { Store } from "@ngrx/store";
-import { Organisation } from "@app/models/organisation.model";
+import API_URL from "@app/models/UrlConstant";
+
 @Component({
   selector: "app-new-branch",
   templateUrl: "./new-branch.component.html",
@@ -24,9 +25,8 @@ export class NewBranchComponent implements OnInit {
     private _store: Store<AppState>
   ) {}
   submit() {
-    console.log("org_idorg_idorg_id:::::::::;;;", this.org_id);
     this._servie
-      .create("branch/create", {
+      .create(API_URL.BRANCH.POST, {
         ...this.formData.value,
         org_id: this.org_id
       })
@@ -64,9 +64,8 @@ export class NewBranchComponent implements OnInit {
       ]),
       message: this.fb.control("")
     });
-    this._store.select("organisation").subscribe((organisation: any) => {
-      
-      this.org_id = organisation.id;
+    this._store.select("organisation").subscribe((org: any) => {
+      this.org_id = org.organisation.id;
     });
   }
 }

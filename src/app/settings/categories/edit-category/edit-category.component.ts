@@ -7,11 +7,11 @@ import { validateWhiteSpace } from "@app/util/validators";
 import API_URL from "@app/models/UrlConstant";
 
 @Component({
-  selector: "app-new-category",
-  templateUrl: "./new-category.component.html",
-  styleUrls: ["./new-category.component.css"]
+  selector: "app-edit-category",
+  templateUrl: "./edit-category.component.html",
+  styleUrls: ["./edit-category.component.css"]
 })
-export class NewCategoryComponent implements OnInit {
+export class EditCategoryComponent implements OnInit {
   formData: FormGroup;
   error: any;
   file: any;
@@ -21,10 +21,10 @@ export class NewCategoryComponent implements OnInit {
     private _route: ActivatedRoute,
     private router: Router
   ) {}
-  submit() {
+  update() {
     this._servie
-      .create(
-        API_URL.CATEGORY.POST,
+      .update(
+        API_URL.CATEGORY.PUT + this._route.snapshot.paramMap.get("id"),
         {
           ...this.formData.value,
           file: this.file
@@ -35,7 +35,7 @@ export class NewCategoryComponent implements OnInit {
         window.history.back();
       });
   }
-  goToOrganisation() {
+  goToCategories() {
     this.router.navigate(["/dashboard/settings/categories"]);
   }
 
@@ -44,10 +44,15 @@ export class NewCategoryComponent implements OnInit {
   }
   ngOnInit() {
     this.error = error_message;
+    let id = this._route.snapshot.paramMap.get("id");
     this.formData = this.fb.group({
+      id: this.fb.control(""),
       name: this.fb.control("", [Validators.required, validateWhiteSpace]),
       description: this.fb.control(""),
       image_path: this.fb.control("")
+    });
+    this._servie.index(API_URL.CATEGORY.GETONE + id).subscribe(data => {
+      this.formData.setValue(data);
     });
   }
 }

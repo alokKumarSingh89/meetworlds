@@ -4,6 +4,7 @@ import { validateWhiteSpace } from "@app/util/validators";
 import { error_message } from "./error-message";
 import { ApiService } from "@app/auth/api.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import API_URL from "@app/models/UrlConstant";
 
 @Component({
   selector: "app-new-organisation",
@@ -23,7 +24,7 @@ export class NewOrganisationComponent implements OnInit {
   submit() {
     this._servie
       .create(
-        "organisation/create",
+        API_URL.ORGANISATION.POST,
         {
           ...this.formData.value,
           file: this.file

@@ -1,23 +1,23 @@
 export interface Organisation {
   id?: number;
 
-  name: string;
+  name?: string;
 
-  address1: string;
+  address1?: string;
 
   address2?: string;
 
   address3?: string;
 
-  pincode: string;
+  pincode?: string;
 
-  phone: string;
+  phone?: string;
 
-  mobile: string;
+  mobile?: string;
 
-  email_id: string;
+  email_id?: string;
 
-  gstin: string;
+  gstin?: string;
 
   timing?: string;
 

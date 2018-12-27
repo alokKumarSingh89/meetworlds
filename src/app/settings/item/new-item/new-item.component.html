@@ -6,7 +6,7 @@
           <div class="row">
             <div class="col-12">
               <div class="centerAlign">
-                <h2 style="margin: auto;" class="primary">New Category</h2>
+                <h2 style="margin: auto;" class="primary">New Item</h2>
                 <form
                   class="input-form row"
                   [formGroup]="formData"
@@ -19,6 +19,7 @@
                     ></app-file-upload>
                   </div>
                   <div class="col-8">
+                    <app-select-tag> </app-select-tag>
                     <mat-form-field class="input-full-width">
                       <input
                         matInput
@@ -52,7 +53,7 @@
                         mat-raised-button
                         class="button"
                         type="button"
-                        (click)="goToOrganisation()"
+                        (click)="goToItems()"
                       >
                         Cancel
                       </button>
@@ -63,7 +64,7 @@
                         type="submit"
                         [disabled]="formData.invalid"
                       >
-                        Add Category
+                        Add Item
                       </button>
                     </div>
                   </div>

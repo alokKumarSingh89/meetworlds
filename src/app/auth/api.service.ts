@@ -48,6 +48,7 @@ export class ApiService {
     return this.request("GET", url);
   }
   update(url, data, isMultipartForm?): Observable<any> {
+    console.log("This is data reqest", data);
     if (isMultipartForm) {
       let form = new FormData();
       for (let item in data) {
@@ -55,6 +56,7 @@ export class ApiService {
           form.append(item, data[item]);
         }
       }
+      console.log("This is send reqest", form);
       return this.request("PUT", url, form);
     }
     return this.request("PUT", url, data);
