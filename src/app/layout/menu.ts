@@ -1,15 +1,19 @@
 import { NbMenuItem } from "@nebular/theme";
-export const MENU_ITEMS: NbMenuItem[] = [
+let menuList:NbMenuItem[] = [];
+
+const MENU_ITEMS = [
   {
     title: "Dashboard",
     icon: "nb-home",
     link: "/dashboard",
+    role:["SuperAdmin","StoreManager","Manager"],
     children: [{ title: "Store", link: "store" }]
   },
   {
     title: "Sales",
     icon: "nb-keypad",
     link: "/dashboard",
+    role:["SuperAdmin","StoreManager","Manager"],
     children: [
       { title: "Store", link: "sales/store" },
       { title: "Sample Formate", link: "sales/sample-formate" }
@@ -18,6 +22,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: "CATALOGUE",
     icon: "nb-compose",
+    role:["SuperAdmin","StoreManager","Manager"],
     children: [
       { title: "Items", link: "items" },
       { title: "Categories", link: "items/category" }
@@ -26,6 +31,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: "Inventory",
     icon: "nb-gear",
+    role:["SuperAdmin","StoreManager","Manager"],
     children: [
       { title: "Stock", link: "inventory/stock" },
       { title: "Purchases", link: "inventory/purchases" },
@@ -36,6 +42,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: "Accounting",
     icon: "nb-location",
+    role:["SuperAdmin","StoreManager","Manager"],
     children: [
       { title: "Tax Types", link: "accounting/tax-types" },
       { title: "Tax Payable Items", link: "accounting/tax-payable-items" },
@@ -47,6 +54,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: "Vouchers",
     icon: "nb-bar-chart",
+    role:["SuperAdmin","StoreManager","Manager"],
     children: [
       { title: "Pretty cash", link: "vouchers/pretty-cash" },
       { title: "Credit Line", link: "vouchers/credit-line" },
@@ -56,6 +64,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: "People",
     icon: "nb-title",
+    role:["SuperAdmin"],
     children: [
       { title: "Customers", link: "people/customers" },
       { title: "Users", link: "people/users" },
@@ -65,6 +74,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: "Reports",
     icon: "nb-tables",
+    role:["SuperAdmin","StoreManager","Manager"],
     children: [
       { title: "Sales Report", link: "reports/sales-report" },
       { title: "Products Report", link: "reports/product-reports" },
@@ -75,6 +85,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: "Settings",
     icon: "fa fa-cog",
+    role:["SuperAdmin"],
     children: [
       { title: "Channels Types", link: "settings/channel-types" },
       { title: "Partners", link: "settings/partners" },
@@ -87,6 +98,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: "Contact US",
     icon: "fa fa-question",
+    role:["SuperAdmin","StoreManager","Manager"],
     children: [{ title: "Help ", link: "contact-us/help" }]
   }
 ];
+export const getMenuList = (role:string) => {
+  let menu =  MENU_ITEMS.filter(menu=>menu.role.includes(role));
+   menuList = menu;
+  return menuList;
+}

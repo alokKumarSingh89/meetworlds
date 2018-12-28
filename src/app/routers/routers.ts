@@ -3,8 +3,9 @@ import { DashboardComponent } from "../dashboard/dashboard.component";
 import { StoreComponent } from "../dashboard/store/store.component";
 import { SaleStoreComponent } from "../sales/store/store.component";
 import { SampleFormateComponent } from "../sales/sample-formate/sample-formate.component";
-import { AuthenticationGuard } from "@app/auth.guard";
+import { AuthenticationGuard } from "@app/guard/auth.guard";
 import { ROUTE_URL } from "@app/constants/client.url";
+import { RoleGuard } from "@app/guard/role.guard";
 export const routes: Routes = [
   {
     path: "",
@@ -31,7 +32,11 @@ export const routes: Routes = [
       },
       {
         path: ROUTE_URL.PEOPLE.INDEX,
-        loadChildren: "@app/people/people-routing.module#PeopleRoutingModule"
+        data:{
+          role:'SuperAdmin'
+        },
+        loadChildren: "@app/people/people-routing.module#PeopleRoutingModule",
+        canActivate:[RoleGuard]
       }
       // {path:'inventory/stock',component:StockComponent},
       // {path:'inventory/purchases',component:PurchagesComponent},

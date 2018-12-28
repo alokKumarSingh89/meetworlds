@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MENU_ITEMS} from '../layout/menu'
+import { getMenuList } from '../layout/menu'
 import { StoreModel } from '../models/store.model';
-import { Store } from '@ngrx/store';
+import { Store ,select} from '@ngrx/store';
 import { AppState } from '@app/store/app-store.module';
 
 @Component({
@@ -10,14 +10,19 @@ import { AppState } from '@app/store/app-store.module';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  
-  menu = MENU_ITEMS;
+
+  menu;
   stores: StoreModel = {};
-  constructor(private _store: Store<AppState>) {}
+  constructor(private _store: Store<AppState>) { }
   branchSelect = false;
   activeEvent = null;
   currentBranch = null;
   ngOnInit() {
+    
+    this._store.pipe(select(store=>store.auth.user)).subscribe(user=>{
+      if(user)
+        this.menu = getMenuList(user.user_role)
+    })
     this._store.select("branch").subscribe(branch => {
       if (branch.branchs)
         this.stores = {
@@ -25,5 +30,5 @@ export class DashboardComponent implements OnInit {
         };
     });
   }
-  
+
 }

@@ -1,50 +1,66 @@
 <mat-card>
   <mat-card-content>
-    <form class="form">
+    <form class="form" [formGroup]="userForm">
       <div class="row">
         <div class="col-sm-6 offset-sm-3 form-group">
           <div>
             <h3>Add New User</h3>
           </div>
           <mat-divider></mat-divider>
-          <div class="example-container">
-
+          <div class="">
             <mat-form-field>
-              <input matInput placeholder="User ID" [formControl]="userId" type="number" required>
-              <mat-error *ngIf="userId.invalid">{{getErrorMessage('userId')}}</mat-error>
+              <input matInput placeholder="Email" formControlName="email" />
+              <mat-error *ngFor="let validation of error.email">
+                <mat-error class="error-message" *ngIf="
+                    userForm.get('email').hasError(validation.type) &&
+                    (userForm.get('email').dirty ||
+                      userForm.get('email').touched)
+                  ">{{
+                  validation.message }}
+                </mat-error>
+              </mat-error>
             </mat-form-field>
             <mat-form-field>
-              <input matInput placeholder="User Name" [formControl]="userName" required>
-              <mat-error *ngIf="userName.invalid">{{getErrorMessage('userName')}}</mat-error>
+              <input matInput placeholder="First Name" formControlName="first_name" />
+              <mat-error *ngFor="let validation of error.first_name">
+                <mat-error class="error-message" *ngIf="
+                    userForm.get('first_name').hasError(validation.type) &&
+                    (userForm.get('first_name').dirty ||
+                      userForm.get('first_name').touched)
+                  ">{{
+                  validation.message }}
+                </mat-error>
+              </mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Email ID" [formControl]="email" required>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage('email')}}</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Phone Number" [formControl]="phone" type="number" required>
-                <mat-error *ngIf="phone.invalid">{{getErrorMessage('phone')}}</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-select placeholder="Role" [formControl]="role" required>
-                  <mat-option value="option">Admin</mat-option>
-                  <mat-option value="option">Branch Admin</mat-option>
-                  <mat-option value="option">Employee</mat-option>
-                </mat-select>
-                <mat-error *ngIf="status.invalid">{{getErrorMessage('role')}}</mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                  <mat-select placeholder="Status" [formControl]="status" required>
-                    <mat-option value="option">Active</mat-option>
-                    <mat-option value="option">Inactive</mat-option>
-                  </mat-select>
-                  <mat-error *ngIf="status.invalid">{{getErrorMessage('status')}}</mat-error>
-                </mat-form-field>
-            <div class="row">
-              <div class="col-sm-8 offset-sm-7">
-                <button mat-raised-button color="primary">Save</button>
-                <button mat-raised-button>Clear</button>
-              </div>
+              <input matInput placeholder="Last Name" formControlName="last_name" />
+              <mat-error *ngFor="let validation of error.last_name">
+                <mat-error class="error-message" *ngIf="
+                    userForm.get('last_name').hasError(validation.type) &&
+                    (userForm.get('last_name').dirty ||
+                      userForm.get('last_name').touched)
+                  ">{{
+                  validation.message }}
+                </mat-error>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Password" formControlName="PASSWORD" />
+              <mat-error *ngFor="let validation of error.PASSWORD">
+                <mat-error class="error-message" *ngIf="
+                    userForm.get('PASSWORD').hasError(validation.type) &&
+                    (userForm.get('PASSWORD').dirty ||
+                      userForm.get('PASSWORD').touched)
+                  ">{{
+                  validation.message }}
+                </mat-error>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 offset-sm-7">
+              <button mat-raised-button color="primary">Save</button>
+              <button mat-raised-button>Clear</button>
             </div>
           </div>
         </div>
