@@ -16,6 +16,7 @@ import {
 } from "./reducers/organisation.reducer";
 import { RoleState, roleReducer } from "./reducers/user.reducer";
 import { RoleEffect } from "./effects/role.effect";
+import { OrganisationEffect } from "./effects/organisation.effect";
 
 export interface AppState {
   error: ErrorState;
@@ -34,7 +35,13 @@ export const reducers: ActionReducerMap<AppState> = {
   roles: roleReducer
 };
 
-export const effects = [AuthEffects, BranchEffect, ItemEffect, RoleEffect];
+export const effects = [
+  AuthEffects,
+  BranchEffect,
+  ItemEffect,
+  RoleEffect,
+  OrganisationEffect
+];
 @NgModule({
   imports: [
     CommonModule,

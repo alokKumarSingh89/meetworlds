@@ -17,6 +17,7 @@ export class NewItemComponent implements OnInit {
   file: any;
   item_units: any;
   categories: any;
+
   constructor(
     private fb: FormBuilder,
     private _servie: ApiService,
@@ -24,9 +25,6 @@ export class NewItemComponent implements OnInit {
     private router: Router
   ) {}
   submit() {
-    console.log("Form data:::::::");
-    console.log(this.formData);
-    return;
     this._servie
       .create(
         API_URL.Item.POST,
@@ -50,19 +48,22 @@ export class NewItemComponent implements OnInit {
   ngOnInit() {
     this.error = error_message;
     this.formData = this.fb.group({
-      name: this.fb.control("", [Validators.required, validateWhiteSpace]),
-      description: this.fb.control(""),
-      image_path: this.fb.control(""),
       category_id: this.fb.control(""),
-      unit_id: this.fb.control("")
+      name: this.fb.control("", [Validators.required, validateWhiteSpace]),
+      quantity: this.fb.control(""),
+      unit_id: this.fb.control(""),
+      price: this.fb.control(""),
+      available_q_p: this.fb.control(""),
+      description: this.fb.control(""),
+      cut_type: this.fb.control(""),
+      image_path: this.fb.control(""),
+      spec: this.fb.control("")
     });
     this._servie.index(API_URL.ItemUnit.GETALL).subscribe(data => {
       this.item_units = data;
-      console.log("units::::", this.item_units);
     });
     this._servie.index(API_URL.CATEGORY.GETALL).subscribe(data => {
       this.categories = data;
-      console.log("Categories::::::", this.categories);
     });
   }
 }
