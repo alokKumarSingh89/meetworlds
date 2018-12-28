@@ -8,12 +8,13 @@ import { BranchRequest, BranchActionType, BranchSuceess } from "../actions/branc
 import { mergeMap, map, catchError, tap } from "rxjs/operators";
 import { StoreModel } from "@app/models/store.model";
 import { AddError, RemoveError } from "../actions/errors.action";
+import { ApiService } from "@app/auth/api.service";
 
 @Injectable()
 export class BranchEffect {
   constructor(
     private _action$: Actions,
-    private _branchService: StoreService,
+    private _api: ApiService,
     private _store: Store<AppState>
   ) {}
 
@@ -21,7 +22,7 @@ export class BranchEffect {
   fetchBranch$: Observable<Action> = this._action$.pipe(
     ofType<BranchRequest>(BranchActionType.BRANCH_REQUEST),
     tap(()=>this._store.dispatch(new RemoveError())),
-    mergeMap((action: BranchRequest) => this._branchService.getBranchs().pipe(
+    mergeMap((action: BranchRequest) => this._api.index(action.url).pipe(
         map((store:StoreModel)=>new BranchSuceess(store)),
         catchError(err=>of(new AddError(err)))
     ))

@@ -28,6 +28,10 @@ export const routes: Routes = [
       },
       {
         path: "settings",
+        data:{
+          role:'SuperAdmin'
+        },
+        canActivate:[RoleGuard],
         loadChildren: "@app/settings/settings.module#SettingsModule"
       },
       {

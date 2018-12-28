@@ -4,7 +4,7 @@ export interface RoleState {
   roles: any;
 }
 const initialState: RoleState = {
-  roles:[]
+  roles:null
 };
 
 export const roleReducer: (

@@ -1,66 +1,81 @@
 <mat-card>
   <mat-card-content>
-    <form class="form" [formGroup]="userForm">
+    <form class="form" [formGroup]="userForm" (ngSubmit)="createUser()">
       <div class="row">
-        <div class="col-sm-6 offset-sm-3 form-group">
+        <div class="col-sm-10 offset-sm-1 form-group">
           <div>
             <h3>Add New User</h3>
           </div>
           <mat-divider></mat-divider>
-          <div class="">
-            <mat-form-field>
-              <input matInput placeholder="Email" formControlName="email" />
-              <mat-error *ngFor="let validation of error.email">
-                <mat-error class="error-message" *ngIf="
-                    userForm.get('email').hasError(validation.type) &&
-                    (userForm.get('email').dirty ||
-                      userForm.get('email').touched)
-                  ">{{
-                  validation.message }}
+          <div class="row">
+            <div class="col-sm-6">
+              <mat-form-field class="input-field">
+                <input matInput placeholder="Email" formControlName="email" />
+                <mat-error *ngFor="let validation of error.email">
+                  <mat-error *ngIf="userForm.get('email').hasError(validation.type)">
+                    {{validation.message }}
+                  </mat-error>
                 </mat-error>
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput placeholder="First Name" formControlName="first_name" />
-              <mat-error *ngFor="let validation of error.first_name">
-                <mat-error class="error-message" *ngIf="
-                    userForm.get('first_name').hasError(validation.type) &&
-                    (userForm.get('first_name').dirty ||
-                      userForm.get('first_name').touched)
-                  ">{{
-                  validation.message }}
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field class="input-field">
+                <input matInput placeholder="First Name" formControlName="first_name" />
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field class="input-field">
+                <input matInput placeholder="Last Name" formControlName="last_name" />
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field class="input-field">
+                <input matInput placeholder="Password" formControlName="PASSWORD" type="password" />
+                <mat-error *ngFor="let validation of error.PASSWORD">
+                  <mat-error class="error-message" *ngIf="
+                    userForm.get('PASSWORD').hasError(validation.type)">{{
+                    validation.message }}
+                  </mat-error>
                 </mat-error>
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput placeholder="Last Name" formControlName="last_name" />
-              <mat-error *ngFor="let validation of error.last_name">
-                <mat-error class="error-message" *ngIf="
-                    userForm.get('last_name').hasError(validation.type) &&
-                    (userForm.get('last_name').dirty ||
-                      userForm.get('last_name').touched)
-                  ">{{
-                  validation.message }}
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field class="input-field">
+                <mat-select placeholder="Select Role" [(value)]="user_role" *ngIf="roleList" formControlName="user_role">
+                  <mat-option *ngFor="let roles of roleList" [value]="roles.name">
+                    {{roles.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngFor="let validation of error.user_role">
+                  <mat-error class="error-message" *ngIf="
+                      userForm.get('user_role').hasError(validation.type)">{{
+                    validation.message }}
+                  </mat-error>
                 </mat-error>
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput placeholder="Password" formControlName="PASSWORD" />
-              <mat-error *ngFor="let validation of error.PASSWORD">
-                <mat-error class="error-message" *ngIf="
-                    userForm.get('PASSWORD').hasError(validation.type) &&
-                    (userForm.get('PASSWORD').dirty ||
-                      userForm.get('PASSWORD').touched)
-                  ">{{
-                  validation.message }}
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field class="input-field">
+                <mat-select placeholder="Select Branch" [(value)]="branch_id" *ngIf="branchList" formControlName="branch_id">
+                  <mat-option *ngFor="let branch of branchList" [value]="branch.id">
+                    {{branch.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngFor="let validation of error.branch_id">
+                  <mat-error class="error-message" *ngIf="
+                      userForm.get('branch_id').hasError(validation.type)">{{
+                    validation.message }}
+                  </mat-error>
                 </mat-error>
-              </mat-error>
-            </mat-form-field>
+              </mat-form-field>
+            </div>
           </div>
           <div class="row">
-            <div class="col-sm-8 offset-sm-7">
-              <button mat-raised-button color="primary">Save</button>
-              <button mat-raised-button>Clear</button>
+            <div class="col-sm-8">
+              <div class="action">
+                <button mat-raised-button>Clear</button>
+                <button mat-raised-button color="primary" [disabled]="userForm.invalid">Save</button>
+              </div>
             </div>
           </div>
         </div>

@@ -33,4 +33,8 @@ export class AuthService {
     return this._http.get(`${this.api}/whoami`,{headers:{authorization:`Bearer ${this.token}`}
     })
   }
+  logOut(){
+    localStorage.clear();
+    return true;
+  }
 }

@@ -8,4 +8,5 @@ export interface User{
     last_name?:string;
     user_role:string;
     token?:string;
+    branch_id?:string;
 }
