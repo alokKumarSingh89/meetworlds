@@ -18,10 +18,13 @@ export class DashboardComponent implements OnInit {
   activeEvent = null;
   currentBranch = null;
   ngOnInit() {
-    
-    this._store.pipe(select(store=>store.auth.user)).subscribe(user=>{
-      let role = user.user_role;
-      this.menu = getMenuList(role)
+
+    this._store.pipe(select(store => store.auth.user)).subscribe(user => {
+      if (user) {
+        let role = user.user_role;
+        this.menu = getMenuList(role)
+      }
+
     })
     this._store.dispatch(new LoadOrganisation());
     this._store.select("branch").subscribe(branch => {
