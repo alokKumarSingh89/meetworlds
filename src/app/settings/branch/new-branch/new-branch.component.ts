@@ -5,7 +5,7 @@ import { error_message } from "./error-message";
 import { ApiService } from "@app/auth/api.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AppState } from "@app/store/app-store.module";
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
 import API_URL from "@app/constants/UrlConstant";
 
 @Component({
@@ -64,8 +64,13 @@ export class NewBranchComponent implements OnInit {
       ]),
       message: this.fb.control("")
     });
-    this._store.select("organisation").subscribe((org: any) => {
-      this.org_id = org.organisation.id;
-    });
+    this._store
+      .pipe(select(store => store.organisation.organisation))
+      .subscribe((organisation: any) => {
+        if (organisation) {
+          this.org_id = organisation.id;
+          console.log(this.org_id);
+        }
+      });
   }
 }

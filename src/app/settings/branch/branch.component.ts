@@ -3,7 +3,7 @@ import { ApiService } from "@app/auth/api.service";
 import { SelectionModel } from "@angular/cdk/collections";
 import { MatTableDataSource } from "@angular/material";
 import { AppState } from "@app/store/app-store.module";
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
 import API_URL from "@app/constants/UrlConstant";
 
 @Component({
@@ -14,7 +14,7 @@ import API_URL from "@app/constants/UrlConstant";
 export class BranchComponent implements OnInit {
   constructor(private _api: ApiService, private _store: Store<AppState>) {}
   branch: any;
-  isAddBranch: boolean;
+  isAddBranch: boolean = false;
   displayedColumns: string[] = [
     "NAME",
     "PINCODE",
@@ -45,11 +45,13 @@ export class BranchComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this._store.select("organisation").subscribe((org: any) => {
-      if (org.organisation.id) {
-        this.isAddBranch = true;
-      }
-    });
+    this._store
+      .pipe(select(store => store.organisation.organisation))
+      .subscribe((organisation: any) => {
+        if (organisation) {
+          this.isAddBranch = true;
+        }
+      });
     this.fetchBranch();
   }
 }
