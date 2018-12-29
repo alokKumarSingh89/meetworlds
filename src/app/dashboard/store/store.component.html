@@ -1,28 +1,4 @@
 <div class="container-fluid font-family">
-  <div class="row">
-    <div class="col-sm">
-      <nb-card>
-        <nb-card-body>
-          <mat-form-field style="margin-right: 26px;width: 27%;">
-            <div class="text-color">Store</div>
-            <mat-select [(value)]="stores.currentStore && stores.currentStore.value">
-              <mat-option *ngFor="let store of stores.store" [value]="store.value">
-                {{store.value}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field style="margin-right: 26px;width: 27%;">
-            <div class="text-color">Branch</div>
-            <mat-select [(value)]="stores.currentBranch" (selectionChange)="branchChange(stores.currentBranch)">
-              <mat-option *ngFor="let branch of stores.branchs" [value]="branch.ADDRESS">
-                {{branch.ADDRESS}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </nb-card-body>
-      </nb-card>
-    </div>
-  </div>
   <div class="row justify-content-between">
     <div class="col-sm-4">
       <span class="heading"> branch dashboard</span>

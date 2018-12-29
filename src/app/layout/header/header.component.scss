@@ -122,3 +122,25 @@
     }
   }
 }
+
+.header-droupdown{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 3.2em;
+  align-items: center;
+}
+.header-droupdown div{
+  font-size: 1.1rem;
+  font-weight: 500;
+  width: 3.5em;
+  color: #e3e9ee;
+}
+.header-droupdown .mat-select{
+  display: inline-block;
+  width: 10em;
+  outline: 0;
+  background: #86bbef;
+  padding: .3em;
+  border-radius: 5px;
+}

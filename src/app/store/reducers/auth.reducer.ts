@@ -2,7 +2,7 @@ import { User } from "@app/models/user.model";
 import { Action, AuthActionType } from "@app/store/actions/auth.action";
 
 export interface AuthState {
-  user: User | null;
+  user: User;
   userList: any;
 }
 const initialState: AuthState = {

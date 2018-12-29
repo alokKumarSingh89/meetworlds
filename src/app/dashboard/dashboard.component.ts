@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
         if(user.user_role == "SuperAdmin"){
           this._store.dispatch(new BranchRequest(API_URL.BRANCH.GETALL))
         }else{
-          this._store.dispatch(new BranchRequest(API_URL.BRANCH.GETONE+"/"+user.branch_id))
+          this._store.dispatch(new BranchRequest(API_URL.BRANCH.GETONE+""+user.branch_id))
         }
       }
 

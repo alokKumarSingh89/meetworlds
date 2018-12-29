@@ -14,7 +14,12 @@ import { AuthService } from '@app/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
   user: User;
-  constructor(private _auth:AuthService, private sidebarService: NbSidebarService, private route: Router, private _store: Store<AppState>, private _menuService: NbMenuService) { }
+  organisationName: string;
+  branches: any = {
+    currentBranch: "",
+    branchList: []
+  };
+  constructor(private _auth: AuthService, private sidebarService: NbSidebarService, private route: Router, private _store: Store<AppState>, private _menuService: NbMenuService) { }
   toggleSidebar(): boolean {
     this.sidebarService.toggle(true, 'menu-sidebar');
     return false;
@@ -25,8 +30,28 @@ export class HeaderComponent implements OnInit {
   userMenu = [{ title: 'Profile', data: { id: 'profile' } }, { title: 'Log out', data: { id: 'logout' } }];
   ngOnInit() {
     this._store.dispatch(new GetWhoIm());
+    this._store.pipe(select(store => store.error.error)).subscribe(error => {
+      if (error && error.tokenStatus) {
+        this._auth.logOut();
+        window.location.reload()
+      }
+    })
+    this._store.pipe(select(store => store.organisation.organisation)).subscribe(org => {
+      if (org)
+        this.organisationName = org.name;
+    })
+    this._store.pipe(select(store => store.branch.branches.currentBranch)).subscribe(currentBranch => {
+      if (currentBranch) {
+        this.branches.currentBranch = currentBranch;
+      }
+    })
+    this._store.pipe(select(store => store.branch.branches.branchList)).subscribe(branchList => {
+      if (branchList) {
+        this.branches.branchList = branchList;
+      }
+      console.log(this.branches)
+    })
     this._menuService.onItemClick()
-      // .pipe(filter(({tag})=>tag === 'my-context-menu'))
       .subscribe((item: any) => {
         if (item.item.data.id === "logout") {
           this._auth.logOut();

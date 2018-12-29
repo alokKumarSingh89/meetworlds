@@ -71,7 +71,7 @@ export class AuthEffects {
     mergeMap((action: GetWhoIm) =>
       this._authService.whoami().pipe(
         map((user: User) => new SetCurrentUser(user)),
-        catchError(err => of(new AddError(err)))
+        catchError(err => of(new AddError({tokenStatus:true})))
       )
     )
   );

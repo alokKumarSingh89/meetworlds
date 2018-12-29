@@ -13,7 +13,7 @@ const MENU_ITEMS = [
     title: "Sales",
     icon: "nb-keypad",
     link: "/dashboard",
-    role:["SuperAdmin","StoreManager","Manager"],
+    role:["SuperAdmin","Manager"],
     children: [
       { title: "Store", link: "sales/store" },
       { title: "Sample Formate", link: "sales/sample-formate" }
@@ -22,7 +22,7 @@ const MENU_ITEMS = [
   {
     title: "CATALOGUE",
     icon: "nb-compose",
-    role:["SuperAdmin","StoreManager","Manager"],
+    role:["SuperAdmin","Manager"],
     children: [
       { title: "Items", link: "items" },
       { title: "Categories", link: "items/category" }
@@ -42,7 +42,7 @@ const MENU_ITEMS = [
   {
     title: "Accounting",
     icon: "nb-location",
-    role:["SuperAdmin","StoreManager","Manager"],
+    role:["SuperAdmin","Manager"],
     children: [
       { title: "Tax Types", link: "accounting/tax-types" },
       { title: "Tax Payable Items", link: "accounting/tax-payable-items" },
@@ -54,7 +54,7 @@ const MENU_ITEMS = [
   {
     title: "Vouchers",
     icon: "nb-bar-chart",
-    role:["SuperAdmin","StoreManager","Manager"],
+    role:["SuperAdmin","Manager"],
     children: [
       { title: "Pretty cash", link: "vouchers/pretty-cash" },
       { title: "Credit Line", link: "vouchers/credit-line" },

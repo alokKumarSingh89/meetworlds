@@ -1,13 +1,24 @@
 <div class="header-container left">
   <div class="logo-containter">
     <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
-    <div class="logo" (click)="goToHome()">Meat World</div>
+    <div class="logo" (click)="goToHome()" *ngIf="organisationName">{{organisationName}}</div>
+    <div *ngIf="branches.currentBranch" class="header-droupdown">
+      <div>Branch</div>
+      <select>
+        <option *ngFor="let branch of branches.branchList" value="{{branch.id}}">{{branch.name}}</option>
+      </select>
+      <!-- <mat-select [(value)]="branches.currentBranch" (selectionChange)="branchChange(branches.currentBranch.id)">
+        <mat-option *ngFor="let branch of branches.branchList" [value]="branch.id">
+          {{branch.name}}
+        </mat-option>
+      </mat-select> -->
+    </div>
   </div>
 </div>
 
 <div class="header-container" *ngIf="user">
-  <nb-actions size="medium" >
-    <nb-action *nbIsGranted="['view', 'user']" >
+  <nb-actions size="medium">
+    <nb-action *nbIsGranted="['view', 'user']">
       <nb-user [nbContextMenu]="userMenu" name="{{user.first_name+' '+user.last_name}}" (picture)="user?.picture"></nb-user>
     </nb-action>
   </nb-actions>

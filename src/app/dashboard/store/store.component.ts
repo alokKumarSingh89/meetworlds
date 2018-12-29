@@ -24,7 +24,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ["./store.component.css"]
 })
 export class StoreComponent implements OnInit {
-  stores: StoreModel = {};
+  stores: any = {};
   constructor(private _store: Store<AppState>) {}
 
   displayedColumns: string[] = ["position", "name", "weight"];
@@ -33,11 +33,6 @@ export class StoreComponent implements OnInit {
     this._store.dispatch(new UpdateBranch(value));
   }
   ngOnInit() {
-    this._store.dispatch(new BranchRequest());
-    this._store.select("branch").subscribe(branch => {
-      if (branch.branchs)
-        this.stores = branch.branchs as any;
-      console.log(this.stores)
-    });
+    
   }
 }
