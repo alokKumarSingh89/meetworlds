@@ -13,6 +13,9 @@
                   (ngSubmit)="submit()"
                 >
                   <div class="col-12">
+                    <div *ngIf="status_message">
+                        <ngb-alert (type)="status_message == 'SUCCESS'?success:danger">{{ status_message.message }}</ngb-alert>
+                    </div>
                     <mat-form-field class="login-full-width">
                       <input
                         matInput

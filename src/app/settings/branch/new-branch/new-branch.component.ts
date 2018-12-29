@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { AppState } from "@app/store/app-store.module";
 import { Store, select } from "@ngrx/store";
 import API_URL from "@app/constants/UrlConstant";
+import { CreateBranchRequest } from "@app/store/actions/branch.action";
 
 @Component({
   selector: "app-new-branch",
@@ -17,22 +18,17 @@ export class NewBranchComponent implements OnInit {
   formData: FormGroup;
   error: any;
   org_id: number;
+  status_message: any = null;
   constructor(
     private fb: FormBuilder,
     private _servie: ApiService,
     private _route: ActivatedRoute,
     private router: Router,
     private _store: Store<AppState>
-  ) {}
+  ) { }
   submit() {
-    this._servie
-      .create(API_URL.BRANCH.POST, {
-        ...this.formData.value,
-        org_id: this.org_id
-      })
-      .subscribe(response => {
-        window.history.back();
-      });
+    let data = { ...this.formData.value, org_id: this.org_id }
+    this._store.dispatch(new CreateBranchRequest(API_URL.BRANCH.POST, data));
   }
   goTobranch() {
     this.router.navigate(["/dashboard/settings/branch"]);
@@ -69,8 +65,15 @@ export class NewBranchComponent implements OnInit {
       .subscribe((organisation: any) => {
         if (organisation) {
           this.org_id = organisation.id;
-          console.log(this.org_id);
         }
       });
+    this._store.pipe(select(store => store.branch.status)).subscribe(status => {
+      this.status_message = status;
+      if (status && status.type == "SUCCESS") {
+        setTimeout(() => {
+          window.history.back();
+        }, 1000);
+      }
+    })
   }
 }

@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { Routes, RouterModule } from "@angular/router";
 import { AppMatModule } from "@app/app-mat/app-mat.module";
 import { NbCardModule } from "@nebular/theme";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OrganisationComponent } from "./organisation/organisation.component";
 import { NewOrganisationComponent } from "./organisation/new-organisation/new-organisation.component";
 import { FileUploadComponent } from "@app/util/file-upload/file-upload.component";
@@ -70,9 +71,10 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    NgbModule,
     RouterModule.forChild(routes),
     AppMatModule,
-    NbCardModule
+    NbCardModule,
   ],
   exports: [RouterModule],
   declarations: [
