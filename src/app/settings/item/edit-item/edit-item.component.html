@@ -14,124 +14,150 @@
                 >
                   <div class="col-4">
                     <app-file-upload
+                      *ngIf="formData && formData.get('id').value"
                       name="image_path"
                       (fileUpload)="setFile($event)"
+                      path="assets/item/"
+                      [filename]="formData.get('image_path').value"
                     ></app-file-upload>
                   </div>
-                  <div class="col-8 row">
-                    <div class="col-6">
-                      <mat-form-field class="input-full-width">
-                        <mat-select
-                          [(value)]="category_id"
-                          formControlName="category_id"
-                          placeholder="Category"
+
+                  <div class="col-8">
+                    <mat-form-field class="input-full-width">
+                      <mat-select
+                        formControlName="category_id"
+                        placeholder="Category"
+                      >
+                        <mat-option
+                          *ngFor="let item of categories"
+                          [value]="item.id"
                         >
-                          <mat-option
-                            *ngFor="let item of categories"
-                            [value]="item.id"
-                          >
-                            {{ item.name }}</mat-option
-                          >
-                        </mat-select>
-                      </mat-form-field>
-
-                      <mat-form-field class="input-full-width">
-                        <input
-                          matInput
-                          placeholder="Quantity"
-                          formControlName="quantity"
-                        />
-                        <mat-error *ngFor="let validation of error.quantity">
-                          <mat-error
-                            class="error-message"
-                            *ngIf="
-                              formData
-                                .get('quantity')
-                                .hasError(validation.type) &&
-                              (formData.get('quantity').dirty ||
-                                formData.get('quantity').touched)
-                            "
-                            >{{ validation.message }}
-                          </mat-error>
+                          {{ item.name }}</mat-option
+                        >
+                      </mat-select>
+                      <mat-error *ngFor="let validation of error.category">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData
+                              .get('category_id')
+                              .hasError(validation.type) &&
+                            (formData.get('category_id').dirty ||
+                              formData.get('category_id').touched)
+                          "
+                          >{{ validation.message }}
                         </mat-error>
-                      </mat-form-field>
-                      <mat-form-field class="input-full-width">
-                        <input
-                          matInput
-                          placeholder="Available Price per Quantity"
-                          formControlName="available_q_p"
-                        />
-                      </mat-form-field>
-                    </div>
-                    <div class="col-6">
-                      <mat-form-field class="input-full-width">
-                        <input
-                          matInput
-                          placeholder="Name"
-                          formControlName="name"
-                        />
-                        <mat-error *ngFor="let validation of error.name">
-                          <mat-error
-                            class="error-message"
-                            *ngIf="
-                              formData.get('name').hasError(validation.type) &&
-                              (formData.get('name').dirty ||
-                                formData.get('name').touched)
-                            "
-                            >{{ validation.message }}
-                          </mat-error>
-                        </mat-error>
-                      </mat-form-field>
-                      <div class="row">
-                        <mat-form-field class="input-full-width">
-                          <mat-select
-                            formControlName="unit_id"
-                            placeholder="Unit"
-                          >
-                            <mat-option
-                              *ngFor="let item of item_units"
-                              [value]="item.id"
-                            >
-                              {{ item.name }}</mat-option
-                            >
-                          </mat-select>
-                        </mat-form-field>
-
-                        <mat-form-field class="input-full-width">
-                          <input
-                            matInput
-                            placeholder="Price"
-                            formControlName="price"
-                          />
-                          <mat-error *ngFor="let validation of error.price">
-                            <mat-error
-                              class="error-message"
-                              *ngIf="
-                                formData
-                                  .get('price')
-                                  .hasError(validation.type) &&
-                                (formData.get('price').dirty ||
-                                  formData.get('price').touched)
-                              "
-                              >{{ validation.message }}
-                            </mat-error>
-                          </mat-error>
-                        </mat-form-field>
-                        <mat-form-field class="input-full-width">
-                          <input
-                            matInput
-                            placeholder="Cut Type"
-                            formControlName="cut_type"
-                          />
-                        </mat-form-field>
-                      </div>
-                    </div>
+                      </mat-error>
+                    </mat-form-field>
 
                     <mat-form-field class="input-full-width">
                       <input
                         matInput
-                        placeholder="Description"
-                        formControlName="description"
+                        placeholder="Name"
+                        formControlName="name"
+                      />
+                      <mat-error *ngFor="let validation of error.name">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData.get('name').hasError(validation.type) &&
+                            (formData.get('name').dirty ||
+                              formData.get('name').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="input-full-width">
+                      <input
+                        matInput
+                        placeholder="Quantity"
+                        formControlName="quantity"
+                      />
+                      <mat-error *ngFor="let validation of error.quantity">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData
+                              .get('quantity')
+                              .hasError(validation.type) &&
+                            (formData.get('quantity').dirty ||
+                              formData.get('quantity').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
+                      <mat-error *ngFor="let validation of error.quantity">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData
+                              .get('quantity')
+                              .hasError(validation.type) &&
+                            (formData.get('quantity').dirty ||
+                              formData.get('quantity').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="input-full-width">
+                      <mat-select formControlName="unit_id" placeholder="Unit">
+                        <mat-option
+                          *ngFor="let item of item_units"
+                          [value]="item.id"
+                        >
+                          {{ item.name }}</mat-option
+                        >
+                      </mat-select>
+
+                      <mat-error *ngFor="let validation of error.unit">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData.get('unit_id').hasError(validation.type) &&
+                            (formData.get('unit_id').dirty ||
+                              formData.get('unit_id').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="input-full-width">
+                      <input
+                        matInput
+                        placeholder="Price"
+                        formControlName="price"
+                      />
+                      <mat-error *ngFor="let validation of error.price">
+                        <mat-error
+                          class="error-message"
+                          *ngIf="
+                            formData.get('price').hasError(validation.type) &&
+                            (formData.get('price').dirty ||
+                              formData.get('price').touched)
+                          "
+                          >{{ validation.message }}
+                        </mat-error>
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="input-full-width">
+                      <input
+                        matInput
+                        placeholder="Available Price per Quantity"
+                        formControlName="available_q_p"
+                      />
+                    </mat-form-field>
+
+                    <mat-form-field class="input-full-width">
+                      <input
+                        matInput
+                        placeholder="Cut Type"
+                        formControlName="cut_type"
                       />
                     </mat-form-field>
 
@@ -140,6 +166,14 @@
                         matInput
                         placeholder="Spec"
                         formControlName="spec"
+                      />
+                    </mat-form-field>
+
+                    <mat-form-field class="input-full-width">
+                      <input
+                        matInput
+                        placeholder="Description"
+                        formControlName="description"
                       />
                     </mat-form-field>
 
