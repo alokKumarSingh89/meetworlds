@@ -17,8 +17,6 @@ export class EditItemComponent implements OnInit {
   file: any;
   item_units: any;
   categories: any;
-  selectedItemUnit: string;
-  selectedCategory: string;
 
   constructor(
     private fb: FormBuilder,
@@ -26,10 +24,10 @@ export class EditItemComponent implements OnInit {
     private _route: ActivatedRoute,
     private router: Router
   ) {}
-  submit() {
+  update() {
     this._servie
       .update(
-        API_URL.Item.PUT,
+        API_URL.Item.PUT + this._route.snapshot.paramMap.get("id"),
         {
           ...this.formData.value,
           file: this.file
@@ -51,25 +49,34 @@ export class EditItemComponent implements OnInit {
     this.error = error_message;
     let id = this._route.snapshot.paramMap.get("id");
     this.formData = this.fb.group({
-      category_id: this.fb.control(""),
+      category_id: this.fb.control("", [Validators.required]),
+      id: this.fb.control(""),
       name: this.fb.control("", [Validators.required, validateWhiteSpace]),
-      quantity: this.fb.control(""),
+      quantity: this.fb.control("", [
+        Validators.required,
+        Validators.pattern("^[0-9]\\d{0,7}(\\.\\d{1,2})?%?$")
+      ]),
       unit_id: this.fb.control(""),
-      price: this.fb.control(""),
+      price: this.fb.control("", [
+        Validators.required,
+        Validators.pattern("^[0-9]\\d{0,7}(\\.\\d{1,2})?%?$")
+      ]),
       available_q_p: this.fb.control(""),
       description: this.fb.control(""),
       cut_type: this.fb.control(""),
       image_path: this.fb.control(""),
       spec: this.fb.control("")
     });
-    this._servie.index(API_URL.CATEGORY.GETONE + id).subscribe(data => {
-      this.formData.setValue(data);
-    });
     this._servie.index(API_URL.ItemUnit.GETALL).subscribe(data => {
       this.item_units = data;
     });
     this._servie.index(API_URL.CATEGORY.GETALL).subscribe(data => {
       this.categories = data;
+    });
+    this._servie.index(API_URL.Item.GETONE + id).subscribe(data => {
+      delete data.category;
+      delete data.unit;
+      this.formData.setValue(data);
     });
   }
 }

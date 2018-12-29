@@ -48,11 +48,19 @@ export class NewItemComponent implements OnInit {
   ngOnInit() {
     this.error = error_message;
     this.formData = this.fb.group({
-      category_id: this.fb.control(""),
+      category_id: this.fb.control("", [Validators.required]),
       name: this.fb.control("", [Validators.required, validateWhiteSpace]),
-      quantity: this.fb.control(""),
-      unit_id: this.fb.control(""),
-      price: this.fb.control(""),
+      quantity: this.fb.control("", [
+        Validators.required,
+        validateWhiteSpace,
+        Validators.pattern("^[0-9]\\d{0,7}(\\.\\d{1,2})?%?$")
+      ]),
+      unit_id: this.fb.control("", [Validators.required]),
+      price: this.fb.control("", [
+        Validators.required,
+        validateWhiteSpace,
+        Validators.pattern("^[0-9]\\d{0,7}(\\.\\d{1,2})?%?$")
+      ]),
       available_q_p: this.fb.control(""),
       description: this.fb.control(""),
       cut_type: this.fb.control(""),

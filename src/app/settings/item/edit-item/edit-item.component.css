@@ -1,0 +1,14 @@
+.input-full-width {
+  width: 100%;
+}
+
+.centerAlign {
+  text-align: center;
+  padding: 2em;
+}
+.centerAlign h2 {
+  color: #1888f6;
+}
+.input-form {
+  padding-top: 1em;
+}
