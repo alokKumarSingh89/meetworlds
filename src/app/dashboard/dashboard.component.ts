@@ -4,6 +4,8 @@ import { StoreModel } from "../models/store.model";
 import { Store, select } from "@ngrx/store";
 import { AppState } from "@app/store/app-store.module";
 import { LoadOrganisation } from "@app/store/actions/organisation.action";
+import { BranchRequest } from "@app/store/actions/branch.action";
+import API_URL from "@app/constants/UrlConstant";
 
 @Component({
   selector: "app-dashboard",
@@ -12,7 +14,6 @@ import { LoadOrganisation } from "@app/store/actions/organisation.action";
 })
 export class DashboardComponent implements OnInit {
   menu;
-  stores: StoreModel = {};
   constructor(private _store: Store<AppState>) { }
   branchSelect = false;
   activeEvent = null;
@@ -22,16 +23,16 @@ export class DashboardComponent implements OnInit {
     this._store.pipe(select(store => store.auth.user)).subscribe(user => {
       if (user) {
         let role = user.user_role;
-        this.menu = getMenuList(role)
+        this.menu = getMenuList(role);
+        if(user.user_role == "SuperAdmin"){
+          this._store.dispatch(new BranchRequest(API_URL.BRANCH.GETALL))
+        }else{
+          this._store.dispatch(new BranchRequest(API_URL.BRANCH.GETONE+""+user.branch_id))
+        }
       }
 
     })
     this._store.dispatch(new LoadOrganisation());
-    this._store.select("branch").subscribe(branch => {
-      if (branch.branchs)
-        this.stores = {
-          currentBranch: branch.branchs.currentBranch as any
-        };
-    });
+    
   }
 }

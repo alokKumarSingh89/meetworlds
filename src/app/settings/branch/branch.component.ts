@@ -5,6 +5,7 @@ import { MatTableDataSource } from "@angular/material";
 import { AppState } from "@app/store/app-store.module";
 import { Store, select } from "@ngrx/store";
 import API_URL from "@app/constants/UrlConstant";
+import { BranchRequest } from "@app/store/actions/branch.action";
 
 @Component({
   selector: "app-branch",
@@ -34,7 +35,7 @@ export class BranchComponent implements OnInit {
     );
     if (isConfirm) {
       this._api.delete(API_URL.BRANCH.DELETE + id).subscribe(respose => {
-        this.fetchBranch();
+        this._store.dispatch(new BranchRequest(API_URL.BRANCH.GETALL));
       });
     }
   }
@@ -52,6 +53,10 @@ export class BranchComponent implements OnInit {
           this.isAddBranch = true;
         }
       });
-    this.fetchBranch();
+    this._store
+      .pipe(select(store => store.branch.branches.branchList))
+      .subscribe(list => {
+        this.dataSource = new MatTableDataSource<any>(list);
+      });
   }
 }

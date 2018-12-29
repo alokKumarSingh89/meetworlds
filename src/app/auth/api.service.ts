@@ -18,10 +18,7 @@ export class ApiService {
     body?: any
   ): Observable<any> {
     const url = `${this.api}/${endpoint}`;
-    return this._http.request(method, url, {
-      body
-      // headers: { authorization: `Bearer ${this._auth.token}` }
-    });
+    return this._http.request(method, url, { body });
   }
 
   getUsers(page?: string): Observable<User[]> {
@@ -42,7 +39,6 @@ export class ApiService {
       return this.request("POST", url, form);
     }
     return this.request("POST", url, data);
-    //return this._http.post(`${this.api}/organisation/create`,{body:data});
   }
   index(url): Observable<any> {
     return this.request("GET", url);

@@ -24,9 +24,6 @@ import { HeaderComponent } from "../layout/header/header.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { StoreComponent } from "./store/store.component";
 
-import { SaleStoreComponent } from "../sales/store/store.component";
-import { SampleFormateComponent } from "../sales/sample-formate/sample-formate.component";
-
 import { FileDatabase } from "../items/category/category.component";
 
 import { AppMatModule } from "../app-mat/app-mat.module";
@@ -67,9 +64,7 @@ import { StoreService } from "./store/store.service";
   declarations: [
     DashboardComponent,
     HeaderComponent,
-    StoreComponent,
-    SaleStoreComponent,
-    SampleFormateComponent
+    StoreComponent
   ],
   providers: [
     FileDatabase,

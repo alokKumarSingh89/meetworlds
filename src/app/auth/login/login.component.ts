@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
 import { AppState } from "@app/store/app-store.module";
 import { validateWhiteSpace } from "@app/util/validators";
 import { error_message } from "./error-message";
@@ -49,8 +49,8 @@ export class LoginComponent implements OnInit {
         validateWhiteSpace
       ])
     });
-    this._store.select('auth').subscribe((auth:any)=>{
-      this._auth.token = auth.user?auth.user.token:null;
+    this._store.pipe(select(store=>store.auth.user)).subscribe(user=>{
+      this._auth.token = user?user.token:null;
       if(this._auth.token){
         this.router.navigate([this.returnUrl]);
       }

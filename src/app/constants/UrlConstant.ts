@@ -35,7 +35,9 @@ const API_URL = {
     DELETE: "item_unit/"
   },
   USER: {
-    ROLE: "roles"
+    ROLE: "roles",
+    POST: "users/create",
+    GETALL: "users",
   }
 };
 export default API_URL;

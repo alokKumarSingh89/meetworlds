@@ -9,18 +9,24 @@ import {
   SetCurrentUser,
   LoginUser,
   RegisterUser,
-  GetWhoIm
+  GetWhoIm,
+  CreateUser,
+  CreateUserSuccess,
+  FetchAllUser,
+  FetchAllUserSuccess
 } from "../actions/auth.action";
 import { User } from "@app/models/user.model";
 import { AuthService } from "@app/auth/auth.service";
 import { AddError, RemoveError } from "@app/store/actions/errors.action";
 import { AppState } from "../app-store.module";
+import { ApiService } from "@app/auth/api.service";
 
 @Injectable()
 export class AuthEffects {
   constructor(
     private action$: Actions,
     private _authService: AuthService,
+    private _api:ApiService,
     private _store: Store<AppState>
   ) {}
   @Effect()
@@ -65,6 +71,28 @@ export class AuthEffects {
     mergeMap((action: GetWhoIm) =>
       this._authService.whoami().pipe(
         map((user: User) => new SetCurrentUser(user)),
+        catchError(err => of(new AddError({tokenStatus:true})))
+      )
+    )
+  );
+  @Effect()
+  createUser$: Observable<Action> = this.action$.pipe(
+    ofType<CreateUser>(AuthActionType.CREATE_USER),
+    tap(() => this._store.dispatch(new RemoveError())),
+    mergeMap((action: CreateUser) =>
+      this._api.create(action.url,action.formData).pipe(
+        map((store:any)=>new CreateUserSuccess(store)),
+        catchError(err => of(new AddError(err)))
+      )
+    )
+  );
+  @Effect()
+  loadUser$: Observable<Action> = this.action$.pipe(
+    ofType<FetchAllUser>(AuthActionType.LOAD_ALL_USER),
+    tap(() => this._store.dispatch(new RemoveError())),
+    mergeMap((action: FetchAllUser) =>
+      this._api.index(action.url).pipe(
+        map((store:any)=>new FetchAllUserSuccess(store)),
         catchError(err => of(new AddError(err)))
       )
     )

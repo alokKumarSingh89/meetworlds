@@ -19,6 +19,8 @@ export class RoleGuard implements CanActivate {
         if (data && data[0]) {
           let user = data[0]
           return user.user_role === next.data.role;
+        }else{
+          return false;
         }
       })
     )

@@ -9,7 +9,7 @@ export enum BranchActionType{
 }
 export class BranchRequest implements Action{
     readonly type=BranchActionType.BRANCH_REQUEST;
-    constructor(){}
+    constructor(public url:any){}
 }
 export class BranchSuceess implements Action{
     readonly type=BranchActionType.BRANCH_SUCCESS;
