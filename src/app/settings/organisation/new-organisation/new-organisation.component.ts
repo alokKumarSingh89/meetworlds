@@ -1,10 +1,13 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { validateWhiteSpace } from "@app/util/validators";
 import { error_message } from "./error-message";
 import { ApiService } from "@app/auth/api.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import API_URL from "@app/constants/UrlConstant";
+import {Store, select} from "@ngrx/store";
+import {AppState} from "@app/store/app-store.module";
+import {OrganisationCreateRequest, OrganisationChangeStatus} from "@app/store/actions/organisation.action";
 
 @Component({
   selector: "app-new-organisation",
@@ -14,26 +17,20 @@ import API_URL from "@app/constants/UrlConstant";
 export class NewOrganisationComponent implements OnInit {
   formData: FormGroup;
   error: any;
-  file: any;
+	file: any;
+	organisation: any;
+	@Input('flag') flag:boolean
   constructor(
-    private fb: FormBuilder,
-    private _servie: ApiService,
-    private _route: ActivatedRoute,
+		private fb: FormBuilder,
+		private _store: Store<AppState>,
     private router: Router
   ) {}
   submit() {
-    this._servie
-      .create(
-        API_URL.ORGANISATION.POST,
-        {
-          ...this.formData.value,
-          file: this.file
-        },
-        true
-      )
-      .subscribe(response => {
-        window.history.back();
-      });
+    // this._servie.create(API_URL.ORGANISATION.POST,{...this.formData.value,file: this.file},true)
+    //   .subscribe(response => {
+    //     window.history.back();
+		//   });
+		this._store.dispatch(new OrganisationCreateRequest({...this.formData.value,file:this.file},true))
   }
   goToOrganisation() {
     this.router.navigate(["/dashboard/settings/organisation"]);
@@ -42,7 +39,13 @@ export class NewOrganisationComponent implements OnInit {
   setFile(event) {
     this.file = event;
   }
-  ngOnInit() {
+	ngOnInit() {
+		this.organisation = this._store.pipe(select(store => store.organisation)).subscribe(orgs => {
+			if (orgs&&orgs.status=="Success") {
+				this._store.dispatch(new OrganisationChangeStatus())
+				this.router.navigateByUrl("/dashboard/settings/branch/new")
+			}
+		})
     this.error = error_message;
     this.formData = this.fb.group({
       name: this.fb.control("", [Validators.required, validateWhiteSpace]),
@@ -73,5 +76,8 @@ export class NewOrganisationComponent implements OnInit {
       timing: this.fb.control(""),
       logo_path: this.fb.control("")
     });
-  }
+	}
+	ngOnDestroy() {
+		this.organisation.unsubscribe();
+	}
 }

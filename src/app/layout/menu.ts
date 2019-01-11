@@ -12,33 +12,32 @@ const MENU_ITEMS = [
   {
     title: "Sales",
     icon: "nb-keypad",
-    link: "/dashboard",
     role:["SuperAdmin","Manager"],
     children: [
-      { title: "Store", link: "sales/store" },
-      { title: "Sample Formate", link: "sales/sample-formate" }
+			{title: "Store",link: "sales/store"},
+			{ title: "Purchases", link: "sales/purchases" }
     ]
   },
-  {
-    title: "CATALOGUE",
-    icon: "nb-compose",
-    role:["SuperAdmin","Manager"],
-    children: [
-      { title: "Items", link: "items" },
-      { title: "Categories", link: "items/category" }
-    ]
-  },
-  {
-    title: "Inventory",
-    icon: "nb-gear",
-    role:["SuperAdmin","StoreManager","Manager"],
-    children: [
-      { title: "Stock", link: "inventory/stock" },
-      { title: "Purchases", link: "inventory/purchases" },
-      { title: "Transfers", link: "inventory/transfers" },
-      { title: "Audit Report", link: "inventory/audit-report" }
-    ]
-  },
+  // {
+  //   title: "CATALOGUE",
+  //   icon: "nb-compose",
+  //   role:["SuperAdmin","Manager"],
+  //   children: [
+  //     { title: "Items", link: "items" },
+  //     { title: "Categories", link: "items/category" }
+  //   ]
+  // },
+  // {
+  //   title: "Inventory",
+  //   icon: "nb-gear",
+  //   role:["SuperAdmin","StoreManager","Manager"],
+  //   children: [
+  //     { title: "Stock", link: "inventory/stock" },
+  //     { title: "Purchases", link: "inventory/purchases" },
+  //     { title: "Transfers", link: "inventory/transfers" },
+  //     { title: "Audit Report", link: "inventory/audit-report" }
+  //   ]
+  // },
   {
     title: "Accounting",
     icon: "nb-location",
@@ -64,11 +63,11 @@ const MENU_ITEMS = [
   {
     title: "People",
     icon: "nb-title",
-    role:["SuperAdmin"],
+    role:["SuperAdmin","Manager"],
     children: [
-      { title: "Customers", link: "people/customers" },
+      // { title: "Customers", link: "people/customers" },
       { title: "Users", link: "people/users" },
-      { title: "Vendors", link: "people/vendors" }
+      { title: "Supplier", link: "people/supplier" }
     ]
   },
   {
@@ -88,7 +87,7 @@ const MENU_ITEMS = [
     role:["SuperAdmin"],
     children: [
       { title: "Channels Types", link: "settings/channel-types" },
-      { title: "Partners", link: "settings/partners" },
+      // { title: "Partners", link: "settings/partners" },
       { title: "Branch", link: "settings/branch" },
       { title: "Organisation", link: "settings/organisation" },
       { title: "Category", link: "settings/categories" },

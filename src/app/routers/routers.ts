@@ -16,6 +16,10 @@ export const routes: Routes = [
       {
         path: "items",
         loadChildren: "@app/items/items.module#ItemsModule"
+			},
+			{
+        path: "sales",
+        loadChildren: "@app/sales-routing/sales-routing.module#SalesRoutingModule"
       },
       {
         path: "settings",

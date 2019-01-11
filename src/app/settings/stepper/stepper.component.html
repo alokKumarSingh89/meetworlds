@@ -1,0 +1,10 @@
+<mat-horizontal-stepper linear #stepper>
+  <mat-step>
+		<ng-template matStepLabel>Create Organization</ng-template>
+		<app-new-organisation [flag]="true"></app-new-organisation>
+  </mat-step>
+  <mat-step>
+		<ng-template matStepLabel>Create Branch</ng-template>
+		<app-new-branch></app-new-branch>
+  </mat-step>
+</mat-horizontal-stepper>

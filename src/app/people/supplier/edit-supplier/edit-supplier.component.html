@@ -1,0 +1,79 @@
+<mat-card>
+  <mat-card-content>
+    <form class="form" [formGroup]="supplierForm" (ngSubmit)="createSupplier()">
+      <div class="row">
+        <div class="col-sm-10 offset-sm-1 form-group">
+          <div>
+            <h3>Edit New Supplier</h3>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="row">
+            <div class="col-sm-6">
+              <mat-form-field class="input-field">
+                <input matInput placeholder="Supplier Name" formControlName="name" />
+                <mat-error *ngFor="let validation of error.name">
+                  <mat-error *ngIf="supplierForm.get('name').hasError(validation.type)">
+                    {{validation.message }}
+                  </mat-error>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field class="input-field">
+                <input matInput placeholder="Email" formControlName="email_id" />
+                <mat-error *ngFor="let validation of error.email_id">
+                  <mat-error *ngIf="supplierForm.get('email_id').hasError(validation.type)">
+                    {{validation.message }}
+                  </mat-error>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm-6">
+              <mat-form-field class="input-field">
+                <input matInput placeholder="Mobile Number" formControlName="mobile" />
+                <mat-error *ngFor="let validation of error.mobile">
+                  <mat-error *ngIf="supplierForm.get('mobile').hasError(validation.type)">
+                    {{validation.message }}
+                  </mat-error>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field class="input-field">
+                <mat-select placeholder="Select Branch" [(value)]="branch_id" *ngIf="branchList" formControlName="branch_id">
+                  <mat-option *ngFor="let branch of branchList" [value]="branch.id">
+                    {{branch.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field class="input-field">
+                <input matInput placeholder="pincode" formControlName="pincode" type="number" />
+                <mat-error *ngFor="let validation of error.pincode">
+                  <mat-error *ngIf="supplierForm.get('pincode').hasError(validation.type)">
+                    {{validation.message }}
+                  </mat-error>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+              <mat-form-field class="input-field">
+                <input matInput placeholder="Address" formControlName="address" />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="action">
+                <button mat-raised-button>Clear</button>
+                <button mat-raised-button color="primary" [disabled]="supplierForm.invalid">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

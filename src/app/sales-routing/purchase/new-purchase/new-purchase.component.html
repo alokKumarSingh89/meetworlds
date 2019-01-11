@@ -1,0 +1,88 @@
+<div class="container-fluid login-container">
+  <div class="row">
+    <div class="col-12">
+      <mat-card style="padding:0">
+        <mat-card-content>
+          <div class="row">
+            <div class="col-12">
+              <div class="organisation">
+                <h2 style="margin: auto;" class="primary">Place Order</h2>
+                <form class="login-form row" [formGroup]="purchaseOrder" (ngSubmit)="createOrder()">
+                  <div class="col-12 row">
+                    <div class="col-7">
+                      <mat-form-field class="input-field">
+                        <mat-select placeholder="Select Supplier" [(value)]="supplier_id" *ngIf="suppliers"
+                          formControlName="supplier_id">
+                          <mat-option *ngFor="let supplier of suppliers" [value]="supplier.id">
+                            {{supplier.name}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-12" style="margin: 1em 0;" formArrayName="items" *ngFor="let itemForm of purchaseOrder.get('items').controls; let i = index;">
+                      <div [formGroupName]="i" class="row">
+                        <div class="col-1">
+                          <span>Item {{i+1}}</span>
+                        </div>
+                        <div class="col-3">
+                          <mat-form-field class="input-field">
+                            <mat-select placeholder="Select Item" [(value)]="item_id" formControlName="item_id">
+                              <mat-option *ngFor="let item of ItemList" [value]="item.id">
+                                {{item.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-3">
+                          <mat-form-field class="input-field">
+                            <input matInput placeholder="Price" formControlName="price" />
+                            <mat-error *ngFor="let validation of error.price">
+                              <mat-error *ngIf="itemForm.get('price').hasError(validation.type)">
+                                {{validation.message }}
+                              </mat-error>
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-3">
+                          <mat-form-field class="input-field">
+                            <input matInput placeholder="Stock" formControlName="stock" />
+                            <mat-error *ngFor="let validation of error.stock">
+                              <mat-error *ngIf="itemForm.get('stock').hasError(validation.type)">
+                                {{validation.message }}
+                              </mat-error>
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-1">
+                          <button mat-icon-button color="primary" (onclick)="deleteItem(itemForm)">
+                            <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                          </button>
+                        </div>
+                      </div>
+                      <mat-divider></mat-divider>
+                    </div>
+                    <div class="col-6">
+                      <button color="primary" mat-raised-button class="button" type="button" (click)="addItem()">
+                        Add More Item
+                      </button>
+                    </div>
+
+                  </div>
+                  <div class="col-12" style="display: flex;justify-content: space-around;">
+                    <button mat-raised-button class="button" type="button" (click)="cancel()">
+                      Cancel
+                    </button>
+
+                    <button color="primary" mat-raised-button class="button" type="submit" [disabled]="purchaseOrder.invalid">
+                      Place order
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

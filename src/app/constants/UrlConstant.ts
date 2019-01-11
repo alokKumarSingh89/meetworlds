@@ -38,6 +38,13 @@ const API_URL = {
     ROLE: "roles",
     POST: "users/create",
     GETALL: "users",
-  }
+	},
+	SUPPLIER: {
+    GETALL: "suppliers",
+    GETONE: "supplier/",
+    POST: "supplier/create",
+    PUT: "supplier/",
+    DELETE: "supplier/"
+  },
 };
 export default API_URL;

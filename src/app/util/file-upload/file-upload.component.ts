@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
+import {environment} from '@env/environment'
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
@@ -28,7 +28,7 @@ export class FileUploadComponent implements OnInit {
   }
   ngOnInit() {
     console.log(this.path,this.filename)
-    this.img = this.filename ? `http://localhost:4000/api/${this.path}${this.filename}?time=${(new Date()).getTime()}`:this.img;
+    this.img = this.filename ? `${environment}/api/${this.path}${this.filename}?time=${(new Date()).getTime()}`:this.img;
   }
 
 }

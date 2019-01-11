@@ -7,7 +7,7 @@ import {
   MatInputModule, MatIconModule, MatButtonModule, MatSidenavModule, MatToolbarModule,
   MatCheckboxModule, MatListModule, MatExpansionModule, MatMenuModule, MatTabsModule,
   MatSelectModule,MatDatepickerModule,MatNativeDateModule,MatTableModule,
-  MatPaginatorModule,MatSortModule,MatButtonToggleModule,MatRadioModule,MatTreeModule
+  MatPaginatorModule,MatSortModule,MatButtonToggleModule,MatRadioModule,MatTreeModule,MatStepperModule
 } from '@angular/material';
 
 import { FormsModule,ReactiveFormsModule }   from '@angular/forms'
@@ -17,13 +17,13 @@ import { FormsModule,ReactiveFormsModule }   from '@angular/forms'
     MatButtonModule, MatSidenavModule, MatToolbarModule, MatCheckboxModule, MatListModule,
     MatExpansionModule, MatMenuModule, FlexLayoutModule, MatTabsModule, MatSelectModule,
     MatDatepickerModule,MatNativeDateModule,MatTableModule,MatPaginatorModule,MatSortModule,
-    MatButtonToggleModule,MatRadioModule,FormsModule,ReactiveFormsModule,MatTreeModule],
+    MatButtonToggleModule,MatRadioModule,FormsModule,ReactiveFormsModule,MatTreeModule,MatStepperModule],
   exports: [MatGridListModule, MatCardModule,
     MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSidenavModule,
     MatToolbarModule, MatMenuModule, FlexLayoutModule, MatTabsModule,MatDatepickerModule
     , MatCheckboxModule, MatListModule, MatExpansionModule, MatSelectModule,
     MatNativeDateModule,MatTableModule,MatPaginatorModule,MatSortModule,
-    MatButtonToggleModule,MatRadioModule,FormsModule,ReactiveFormsModule,MatTreeModule],
+    MatButtonToggleModule,MatRadioModule,FormsModule,ReactiveFormsModule,MatTreeModule,MatStepperModule],
   declarations: []
 })
 export class AppMatModule { }

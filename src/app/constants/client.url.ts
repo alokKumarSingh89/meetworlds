@@ -8,6 +8,11 @@ export const ROUTE_URL ={
             INDEX:"users",
             NEW:"user/new",
             EDIT:"user/:id/edit"
-        }
+			},
+			SUPPLIER: {
+				INDEX: "supplier",
+				NEW: "supplier/new",
+				EDIT:"supplier/:id/edit"
+			}
     }
 }

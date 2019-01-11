@@ -17,6 +17,7 @@ import { EditBranchComponent } from "./branch/edit-branch/edit-branch.component"
 import { ItemComponent } from "./item/item.component";
 import { NewItemComponent } from "./item/new-item/new-item.component";
 import { EditItemComponent } from "./item/edit-item/edit-item.component";
+import {StepperComponent} from "./stepper/stepper.component";
 
 const routes: Routes = [
   {
@@ -30,7 +31,11 @@ const routes: Routes = [
   {
     path: "organisation",
     component: OrganisationComponent
-  },
+	},
+	{
+		path: 'set_up_organisation',
+		component:StepperComponent
+	},
   {
     path: "categories",
     component: CategoriesComponent
@@ -90,7 +95,8 @@ const routes: Routes = [
     EditBranchComponent,
     ItemComponent,
     NewItemComponent,
-    EditItemComponent
+		EditItemComponent,
+		StepperComponent
   ]
 })
 export class SettingsRouterModule {}
