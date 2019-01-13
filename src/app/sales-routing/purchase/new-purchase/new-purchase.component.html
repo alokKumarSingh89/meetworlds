@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-3">
                           <mat-form-field class="input-field">
-                            <mat-select placeholder="Select Item" [(value)]="item_id" formControlName="item_id">
+                            <mat-select placeholder="Select Item" formControlName="item_id">
                               <mat-option *ngFor="let item of ItemList" [value]="item.id">
                                 {{item.name}}
                               </mat-option>
@@ -54,7 +54,7 @@
                           </mat-form-field>
                         </div>
                         <div class="col-1">
-                          <button mat-icon-button color="primary" (onclick)="deleteItem(itemForm)">
+                          <button type="button" *ngIf="i>0" mat-icon-button color="primary" (click)="deleteItem(itemForm,i)">
                             <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
                           </button>
                         </div>
