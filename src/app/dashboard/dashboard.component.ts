@@ -7,6 +7,7 @@ import {LoadOrganisation} from "@app/store/actions/organisation.action";
 import {BranchRequest} from "@app/store/actions/branch.action";
 import API_URL from "@app/constants/UrlConstant";
 import {Router} from "@angular/router";
+import {GetAllSupplierRequest} from "@app/store/actions/supplier.action";
 
 @Component({
 	selector: "app-dashboard",
@@ -33,5 +34,10 @@ export class DashboardComponent implements OnInit {
 			}
 		})
 		this._store.dispatch(new LoadOrganisation());
+		this._store.pipe(select(store => store.branch.branches.currentBranch)).subscribe(currentBranch => {
+			if (currentBranch) {
+				this._store.dispatch(new GetAllSupplierRequest(currentBranch.id))
+			}
+    })
 	}
 }

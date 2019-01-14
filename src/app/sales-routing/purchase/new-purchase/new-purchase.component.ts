@@ -8,7 +8,7 @@ import { GetAllSupplierRequest } from '@app/store/actions/supplier.action';
 import { error_message } from '@app/constants/purchages.error';
 import { ItemRequest } from '@app/store/actions/items.action';
 import { ApiService } from '@app/auth/api.service';
-import { CreatePurchaseRequest } from '@app/store/actions/purchase.action';
+import { CreatePurchaseRequest, UpdatePurchaseStatus } from '@app/store/actions/purchase.action';
 
 @Component({
 	selector: 'app-new-purchase',
@@ -27,9 +27,15 @@ export class NewPurchaseComponent implements OnInit {
 		private _servie: ApiService,
 		private _store: Store<AppState>,
 		private router: Router
-	) { }
+	) {
+		this._store.pipe(select(store => store.purchase.status)).subscribe(status => {
+			if (status=="Success") {
+				this._store.dispatch(new UpdatePurchaseStatus());
+				window.history.back();
+			}
+		})
+	 }
 	createOrder() {
-		console.log(this.purchaseOrder.value)
 		let form = this.purchaseOrder.value;
 		this._store.dispatch(new CreatePurchaseRequest(form));
 	}

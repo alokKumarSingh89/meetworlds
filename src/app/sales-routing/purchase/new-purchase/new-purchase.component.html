@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-3">
                           <mat-form-field class="input-field">
-                            <input matInput placeholder="Price" formControlName="price" />
+                            <input matInput placeholder="Price" formControlName="price" type="number"/>
                             <mat-error *ngFor="let validation of error.price">
                               <mat-error *ngIf="itemForm.get('price').hasError(validation.type)">
                                 {{validation.message }}
@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-3">
                           <mat-form-field class="input-field">
-                            <input matInput placeholder="Stock" formControlName="stock" />
+                            <input matInput placeholder="Stock" formControlName="stock" type="number"/>
                             <mat-error *ngFor="let validation of error.stock">
                               <mat-error *ngIf="itemForm.get('stock').hasError(validation.type)">
                                 {{validation.message }}
