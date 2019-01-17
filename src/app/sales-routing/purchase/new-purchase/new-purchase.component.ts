@@ -29,12 +29,12 @@ export class NewPurchaseComponent implements OnInit {
 		private router: Router
 	) {
 		this._store.pipe(select(store => store.purchase.status)).subscribe(status => {
-			if (status=="Success") {
+			if (status == "Success") {
 				this._store.dispatch(new UpdatePurchaseStatus());
 				window.history.back();
 			}
 		})
-	 }
+	}
 	createOrder() {
 		let form = this.purchaseOrder.value;
 		this._store.dispatch(new CreatePurchaseRequest(form));

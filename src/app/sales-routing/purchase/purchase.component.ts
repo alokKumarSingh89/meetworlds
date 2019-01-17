@@ -29,7 +29,7 @@ export class PurchaseComponent implements OnInit {
 	}
   organisation: any;
   isAddOrganisation: boolean = true;
-  displayedColumns: string[] = ["Branch", "Supplier", "Total Amount", "Date","Order Details","Action"];
+  displayedColumns: string[] = ["Purchase Id","Branch", "Supplier", "Total Amount", "Date","Order Details","Action"];
 	dataSource: any;
 	branchList: any;
 	supplier: any;
