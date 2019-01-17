@@ -6,11 +6,12 @@
           <div class="row">
             <div class="col-12">
               <div class="organisation">
-                <h2 style="margin: auto;" class="primary">Edit Order</h2>
-                <form class="login-form row" [formGroup]="purchaseOrder" (ngSubmit)="editOrder()">
+                <h2 style="margin: auto;" class="primary">Receive / Return Order</h2>
+                <form class="login-form row" [formGroup]="purchaseOrder" (ngSubmit)="createOrder()">
                   <div class="col-12 row">
                     <div class="col-7">
                       <mat-form-field class="input-field">
+                        Supplier
                         <mat-select placeholder="Select Supplier" [(value)]="supplier_id" *ngIf="suppliers"
                           formControlName="supplier_id">
                           <mat-option *ngFor="let supplier of suppliers" [value]="supplier.id">
@@ -19,14 +20,14 @@
                         </mat-select>
                       </mat-form-field>
                     </div>
-                    <div class="col-12" style="margin: 1em 0;" formArrayName="purchase_details" *ngFor="let itemForm of purchaseOrder.get('purchase_details').controls; let i = index;">
+                    <div class="col-12" style="margin: 1em 0;" formArrayName="items" *ngFor="let itemForm of purchaseOrder.get('items').controls; let i = index;">
                       <div [formGroupName]="i" class="row">
                         <div class="col-1">
                           <span>Item {{i+1}}</span>
                         </div>
                         <div class="col-3">
                           <mat-form-field class="input-field">
-                            <mat-select placeholder="Select Item" [value]="item_id" formControlName="item_id">
+                            <mat-select placeholder="Select Item" formControlName="item_id">
                               <mat-option *ngFor="let item of ItemList" [value]="item.id">
                                 {{item.name}}
                               </mat-option>

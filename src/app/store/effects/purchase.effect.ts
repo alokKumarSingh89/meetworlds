@@ -28,13 +28,27 @@ export class PurchaseEffect {
                 catchError(err => of(new AddError(err)))
             )
         )
-		);
-		@Effect()
+    );
+
+    @Effect()
+    editPurchase$: Observable<Action> = this._action$.pipe(
+        ofType<UpdatePurchaseRequest>(PurchaseActionType.UPDATE_PURCHASE_REQUEST),
+        tap(() => this._store.dispatch(new RemoveError())),
+        mergeMap((action: UpdatePurchaseRequest) =>
+
+            this._apiService.update(`${API_URL.PURCHASE.PUT}${action.payload.id}`, action.payload, false).pipe(
+                map((store: any) => new UpdatePurchaseSuccess(store)),
+                catchError(err => of(new AddError(err)))
+            )
+        )
+    );
+
+    @Effect()
     loadPurchase$: Observable<Action> = this._action$.pipe(
         ofType<GetAllPurchaseRequest>(PurchaseActionType.PURCHASE_LOAD_REQUEST),
         tap(() => this._store.dispatch(new RemoveError())),
         mergeMap((action: GetAllPurchaseRequest) =>
-						this._apiService.index(`${API_URL.PURCHASE.GETALL}${action.branch_id}`).pipe(
+            this._apiService.index(`${API_URL.PURCHASE.GETALL}${action.branch_id}`).pipe(
                 map((store: any) => new GetAllPurchaseSuccess(store)),
                 catchError(err => of(new AddError(err)))
             )
