@@ -17,6 +17,7 @@ import { AuthService } from "./auth/auth.service";
 import { TokenInterceptor } from "./auth/token.interceptor";
 import { JWTInterceptor } from "./auth/jwt.interceptor";
 import { ItemsService } from "./items/items.service";
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -48,4 +49,4 @@ import { ItemsService } from "./items/items.service";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

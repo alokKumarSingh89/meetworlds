@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Routes, RouterModule} from '@angular/router';
-import {PurchaseComponent} from './purchase/purchase.component';
-import {NewPurchaseComponent} from './purchase/new-purchase/new-purchase.component';
-import {EditPurchaseComponent} from './purchase/edit-purchase/edit-purchase.component';
-import {AppMatModule} from '@app/app-mat/app-mat.module';
-import {NbCardModule} from '@nebular/theme';
-const routes: Routes=[
+import { Routes, RouterModule } from '@angular/router';
+import { PurchaseComponent } from './purchase/purchase.component';
+import { NewPurchaseComponent } from './purchase/new-purchase/new-purchase.component';
+import { EditPurchaseComponent } from './purchase/edit-purchase/edit-purchase.component';
+import { AppMatModule } from '@app/app-mat/app-mat.module';
+import { NbCardModule } from '@nebular/theme';
+import { NewReceiveComponent } from './new-receive/new-receive.component';
+const routes: Routes = [
 	{
 		path: "purchases/new",
 		component: NewPurchaseComponent
@@ -19,18 +20,22 @@ const routes: Routes=[
 		path: "purchases",
 		component: PurchaseComponent
 	},
+	{
+		path: "receive/new",
+		component: NewReceiveComponent
+	}
 ]
 @NgModule({
-  imports: [
+	imports: [
 		CommonModule,
 		AppMatModule,
-    NbCardModule,
+		NbCardModule,
 		RouterModule.forChild(routes)
 	],
-  exports: [RouterModule],
-	
+	exports: [RouterModule],
+
 	declarations: [
-		PurchaseComponent,EditPurchaseComponent,NewPurchaseComponent
+		PurchaseComponent, EditPurchaseComponent, NewPurchaseComponent, NewReceiveComponent
 	]
 })
 export class SalesRoutingModule { }

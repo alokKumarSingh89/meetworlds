@@ -18,6 +18,7 @@ import { SupplierStore, supplierReducer } from "./reducers/supplier.reducer";
 import { SupplierEffect } from "./effects/supplier.effect";
 import { PurchaseStore, purchaseReducer } from "./reducers/purchase.reducer";
 import { PurchaseEffect } from "./effects/purchase.effect";
+import { ReceiveStore, receiveReducer } from "./reducers/receive.reducer";
 
 export interface AppState {
 	error: ErrorState;
@@ -27,7 +28,9 @@ export interface AppState {
 	organisation: OrganisationStore;
 	roles: RoleState;
 	supplier: SupplierStore;
-	purchase: PurchaseStore
+	purchase: PurchaseStore;
+	receive: ReceiveStore;
+
 }
 export const reducers: ActionReducerMap<AppState> = {
 	error: errorReducer,
@@ -37,7 +40,8 @@ export const reducers: ActionReducerMap<AppState> = {
 	organisation: organisationReducer,
 	roles: roleReducer,
 	supplier: supplierReducer,
-	purchase: purchaseReducer
+	purchase: purchaseReducer,
+	receive: receiveReducer
 };
 
 export const effects = [

@@ -43,7 +43,7 @@ export class EditPurchaseComponent implements OnInit {
     window.history.back();
   }
   cancel() {
-    this.router.navigate(["/dashboard/settings/organisation"]);
+    this.router.navigate(["/dashboard/sales/purchases"]);
   }
   createItem() {
     return this.fb.group({
