@@ -14,58 +14,11 @@ const MENU_ITEMS = [
     icon: "nb-keypad",
     role:["SuperAdmin","Manager"],
     children: [
-			{title: "Store",link: "sales/store"},
-			{ title: "Purchases", link: "sales/purchases" }
-    ]
-  },
-  // {
-  //   title: "CATALOGUE",
-  //   icon: "nb-compose",
-  //   role:["SuperAdmin","Manager"],
-  //   children: [
-  //     { title: "Items", link: "items" },
-  //     { title: "Categories", link: "items/category" }
-  //   ]
-  // },
-  // {
-  //   title: "Inventory",
-  //   icon: "nb-gear",
-  //   role:["SuperAdmin","StoreManager","Manager"],
-  //   children: [
-  //     { title: "Stock", link: "inventory/stock" },
-  //     { title: "Purchases", link: "inventory/purchases" },
-  //     { title: "Transfers", link: "inventory/transfers" },
-  //     { title: "Audit Report", link: "inventory/audit-report" }
-  //   ]
-  // },
-  {
-    title: "Accounting",
-    icon: "nb-location",
-    role:["SuperAdmin","Manager"],
-    children: [
-      { title: "Tax Types", link: "accounting/tax-types" },
-      { title: "Tax Payable Items", link: "accounting/tax-payable-items" },
-      { title: "Discount Items", link: "accounting/discount-items" },
-      { title: "Charges", link: "accounting/charges" },
-      { title: "Promotions", link: "accounting/promotions" }
-    ]
-  },
-  {
-    title: "Vouchers",
-    icon: "nb-bar-chart",
-    role:["SuperAdmin","Manager"],
-    children: [
-      { title: "Pretty cash", link: "vouchers/pretty-cash" },
-      { title: "Credit Line", link: "vouchers/credit-line" },
-      { title: "open/close store", link: "vouchers/open-close-store" }
-    ]
-  },
-  {
-    title: "People",
-    icon: "nb-title",
-    role:["SuperAdmin","Manager"],
-    children: [
-      // { title: "Customers", link: "people/customers" },
+			{title: "Sales",link: "sales/store"},
+			{ title: "Item", link: "settings/item" },
+			{ title: "Category", link: "settings/categories" },
+			{title: "Purchases",link: "sales/purchases"},
+			
       { title: "Users", link: "people/users" },
       { title: "Supplier", link: "people/supplier" }
     ]
@@ -89,9 +42,7 @@ const MENU_ITEMS = [
       { title: "Channels Types", link: "settings/channel-types" },
       // { title: "Partners", link: "settings/partners" },
       { title: "Branch", link: "settings/branch" },
-      { title: "Organisation", link: "settings/organisation" },
-      { title: "Category", link: "settings/categories" },
-      { title: "Item", link: "settings/item" }
+      { title: "Organisation", link: "settings/organisation" }
     ]
   },
   {

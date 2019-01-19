@@ -31,19 +31,6 @@ export class ReceiveEffect {
     );
 
     @Effect()
-    editReceive$: Observable<Action> = this._action$.pipe(
-        ofType<UpdateReceiveRequest>(ReceiveActionType.UPDATE_RECEIVE_REQUEST),
-        tap(() => this._store.dispatch(new RemoveError())),
-        mergeMap((action: UpdateReceiveRequest) =>
-
-            this._apiService.update(`${API_URL.RECEIVE.PUT}${action.payload.id}`, action.payload, false).pipe(
-                map((store: any) => new UpdateReceiveSuccess(store)),
-                catchError(err => of(new AddError(err)))
-            )
-        )
-    );
-
-    @Effect()
     loadReceive$: Observable<Action> = this._action$.pipe(
         ofType<GetAllReceiveRequest>(ReceiveActionType.RECEIVE_LOAD_REQUEST),
         tap(() => this._store.dispatch(new RemoveError())),

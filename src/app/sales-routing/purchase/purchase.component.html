@@ -55,7 +55,7 @@
         <ng-container matColumnDef="Receive/Return">
           <th mat-header-cell *matHeaderCellDef>Receive / Return</th>
           <td mat-cell *matCellDef="let element">
-            <button color="primary" mat-icon-button [routerLink]="['/dashboard/sales/receive/new']">
+            <button color="primary" mat-icon-button routerLink="/dashboard/sales/receive/{{element.id}}">
               <mat-icon style="font-size:30px" aria-label="Example icon-button with a heart icon">swap_vertical_circle</mat-icon>
             </button>
           </td>

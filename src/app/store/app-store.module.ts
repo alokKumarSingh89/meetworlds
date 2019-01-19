@@ -19,6 +19,7 @@ import { SupplierEffect } from "./effects/supplier.effect";
 import { PurchaseStore, purchaseReducer } from "./reducers/purchase.reducer";
 import { PurchaseEffect } from "./effects/purchase.effect";
 import { ReceiveStore, receiveReducer } from "./reducers/receive.reducer";
+import {ReceiveEffect} from "./effects/receive.effect";
 
 export interface AppState {
 	error: ErrorState;
@@ -51,7 +52,8 @@ export const effects = [
 	RoleEffect,
 	OrganisationEffect,
 	SupplierEffect,
-	PurchaseEffect
+	PurchaseEffect,
+	ReceiveEffect
 ];
 @NgModule({
 	imports: [

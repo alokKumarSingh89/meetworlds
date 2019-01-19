@@ -21,7 +21,7 @@ const routes: Routes = [
 		component: PurchaseComponent
 	},
 	{
-		path: "receive/new",
+		path: "receive/:id",
 		component: NewReceiveComponent
 	}
 ]

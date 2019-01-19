@@ -54,11 +54,9 @@ const API_URL = {
     DELETE: "purchase-order/"
   },
   RECEIVE: {
-    GETALL: "receivables/",
-    GETONE: "receivable/",
-    POST: "receivable/create",
-    PUT: "receivable/",
-    DELETE: "receivable/"
+    GETALL: "purchase-receive-return/",
+    POST: "purchase-receive-return/",
+
   },
 };
 export default API_URL;

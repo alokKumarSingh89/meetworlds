@@ -19,7 +19,7 @@ export class CreateReceiveSuccess implements Action {
 }
 export class GetAllReceiveRequest implements Action {
     readonly type = ReceiveActionType.RECEIVE_LOAD_REQUEST;
-    constructor(public branch_id: string) { }
+    constructor(public branch_id: string) {}
 }
 export class GetAllReceiveSuccess implements Action {
     readonly type = ReceiveActionType.RECEIVE_LOAD_SUCCESS;
