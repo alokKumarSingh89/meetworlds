@@ -3,38 +3,67 @@
     <div class="col-12">
       <mat-card style="padding:0">
         <mat-card-content>
-          <div class="row" *ngIf="receiveList">
+          <div class="row" *ngIf="receiveList && itemList">
             <div class="col-12">
-              <h3 class="primary">Receive / Return Order</h3>
-						</div>
-						<div class="col-12" *ngIf="receiveList.supplier">
-							<h5>Supplier: {{receiveList.supplier.name}}</h5>
-						</div>
-						<div class="col-12">
-							<div class="row">
-									<div class="col-2">Items</div>
-									<div class="col-2">Stock</div>
-									<div class="col-2">Received</div>
-									<div class="col-2">Returened</div>
-									<div class="col-2">Receiving</div>
-									<div class="col-2">Returening</div>
-							</div>
-							
-						</div>
-						<div class="col-12" *ngFor="let order of receiveList.purchase_details">
-							<div class="row">
-								<div class="col-2">{{order.item_id}}</div>
-								<div class="col-2">{{order.stock}}</div>
-								<!-- <div class="col-2">{{getReceivedItem(order.id),order.receivable}}</div>
-								<div class="col-2">{{getReceurnedItem(order.id,order.returnable)}}</div> -->
-								<div class="col-2">
-									<input type="number" [(ngModel)]="order.received"/>
+              <h3 class="primary heading">Receive / Return Order</h3>
+            </div>
+            <div class="col-12 table-content" *ngIf="receiveList.supplier ">
+              <h5>
+                <span class="heading">Supplier: </span>
+                <span class="content">{{receiveList.supplier.name}}</span>
+              </h5>
+              <mat-divider style="width: 97.4%;"></mat-divider>
+            </div>
+
+            <div class="col-12 table-content">
+              <div class="row">
+                <div class="col-2 heading">Items</div>
+                <div class="col-2 heading">Stock</div>
+                <div class="col-1 heading">Received</div>
+                <div class="col-1 heading">Returened</div>
+                <div class="col-3 heading">Receiving</div>
+                <div class="col-3 heading">Returening</div>
+              </div>
+
+            </div>
+            <div class="col-12 table-content" *ngFor="let order of receiveList.purchase_details" style="    margin: 0 1em;">
+              <div class="row" style="align-items: center;">
+                <div class="col-2 content">{{getItem(order.item_id)}}</div>
+                <div class="col-2 content">{{order.stock}}</div>
+                <div class="col-1 content">{{getReceivedItem(order.id)}}</div>
+                <div class="col-1 content">{{getReceurnedItem(order.id)}}</div>
+                <div class="col-3">
+                  <mat-form-field>
+                    <input matInput placeholder="Receiving" type="number" [(ngModel)]="order.received"/>
+                  </mat-form-field>
+                </div>
+                <div class="col-3">
+                  <mat-form-field>
+                    <input matInput placeholder="Returening" type="number" [(ngModel)]="order.return" />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-12" *ngIf="errorList.length>0">
+              <div class="alert alert-danger">
+                <div class="row">
+                  <div class="col-12" *ngFor="let error of errorList">
+                    <strong>{{error.name}} </strong> {{error.message}}
+                  </div>
 								</div>
-								<div class="col-2">
-										<input type="number" [(ngModel)]="order.return"/>
-									</div>
 							</div>
-						</div>
+            </div>
+            <div class="col-12">
+              <div class="row button-custom">
+                <button color="primary" style="margin-right: 2em;" mat-raised-button class="button" type="button"
+                  (click)="submitRequest()">
+                  Submit
+                </button>
+                <button mat-raised-button class="button" type="button" (click)="cancle()">
+                  Cancel
+                </button>
+              </div>
+            </div>
           </div>
         </mat-card-content>
       </mat-card>

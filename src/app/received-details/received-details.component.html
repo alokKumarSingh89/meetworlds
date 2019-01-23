@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-content>
+    <div class="row" *ngIf="receivedList">
+      <div class="col-sm-8">
+        <h3 class="heading">Recieved Item <span>(Move to stock)</span></h3>
+      </div>
+      <div class="col-12" >
+        <div class="row" style="margin: 1em 0">
+          <div class="col-2 heading">
+            Supplier
+          </div>
+          <div class="col-2 heading">
+            Item Name
+          </div>
+          <div class="col-2 heading">
+            Stock
+          </div>
+          <div class="col-2 heading">
+            Price
+          </div>
+          <div class="col-2 heading">
+            Received Date
+          </div>
+          <div class="col-2 heading">
+            Received Action
+          </div>
+				</div>
+				<mat-divider style="width: 97.4%;"></mat-divider>
+      </div>
+      <div class="col-12" *ngFor="let receive of receivedList.receivable" style="margin: 1em 0">
+        <div class="row">
+          <div class="col-2 content">
+            {{receivedList.supplier.name}}
+          </div>
+          <div class="col-2 content">
+            {{getItemName(receive.purchase_detail_id)}}
+          </div>
+          <div class="col-2 content">
+            {{receive.stock}}
+          </div>
+          <div class="col-2 content">
+            {{receive.price}}
+          </div>
+          <div class="col-2 content">
+            {{receive.receive_date | date:'short'}}
+          </div>
+          <div class="col-2 content">
+							<mat-checkbox (change)="markAsReceived(receive)"></mat-checkbox>
+          </div>
+        </div>
+				<mat-divider style="width: 97.4%;"></mat-divider>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -35,7 +35,7 @@ export class NewItemComponent implements OnInit {
         true
       )
       .subscribe(response => {
-        window.history.back();
+        this.router.navigate(["/dashboard/settings/item"])
       });
   }
   goToItems() {

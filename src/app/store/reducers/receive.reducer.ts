@@ -14,7 +14,6 @@ export const receiveReducer: (
 ) => ReceiveStore=(state=initialState,action: Action) => {
 		switch (action.type) {
         case ReceiveActionType.RECEIVE_CREATE_SUCCESS:
-            state.Receive.push(action.payload);
             state.status = 'Success';
             return { ...state };
         case ReceiveActionType.RECEIVE_LOAD_SUCCESS:

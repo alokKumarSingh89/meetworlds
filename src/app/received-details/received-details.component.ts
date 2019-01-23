@@ -1,0 +1,42 @@
+import { Component, OnInit } from '@angular/core';
+import {Store, select} from '@ngrx/store';
+import {AppState} from '@app/store/app-store.module';
+import {GetAllReceiveRequest} from '@app/store/actions/receive.action';
+import {ItemRequest} from '@app/store/actions/items.action';
+import {ActivatedRoute} from '@angular/router';
+
+@Component({
+  selector: 'app-received-details',
+  templateUrl: './received-details.component.html',
+  styleUrls: ['./received-details.component.css']
+})
+export class ReceivedDetailsComponent implements OnInit {
+	receivedList;
+	itemList;
+	constructor(private _store: Store<AppState>,private _route: ActivatedRoute) { 
+		
+	}
+	getItemName(id) {
+		const itemId=this.receivedList.purchase_details.filter(details => details.id==id)[0]
+		const currentItem=this.itemList.filter(item => item.id==itemId.item_id)[0];
+		return currentItem.category.name +" " +currentItem.name
+	}
+	markAsReceived(receive) {
+		let isConform = window.confirm("Are you sure to move in stock")
+		console.log(receive)
+	}
+	ngOnInit() {
+		this._store.dispatch(new ItemRequest())
+
+		let id = this._route.snapshot.paramMap.get("id");
+		this._store.dispatch(new GetAllReceiveRequest(id));	
+		
+		this._store.pipe(select(store => store.receive.Receive)).subscribe(receive => {
+			this.receivedList=receive;
+		})
+		this._store.pipe(select(store => store.items.items)).subscribe(items => {
+			this.itemList=items;
+		})
+  }
+
+}

@@ -22,8 +22,7 @@ export class ReceiveEffect {
         ofType<CreateReceiveRequest>(ReceiveActionType.RECEIVE_CREATE_REQUEST),
         tap(() => this._store.dispatch(new RemoveError())),
         mergeMap((action: CreateReceiveRequest) =>
-
-            this._apiService.create(API_URL.RECEIVE.POST, action.payload, false).pipe(
+						this._apiService.create(`${API_URL.RECEIVE.POST}${action.id}`, action.payload, false).pipe(
                 map((store: any) => new CreateReceiveSuccess(store)),
                 catchError(err => of(new AddError(err)))
             )

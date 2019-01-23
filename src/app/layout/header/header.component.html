@@ -4,7 +4,7 @@
     <div class="logo" (click)="goToHome()" *ngIf="organisationName">{{organisationName}}</div>
     <div *ngIf="branches.currentBranch" class="header-droupdown">
       <div>Branch</div>
-      <select>
+      <select class="select_branch">
         <option *ngFor="let branch of branches.branchList" value="{{branch.id}}">{{branch.name}}</option>
       </select>
       <!-- <mat-select [(value)]="branches.currentBranch" (selectionChange)="branchChange(branches.currentBranch.id)">

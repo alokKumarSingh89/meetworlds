@@ -71,7 +71,7 @@ export class NewBranchComponent implements OnInit {
       this.status_message = status;
       if (status && status.type == "SUCCESS") {
         setTimeout(() => {
-          window.history.back();
+          this.router.navigate(["/dashboard/settings/branch"]);
         }, 1000);
       }
     })

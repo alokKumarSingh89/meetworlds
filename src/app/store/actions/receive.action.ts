@@ -11,7 +11,7 @@ export enum ReceiveActionType {
 }
 export class CreateReceiveRequest implements Action {
     readonly type = ReceiveActionType.RECEIVE_CREATE_REQUEST;
-    constructor(public payload: any) { }
+    constructor(public payload: any,public id:string) { }
 }
 export class CreateReceiveSuccess implements Action {
     readonly type = ReceiveActionType.RECEIVE_CREATE_SUCCESS;

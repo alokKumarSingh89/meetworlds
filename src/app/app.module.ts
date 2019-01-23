@@ -16,7 +16,6 @@ import { AppStoreModule } from "@app/store/app-store.module";
 import { AuthService } from "./auth/auth.service";
 import { TokenInterceptor } from "./auth/token.interceptor";
 import { JWTInterceptor } from "./auth/jwt.interceptor";
-import { ItemsService } from "./items/items.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,7 +34,6 @@ import { ItemsService } from "./items/items.service";
   ],
   providers: [
     AuthService,
-    ItemsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

@@ -7,6 +7,7 @@ import { EditPurchaseComponent } from './purchase/edit-purchase/edit-purchase.co
 import { AppMatModule } from '@app/app-mat/app-mat.module';
 import { NbCardModule } from '@nebular/theme';
 import { NewReceiveComponent } from './new-receive/new-receive.component';
+import {ReceivedDetailsComponent} from '@app/received-details/received-details.component';
 const routes: Routes = [
 	{
 		path: "purchases/new",
@@ -23,6 +24,10 @@ const routes: Routes = [
 	{
 		path: "receive/:id",
 		component: NewReceiveComponent
+	},
+	{
+		path: "purchases/receive-details/:id",
+		component: ReceivedDetailsComponent
 	}
 ]
 @NgModule({
@@ -35,7 +40,7 @@ const routes: Routes = [
 	exports: [RouterModule],
 
 	declarations: [
-		PurchaseComponent, EditPurchaseComponent, NewPurchaseComponent, NewReceiveComponent
+		PurchaseComponent, EditPurchaseComponent, NewPurchaseComponent, NewReceiveComponent,ReceivedDetailsComponent
 	]
 })
 export class SalesRoutingModule { }
