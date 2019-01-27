@@ -38,6 +38,9 @@ export class NewReceiveComponent implements OnInit {
 		const currentItem=this.itemList.filter(item => item.id==id)[0];
 		return currentItem.category.name +" " +currentItem.name
 	}
+	markAsComplete() {
+		let id=this._route.snapshot.paramMap.get("id");
+	}
 	getReceivedItem(id) {
 		return this.receiveList.receivable.filter(rec => rec.purchase_detail_id==id).reduce((sum,current) => sum+current.stock,0)
 	}

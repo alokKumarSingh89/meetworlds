@@ -22,6 +22,12 @@ const MENU_ITEMS = [
       { title: "Users", link: "people/users" },
       { title: "Supplier", link: "people/supplier" }
     ]
+	},
+	{
+    title: "Store",
+    icon: "fa fa-question",
+    role:["SuperAdmin","StoreManager","Manager"],
+    children: [{ title: "Store ", link: "sales/store" }]
   },
   {
     title: "Reports",
@@ -50,7 +56,7 @@ const MENU_ITEMS = [
     icon: "fa fa-question",
     role:["SuperAdmin","StoreManager","Manager"],
     children: [{ title: "Help ", link: "contact-us/help" }]
-  }
+	}
 ];
 export const getMenuList = (role:string) => {
   let menu =  MENU_ITEMS.filter(menu=>menu.role.includes(role));

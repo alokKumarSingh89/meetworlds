@@ -57,6 +57,11 @@ const API_URL = {
     GETALL: "purchase-receive-return/",
     POST: "purchase-receive-return/",
 
+	},
+	ITEM_STOCK: {
+    GETALL: "item-stocks",
+    POST: "item-stocks/create",
+
   },
 };
 export default API_URL;

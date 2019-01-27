@@ -20,6 +20,8 @@ import { PurchaseStore, purchaseReducer } from "./reducers/purchase.reducer";
 import { PurchaseEffect } from "./effects/purchase.effect";
 import { ReceiveStore, receiveReducer } from "./reducers/receive.reducer";
 import {ReceiveEffect} from "./effects/receive.effect";
+import {ItemStockStore, itemStockReducer} from "./reducers/item-stock.reducer";
+import {ItemStockEffect} from "./effects/item-stock.effect";
 
 export interface AppState {
 	error: ErrorState;
@@ -31,7 +33,7 @@ export interface AppState {
 	supplier: SupplierStore;
 	purchase: PurchaseStore;
 	receive: ReceiveStore;
-
+	stock:ItemStockStore
 }
 export const reducers: ActionReducerMap<AppState> = {
 	error: errorReducer,
@@ -42,7 +44,8 @@ export const reducers: ActionReducerMap<AppState> = {
 	roles: roleReducer,
 	supplier: supplierReducer,
 	purchase: purchaseReducer,
-	receive: receiveReducer
+	receive: receiveReducer,
+	stock:itemStockReducer
 };
 
 export const effects = [
@@ -53,7 +56,8 @@ export const effects = [
 	OrganisationEffect,
 	SupplierEffect,
 	PurchaseEffect,
-	ReceiveEffect
+	ReceiveEffect,
+	ItemStockEffect
 ];
 @NgModule({
 	imports: [

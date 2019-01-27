@@ -12,11 +12,6 @@ export const routes: Routes = [
     children: [
       { path: "", redirectTo: "store", pathMatch: "full" },
       { path: "store", component: StoreComponent },
-
-      {
-        path: "items",
-        loadChildren: "@app/items/items.module#ItemsModule"
-			},
 			{
         path: "sales",
         loadChildren: "@app/sales-routing/sales-routing.module#SalesRoutingModule"

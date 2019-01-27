@@ -25,7 +25,8 @@
         <ng-container matColumnDef="Purchase Id">
           <th mat-header-cell *matHeaderCellDef>Purchase Id</th>
           <td mat-cell *matCellDef="let element">
-            <a routerLink="{{ element.id }}/edit">Purchase - {{ element.id }}</a>
+						<a *ngIf="element.status == 'Draft'" routerLink="{{ element.id }}/edit">Purchase - {{ element.id }}</a>
+						<span *ngIf="element.status != 'Draft'">Purchase - {{ element.id }}</span>
           </td>
         </ng-container>
         <ng-container matColumnDef="Branch">

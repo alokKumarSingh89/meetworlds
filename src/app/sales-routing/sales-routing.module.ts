@@ -5,9 +5,10 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { NewPurchaseComponent } from './purchase/new-purchase/new-purchase.component';
 import { EditPurchaseComponent } from './purchase/edit-purchase/edit-purchase.component';
 import { AppMatModule } from '@app/app-mat/app-mat.module';
-import { NbCardModule } from '@nebular/theme';
+import { NbCardModule, NbTabsetModule } from '@nebular/theme';
 import { NewReceiveComponent } from './new-receive/new-receive.component';
 import {ReceivedDetailsComponent} from '@app/received-details/received-details.component';
+import {StoreComponent} from './store/store.component';
 const routes: Routes = [
 	{
 		path: "purchases/new",
@@ -28,6 +29,10 @@ const routes: Routes = [
 	{
 		path: "purchases/receive-details/:id",
 		component: ReceivedDetailsComponent
+	},
+	{
+		path: "store",
+		component: StoreComponent
 	}
 ]
 @NgModule({
@@ -35,12 +40,13 @@ const routes: Routes = [
 		CommonModule,
 		AppMatModule,
 		NbCardModule,
+		NbTabsetModule,
 		RouterModule.forChild(routes)
 	],
 	exports: [RouterModule],
 
 	declarations: [
-		PurchaseComponent, EditPurchaseComponent, NewPurchaseComponent, NewReceiveComponent,ReceivedDetailsComponent
+		PurchaseComponent, EditPurchaseComponent,StoreComponent, NewPurchaseComponent, NewReceiveComponent,ReceivedDetailsComponent
 	]
 })
 export class SalesRoutingModule { }

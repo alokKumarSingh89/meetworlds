@@ -24,8 +24,6 @@ import { HeaderComponent } from "../layout/header/header.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { StoreComponent } from "./store/store.component";
 
-import { FileDatabase } from "../items/category/category.component";
-
 import { AppMatModule } from "../app-mat/app-mat.module";
 
 const NB_MODULES = [
@@ -67,7 +65,6 @@ import { StoreService } from "./store/store.service";
     StoreComponent
   ],
   providers: [
-    FileDatabase,
     NbSidebarService,
     StoreService,
     {
