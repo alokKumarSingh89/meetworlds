@@ -14,7 +14,11 @@ export const routes: Routes = [
       { path: "store", component: StoreComponent },
 			{
         path: "sales",
-        loadChildren: "@app/sales-routing/sales-routing.module#SalesRoutingModule"
+				loadChildren: "@app/sales-routing/sales-routing.module#SalesRoutingModule",
+				canActivate: [RoleGuard],
+				data:{
+          role:'SuperAdmin'
+        },
       },
       {
         path: "settings",

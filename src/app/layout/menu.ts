@@ -12,9 +12,9 @@ const MENU_ITEMS = [
   {
     title: "Sales",
     icon: "nb-keypad",
-    role:["SuperAdmin","Manager"],
+    role:["SuperAdmin","StoreManager"],
     children: [
-			{title: "Sales",link: "sales/store"},
+			// {title: "Sales",link: "sales/store"},
 			{ title: "Item", link: "settings/item" },
 			{ title: "Category", link: "settings/categories" },
 			{title: "Purchases",link: "sales/purchases"},
@@ -25,7 +25,7 @@ const MENU_ITEMS = [
 	},
 	{
     title: "Store",
-    icon: "fa fa-question",
+    icon: "fa fa-cart-plus",
     role:["SuperAdmin","StoreManager","Manager"],
     children: [{ title: "Store ", link: "sales/store" }]
   },

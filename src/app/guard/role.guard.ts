@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { map, take, tap } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { AppState } from '@app/store/app-store.module';
   providedIn: 'root'
 })
 export class RoleGuard implements CanActivate {
-  constructor(private _store: Store<AppState>) { }
+  constructor(private _store: Store<AppState>,private _router : Router) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
@@ -20,7 +20,7 @@ export class RoleGuard implements CanActivate {
           let user = data[0]
           return user.user_role === next.data.role;
         }else{
-          return false;
+          this._router.navigate(['/dashboard']);
         }
       })
     )
